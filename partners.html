@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners — Wintellex</title>
+<link rel="stylesheet" href="https://use.typekit.net/eqv7jlu.css">
+<style>
+:root{
+  --purple:#5e1ab8;
+  --deep:#2d0950;
+  --soft:#f8f7f4;
+  --text:#1a1a1a;
+  --muted:#6b6b6b;
+  --border:rgba(0,0,0,0.07);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--soft);color:var(--text);font-family:'Scale Variable','Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden;}
+
+/* PAGE HEADER */
+.page-header{padding:80px 40px 80px;background:linear-gradient(160deg,#0d0920 0%,#1a0840 50%,#0a0514 100%);color:white;text-align:center;position:relative;overflow:hidden;}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(139,92,255,0.25) 0%,transparent 60%);pointer-events:none;}
+.page-header .label{font-size:11px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:#8b5cff;margin-bottom:20px;}
+.page-header h1{font-size:clamp(42px,6vw,80px);font-weight:780;letter-spacing:-0.055em;line-height:1.02;margin-bottom:20px;}
+.page-header h1 em{font-style:normal;color:#b785ff;}
+.page-header p{font-size:18px;color:#c4bedd;max-width:560px;margin:0 auto;}
+.header-divider{position:absolute;bottom:-1px;left:0;width:100%;}
+.header-divider svg{display:block;width:100%;}
+
+/* FILTER TABS */
+.filter-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:48px 40px 0;flex-wrap:wrap;}
+.filter-btn{padding:9px 20px;border-radius:999px;border:1px solid var(--border);background:white;color:var(--muted);font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:inherit;}
+.filter-btn:hover{border-color:rgba(94,26,184,0.3);color:var(--purple);}
+.filter-btn.active{background:var(--purple);color:white;border-color:var(--purple);}
+
+/* PARTNER GRID */
+.grid-section{padding:40px 40px 100px;max-width:1280px;margin:0 auto;}
+.category-label{font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--purple);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.partner-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:56px;}
+.partner-card{background:white;border:1px solid var(--border);border-radius:20px;padding:28px 20px 22px;display:flex;flex-direction:column;align-items:center;gap:14px;cursor:default;transition:box-shadow 0.25s,transform 0.25s,border-color 0.25s;}
+.partner-card:hover{box-shadow:0 12px 40px rgba(94,26,184,0.10);transform:translateY(-3px);border-color:rgba(94,26,184,0.18);}
+.partner-logo{width:52px;height:52px;border-radius:14px;background:#f4f1ea;border:0.5px solid rgba(0,0,0,0.04);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
+.partner-logo img{width:38px;height:38px;object-fit:contain;display:block;}
+.partner-logo.bank-logo{background:#f4f1ea;border-color:rgba(0,0,0,0.04);}
+.partner-logo.starlite{background:linear-gradient(135deg,#0d1630,#1a2c6b);border-color:rgba(74,123,255,0.18);}
+.partner-name{font-size:14px;font-weight:700;color:var(--text);text-align:center;line-height:1.3;}
+.partner-role{font-size:11px;color:var(--muted);font-weight:500;text-align:center;line-height:1.4;}
+.partner-badge{font-size:10px;font-weight:800;letter-spacing:0.06em;padding:3px 10px;border-radius:999px;margin-top:2px;}
+.badge-fdic{background:#e8f5ec;color:#1d7a3a;}
+.badge-tech{background:#ede8fb;color:#5e1ab8;}
+.badge-capital{background:#e8ecfb;color:#1a4ab8;}
+
+/* BOTTOM CTA */
+.cta-section{background:linear-gradient(135deg,#0d0920,#2d0950);padding:80px 40px;text-align:center;color:white;}
+.cta-section h2{font-size:clamp(32px,4vw,52px);font-weight:780;letter-spacing:-0.045em;margin-bottom:16px;}
+.cta-section p{font-size:17px;color:#c4bedd;margin-bottom:36px;}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:16px 34px;border-radius:999px;background:linear-gradient(135deg,#5e1ab8,#8b5cff);color:white;font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 16px 48px rgba(94,26,184,0.35);transition:transform 0.2s;}
+.cta-btn:hover{transform:translateY(-2px);}
+
+/* FOOTER */
+footer{background:#0d0a19;padding:70px 24px 0;color:#aaa;}
+.footer-grid{max-width:1180px;margin:0 auto 50px;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:36px;}
+.footer-brand-logo{height:48px;width:auto;display:block;margin-bottom:16px;}
+.footer-brand h2{color:#ffffff;font-size:32px;margin-bottom:12px;}
+.footer-brand p{color:#aaa;}
+.footer-col h4{color:#d4b8ff;margin-bottom:16px;font-size:14px;text-transform:uppercase;}
+.footer-col a{display:block;color:#aaa;text-decoration:none;margin-bottom:10px;font-size:14px;}
+.footer-col a:hover{color:#d4b8ff;}
+.footer-bottom{max-width:1180px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:28px;}
+.footer-bottom p{color:#aaa;}
+.social-links{display:flex;gap:16px;}
+.social-links a{font-size:22px;color:#ccc;text-decoration:none;}
+.footer-legal{max-width:1180px;margin:0 auto;padding:28px 0;border-top:1px solid rgba(255,255,255,0.08);}
+.footer-legal p{font-size:12px;color:#666;line-height:1.9;}
+.footer-legal a{color:#666;text-decoration:underline;}
+.footer-legal a:hover{color:#b785ff;}
+@media(max-width:780px){.footer-grid{grid-template-columns:1fr;}}
+@media(max-width:600px){.grid-section{padding:32px 20px 80px;}.filter-bar{padding:36px 20px 0;}.page-header{padding:60px 24px 70px;}.cta-section{padding:60px 24px;}.partner-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}}
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="label">Partner Ecosystem</div>
+  <h1>Built on the <em>stack</em><br>you already trust.</h1>
+  <p>Wintellex integrates with the enterprise technology and banking partners your organization relies on every day.</p>
+  <div class="header-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 Q720,70 1440,10 L1440,60 L0,60 Z" fill="#f8f7f4"/></svg></div>
+</section>
+
+<!-- FILTERS -->
+<div class="filter-bar" id="filterBar">
+  <button class="filter-btn active" onclick="filter('all',this)">All Partners</button>
+  <button class="filter-btn" onclick="filter('cloud',this)">Cloud &amp; Infrastructure</button>
+  <button class="filter-btn" onclick="filter('payments',this)">Payments</button>
+  <button class="filter-btn" onclick="filter('data',this)">Data &amp; AI</button>
+  <button class="filter-btn" onclick="filter('enterprise',this)">Enterprise Software</button>
+  <button class="filter-btn" onclick="filter('banking',this)">Banking &amp; Capital</button>
+</div>
+
+<!-- GRID -->
+<div class="grid-section">
+
+  <!-- Cloud & Infrastructure -->
+  <div class="category-block" data-category="cloud">
+    <div class="category-label">Cloud &amp; Infrastructure</div>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/microsoft.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Microsoft" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=microsoft.com'"></div>
+        <div class="partner-name">Microsoft</div>
+        <div class="partner-role">Azure Cloud &amp; M365</div>
+        <span class="partner-badge badge-tech">Cloud</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/google.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Google" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=google.com'"></div>
+        <div class="partner-name">Google</div>
+        <div class="partner-role">GCP &amp; Workspace</div>
+        <span class="partner-badge badge-tech">Cloud</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/aws.amazon.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="AWS" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=aws.amazon.com'"></div>
+        <div class="partner-name">AWS</div>
+        <div class="partner-role">Cloud Infrastructure</div>
+        <span class="partner-badge badge-tech">Cloud</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/okta.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Okta" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=okta.com'"></div>
+        <div class="partner-name">Okta</div>
+        <div class="partner-role">Identity &amp; Access</div>
+        <span class="partner-badge badge-tech">Security</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payments -->
+  <div class="category-block" data-category="payments">
+    <div class="category-label">Payments</div>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/stripe.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Stripe" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=stripe.com'"></div>
+        <div class="partner-name">Stripe</div>
+        <div class="partner-role">Payment Rails</div>
+        <span class="partner-badge badge-tech">Payments</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/visa.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Visa" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=visa.com'"></div>
+        <div class="partner-name">Visa</div>
+        <div class="partner-role">Card Network Rails</div>
+        <span class="partner-badge badge-tech">Payments</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/mastercard.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Mastercard" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=mastercard.com'"></div>
+        <div class="partner-name">Mastercard</div>
+        <div class="partner-role">Global Payments</div>
+        <span class="partner-badge badge-tech">Payments</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/plaid.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Plaid" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=plaid.com'"></div>
+        <div class="partner-name">Plaid</div>
+        <div class="partner-role">Banking Data Layer</div>
+        <span class="partner-badge badge-tech">Payments</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/twilio.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Twilio" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=twilio.com'"></div>
+        <div class="partner-name">Twilio</div>
+        <div class="partner-role">Comms &amp; Messaging</div>
+        <span class="partner-badge badge-tech">Platform</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data & AI -->
+  <div class="category-block" data-category="data">
+    <div class="category-label">Data &amp; AI</div>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/palantir.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Palantir" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=palantir.com'"></div>
+        <div class="partner-name">Palantir</div>
+        <div class="partner-role">Data Intelligence</div>
+        <span class="partner-badge badge-tech">AI &amp; Data</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/snowflake.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Snowflake" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=snowflake.com'"></div>
+        <div class="partner-name">Snowflake</div>
+        <div class="partner-role">Data Warehouse</div>
+        <span class="partner-badge badge-tech">AI &amp; Data</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/databricks.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Databricks" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=databricks.com'"></div>
+        <div class="partner-name">Databricks</div>
+        <div class="partner-role">AI &amp; Analytics</div>
+        <span class="partner-badge badge-tech">AI &amp; Data</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/openai.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="OpenAI" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=openai.com'"></div>
+        <div class="partner-name">OpenAI</div>
+        <div class="partner-role">AI Processing Layer</div>
+        <span class="partner-badge badge-tech">AI &amp; Data</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enterprise Software -->
+  <div class="category-block" data-category="enterprise">
+    <div class="category-label">Enterprise Software</div>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/servicenow.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="ServiceNow" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=servicenow.com'"></div>
+        <div class="partner-name">ServiceNow</div>
+        <div class="partner-role">Workflow Automation</div>
+        <span class="partner-badge badge-tech">Enterprise</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/salesforce.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Salesforce" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=salesforce.com'"></div>
+        <div class="partner-name">Salesforce</div>
+        <div class="partner-role">CRM &amp; Platform</div>
+        <span class="partner-badge badge-tech">Enterprise</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/sap.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="SAP" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=sap.com'"></div>
+        <div class="partner-name">SAP</div>
+        <div class="partner-role">ERP &amp; Finance</div>
+        <span class="partner-badge badge-tech">Enterprise</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/oracle.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Oracle" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=oracle.com'"></div>
+        <div class="partner-name">Oracle</div>
+        <div class="partner-role">Database &amp; Cloud</div>
+        <span class="partner-badge badge-tech">Enterprise</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/workday.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Workday" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=workday.com'"></div>
+        <div class="partner-name">Workday</div>
+        <div class="partner-role">HR &amp; Finance Ops</div>
+        <span class="partner-badge badge-tech">Enterprise</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/docusign.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="DocuSign" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=docusign.com'"></div>
+        <div class="partner-name">DocuSign</div>
+        <div class="partner-role">Contract Execution</div>
+        <span class="partner-badge badge-tech">Enterprise</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><img src="https://img.logo.dev/coupa.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Coupa" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=coupa.com'"></div>
+        <div class="partner-name">Coupa</div>
+        <div class="partner-role">Spend Management</div>
+        <span class="partner-badge badge-tech">Enterprise</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Banking & Capital -->
+  <div class="category-block" data-category="banking">
+    <div class="category-label">Banking &amp; Capital</div>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-logo bank-logo"><img src="https://img.logo.dev/bankwithchoice.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Choice Financial Group" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=bankwithchoice.com'"></div>
+        <div class="partner-name">Choice Financial Group</div>
+        <div class="partner-role">Banking Services</div>
+        <span class="partner-badge badge-fdic">FDIC Member</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo bank-logo"><img src="https://img.logo.dev/column.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Column N.A." onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=column.com'"></div>
+        <div class="partner-name">Column N.A.</div>
+        <div class="partner-role">Banking Services</div>
+        <span class="partner-badge badge-fdic">FDIC Member</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo bank-logo"><img src="https://img.logo.dev/middlesexfederal.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Middlesex Federal" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=middlesexfederal.com'"></div>
+        <div class="partner-name">Middlesex Federal Savings</div>
+        <div class="partner-role">Banking Services</div>
+        <span class="partner-badge badge-fdic">FDIC Member</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo bank-logo"><img src="https://img.logo.dev/coastalbank.com?token=pk_EoHclsxtQCSAh0qZq5I7oA&size=80&retina=true" alt="Coastal Community Bank" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=coastalbank.com'"></div>
+        <div class="partner-name">Coastal Community Bank</div>
+        <div class="partner-role">Banking Services</div>
+        <span class="partner-badge badge-fdic">FDIC Member</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo starlite">
+          <svg width="38" height="24" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="slg2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#7aa0ff"/><stop offset="100%" style="stop-color:#c4d4ff"/></linearGradient></defs>
+            <text x="19" y="13" font-family="Georgia,serif" font-size="8.5" font-weight="500" fill="url(#slg2)" letter-spacing="0" text-anchor="middle">STARLITE</text>
+            <text x="19" y="21" font-family="Arial,sans-serif" font-size="3.5" fill="#8899cc" letter-spacing="1" text-anchor="middle">CAPITAL PARTNERS</text>
+          </svg>
+        </div>
+        <div class="partner-name">Starlite Capital Partners</div>
+        <div class="partner-role">Strategic Capital</div>
+        <span class="partner-badge badge-capital">Investment Partner</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Become a partner.</h2>
+  <p>Interested in integrating with Wintellex or exploring a partnership? Let's talk.</p>
+  <a href="https://www.wintellex.com/contact" class="cta-btn">Get in touch &rarr;</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" class="footer-brand-logo">
+      <p>Intelligent payment infrastructure for modern organizations and scalable financial systems.</p>
+      <p style="margin-top:18px;font-size:14px;line-height:1.7;color:#666;">1910 Pacific Ave Suite 2000<br>Dallas, TX 75201<br>United States</p>
+    </div>
+    <div class="footer-col"><h4>Company</h4><a href="https://www.wintellex.com/about">About</a><a href="https://www.wintellex.com/careers">Careers</a><a href="https://www.wintellex.com/press">Press</a><a href="https://www.wintellex.com/media">Media</a><a href="https://www.wintellex.com/contact">Contact</a></div>
+    <div class="footer-col"><h4>Solutions</h4><a href="https://www.wintellex.com/commercial">Commercial</a><a href="https://www.wintellex.com/government">Government</a></div>
+    <div class="footer-col"><h4>Platform</h4><a href="https://www.wintellex.com/pricing">Pricing</a><a href="https://www.wintellex.com/infrastructure">Infrastructure</a><a href="https://www.wintellex.com/security">Security</a><a href="https://www.wintellex.com/developers">Developers</a><a href="https://www.wintellex.com/partners">Partners</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="https://www.wintellex.com/privacy">Privacy Policy</a><a href="https://www.wintellex.com/terms">Terms of Use</a><a href="https://www.wintellex.com/compliance">Compliance</a><a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a></div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Wintellex &bull; Intelligent Payment Infrastructure</p>
+    <div class="social-links"><a href="https://x.com/wintellex" target="_blank">&#120143;</a><a href="https://www.instagram.com/wintellex/" target="_blank">&#128247;</a><a href="https://www.linkedin.com/company/wintellex" target="_blank">in</a><a href="https://www.youtube.com/@Wintellex" target="_blank">&#9654;</a></div>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 Wintellex. Wintellex is a financial infrastructure technology company. Banking services are provided by Choice Financial Group, Column N.A., Middlesex Federal Savings, and Coastal Community Bank, each a Member FDIC. Strategic capital and investment services are provided in partnership with Starlite Capital Partners. Unauthorized reproduction or redistribution of copyrighted materials on this website and Wintellex's digital media pages is strictly prohibited. By clicking on some of the links above, you will leave Wintellex's website and be directed to a third-party website. The privacy practices of those third parties may differ from those of Wintellex. We recommend you review the privacy statements of those third-party websites, as Wintellex is not responsible for those third parties' privacy or security practices. Additional disclosures can be found in the resources section of our website. <a href="https://www.wintellex.com/privacy">Privacy Policy</a> &middot; <a href="https://www.wintellex.com/privacy#cookies">Cookie Policy</a></p>
+  </div>
+</footer>
+
+<script>
+function filter(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.category-block').forEach(block => {
+    if (cat === 'all' || block.dataset.category === cat) {
+      block.style.display = '';
+    } else {
+      block.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
