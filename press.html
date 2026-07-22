@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wintellex Raises $1.2B Series F at $20B Valuation — Press</title>
+<link rel="stylesheet" href="https://use.typekit.net/eqv7jlu.css">
+<style>
+:root{
+  --purple:#5e1ab8;
+  --deep-purple:#2d0950;
+  --ink:#1a0535;
+  --bg:#ffffff;
+  --text:#1f1f1f;
+  --muted:#666666;
+  --hair:rgba(45,9,80,0.10);
+  --panel:#faf8ff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--bg);color:var(--text);font-family:'Scale Variable','Inter',system-ui,sans-serif;line-height:1.6;}
+@media (prefers-reduced-motion: reduce){*{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;}}
+
+.top-accent-bar{position:fixed;top:0;left:0;width:100%;height:5px;background:linear-gradient(90deg,#2d0950,#3d0f73,#5e1ab8,#2d0950);background-size:200%;animation:shimmer 8s linear infinite;z-index:7000;}
+@keyframes shimmer{0%{background-position:0%;}100%{background-position:200%;}}
+
+.logo-bar{position:fixed;top:5px;left:0;width:100%;z-index:6000;background:linear-gradient(135deg,var(--deep-purple),var(--purple));display:flex;align-items:center;justify-content:center;padding:8px 24px;box-shadow:0 10px 28px rgba(45,9,80,0.3);}
+.logo-bar a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;}
+.logo-bar img{height:62px;width:auto;display:block;}
+@media(max-width:480px){.logo-bar{padding:6px 20px;}.logo-bar img{height:37px;}}
+
+/* Site navigation menu bar */
+.site-nav{position:fixed;top:83px;left:0;width:100%;z-index:5500;background:#ffffff;border-bottom:1px solid rgba(94,26,184,0.10);box-shadow:0 6px 18px rgba(45,9,80,0.06);}
+.site-nav-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:28px;padding:12px 24px;flex-wrap:wrap;}
+.site-nav-inner a{font-size:13px;font-weight:700;color:#4a3a63;text-decoration:none;letter-spacing:0.01em;transition:color 0.2s ease;white-space:nowrap;}
+.site-nav-inner a:hover{color:var(--purple);}
+.site-nav-inner a.site-nav-cta{background:linear-gradient(135deg,var(--deep-purple),var(--purple));color:#fff;padding:8px 18px;border-radius:999px;font-weight:800;box-shadow:0 6px 16px rgba(94,26,184,0.25);}
+.site-nav-inner a.site-nav-cta:hover{color:#fff;opacity:0.92;}
+@media(max-width:480px){.site-nav{top:54px;} .site-nav-inner{gap:16px;padding:10px 18px;justify-content:flex-start;overflow-x:auto;}}
+
+/* hero / byline area with diagonal purple slash */
+.hero-top{position:relative;padding-top:226px;padding-bottom:8px;overflow:hidden;}
+.hero-top::before{
+  content:'';
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 42%,
+    rgba(94,26,184,0.10) 48%,
+    rgba(94,26,184,0.14) 54%,
+    rgba(94,26,184,0.10) 60%,
+    transparent 66%,
+    transparent 100%
+  );
+  pointer-events:none;
+  z-index:0;
+}
+.hero-top .container-inner{position:relative;z-index:1;}
+.container-inner{max-width:760px;margin:0 auto;padding:0 24px;}
+@media(max-width:480px){.hero-top{padding-top:176px;}}
+
+/* article shell */
+main{display:block;}
+article{display:block;padding-bottom:40px;}
+.byline-row{padding-top:48px;}
+.category{font-size:13px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--purple);margin-bottom:18px;}
+.dateline{font-size:14px;color:var(--muted);font-weight:600;margin-bottom:10px;}
+h1.headline{font-size:clamp(32px,5vw,46px);line-height:1.08;letter-spacing:-0.03em;color:var(--ink);font-weight:780;margin-bottom:18px;}
+.subhead{font-size:19px;line-height:1.55;color:var(--muted);margin-bottom:36px;max-width:680px;}
+
+/* round strip — signature element */
+.round-strip{position:relative;z-index:2;border:1px solid var(--hair);border-radius:20px;background:#ffffff;box-shadow:0 12px 32px rgba(45,9,80,0.10);padding:22px 26px;margin-bottom:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.round-cell{padding:0 18px;border-right:1px solid var(--hair);}
+.round-cell:last-child{border-right:none;}
+.round-cell .rc-label{font-size:10.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#8a7a9e;margin-bottom:6px;}
+.round-cell .rc-value{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-0.01em;}
+.round-cell .rc-value.accent{color:var(--purple);}
+@media(max-width:680px){.round-strip{grid-template-columns:repeat(2,1fr);gap:18px 0;}.round-cell{border-right:none;border-bottom:1px solid var(--hair);padding:0 0 14px;}.round-cell:nth-child(2n){padding-left:18px;}.round-cell:nth-last-child(-n+2){border-bottom:none;}}
+
+/* body copy */
+.article-body p{font-size:17px;line-height:1.85;color:#2b2b2b;margin-bottom:22px;max-width:680px;}
+.article-body p:first-of-type{font-size:18px;}
+.lede-drop{float:left;font-family:'Scale Variable','Inter',serif;font-size:64px;line-height:0.85;font-weight:780;color:var(--purple);padding-right:10px;padding-top:4px;}
+
+blockquote{border-left:3px solid var(--purple);padding:4px 0 4px 24px;margin:36px 0;}
+blockquote p{font-size:19px;line-height:1.6;color:var(--ink);font-weight:600;font-style:normal;margin-bottom:10px;max-width:640px;}
+blockquote cite{font-size:14px;color:var(--muted);font-weight:600;font-style:normal;display:block;}
+blockquote cite strong{color:var(--ink);font-weight:800;}
+
+h2.section-head{font-size:22px;color:var(--ink);font-weight:780;letter-spacing:-0.01em;margin:44px 0 18px;}
+.use-of-funds{list-style:none;margin-bottom:30px;display:grid;gap:14px;}
+.use-of-funds li{display:flex;gap:14px;align-items:flex-start;font-size:16px;line-height:1.6;color:#2b2b2b;}
+.use-of-funds .bullet{flex-shrink:0;width:8px;height:8px;border-radius:50%;background:var(--purple);margin-top:9px;}
+
+.investor-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px;}
+.investor-chip{font-size:13.5px;font-weight:700;color:var(--ink);background:var(--panel);border:1px solid var(--hair);border-radius:999px;padding:8px 16px;}
+.investor-note{font-size:14px;color:var(--muted);margin-top:14px;margin-bottom:30px;}
+
+hr.divider{border:none;border-top:1px solid var(--hair);margin:48px 0 32px;}
+
+footer{background:#0d0a19;padding:70px 24px 0;color:#aaa;}
+.footer-grid{max-width:1180px;margin:0 auto 50px;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:36px;}
+.footer-brand-logo{height:48px;width:auto;display:block;margin-bottom:16px;}
+.footer-brand h2{color:#ffffff;font-size:32px;margin-bottom:12px;}
+.footer-brand p{color:#aaa;}
+.footer-col h4{color:#d4b8ff;margin-bottom:16px;font-size:14px;text-transform:uppercase;}
+.footer-col a{display:block;color:#aaa;text-decoration:none;margin-bottom:10px;font-size:14px;}
+.footer-col a:hover{color:#d4b8ff;}
+.footer-bottom{max-width:1180px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.footer-bottom p{color:#aaa;}
+.social-links{display:flex;gap:16px;}
+.social-links a{font-size:22px;color:#ccc;text-decoration:none;}
+.footer-legal{max-width:1180px;margin:40px auto 0;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);padding-bottom:40px;}
+.footer-legal p{font-size:12px;color:#666;line-height:1.9;}
+.footer-legal a{color:#666;text-decoration:underline;}
+.footer-legal a:hover{color:#b785ff;}
+
+/* Do Not Share link */
+.dnsmi-link{background:none;border:none;cursor:pointer;color:#666;font-size:11px;text-decoration:underline;font-family:inherit;padding:0;line-height:inherit;}
+.dnsmi-link:hover{color:#b785ff;}
+
+/* Do Not Share My Information Modal */
+.dnsmi-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:25000;display:flex;align-items:center;justify-content:center;animation:fadeInOverlay 0.2s ease;backdrop-filter:blur(4px);}
+.dnsmi-modal{background:#ffffff;border-radius:24px;width:90%;max-width:560px;overflow:hidden;animation:slideUpModal 0.25s ease;box-shadow:0 40px 100px rgba(0,0,0,0.25);}
+.dnsmi-header{background:linear-gradient(135deg,#2d0950,#5e1ab8);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;}
+.dnsmi-header h2{color:white;font-size:18px;font-weight:800;letter-spacing:-0.02em;}
+.dnsmi-header-close{background:none;border:none;color:white;cursor:pointer;font-size:26px;line-height:1;padding:4px 8px;opacity:0.85;transition:opacity 0.15s;}
+.dnsmi-header-close:hover{opacity:1;}
+.dnsmi-body{padding:28px;}
+.dnsmi-body p{font-size:14px;color:#555;line-height:1.75;margin-bottom:22px;}
+.dnsmi-body p a{color:#5e1ab8;text-decoration:underline;}
+.dnsmi-options{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
+.dnsmi-option{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;border:1.5px solid rgba(94,26,184,0.12);border-radius:16px;background:#faf8ff;cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+.dnsmi-option:hover{border-color:rgba(94,26,184,0.35);background:#f3eeff;}
+.dnsmi-option.selected{border-color:#5e1ab8;background:#f0ebff;}
+.dnsmi-option input[type="radio"]{accent-color:#5e1ab8;width:18px;height:18px;flex-shrink:0;margin-top:2px;cursor:pointer;}
+.dnsmi-option-text strong{display:block;font-size:14px;font-weight:800;color:#1a0535;margin-bottom:3px;}
+.dnsmi-option-text span{font-size:12px;color:#777;line-height:1.5;}
+.dnsmi-footer{display:flex;gap:12px;justify-content:flex-end;padding-top:4px;}
+.dnsmi-cancel{background:none;border:1.5px solid rgba(94,26,184,0.2);color:#5e1ab8;padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:background 0.2s;}
+.dnsmi-cancel:hover{background:rgba(94,26,184,0.06);}
+.dnsmi-confirm{background:linear-gradient(135deg,#2d0950,#5e1ab8);color:white;border:none;padding:11px 24px;border-radius:999px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;box-shadow:0 8px 20px rgba(94,26,184,0.25);transition:opacity 0.2s;}
+.dnsmi-confirm:hover{opacity:0.9;}
+.dnsmi-success{text-align:center;padding:16px 0 6px;}
+.dnsmi-success .dnsmi-check{font-size:42px;display:block;margin-bottom:12px;}
+.dnsmi-success h3{color:#1a0535;font-size:18px;font-weight:800;margin-bottom:8px;}
+.dnsmi-success p{color:#666;font-size:14px;}
+
+@keyframes fadeInOverlay{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUpModal{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:780px){
+  .footer-grid{grid-template-columns:1fr;}
+}
+
+@media(max-width:480px){
+  .byline-row{padding-top:32px;}
+  .round-strip{padding:20px 18px;}
+  .dnsmi-modal{width:96%;border-radius:16px;}
+  .dnsmi-body{padding:20px;}
+  .dnsmi-footer{flex-direction:column;}
+  .dnsmi-cancel,.dnsmi-confirm{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="top-accent-bar"></div>
+
+<div class="logo-bar">
+  <a href="https://www.wintellex.com" aria-label="Wintellex home">
+    <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex">
+  </a>
+</div>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="site-nav-inner">
+    <a href="https://www.wintellex.com/commercial">Commercial</a>
+    <a href="https://www.wintellex.com/government">Government</a>
+    <a href="https://www.wintellex.com/pricing">Pricing</a>
+    <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+    <a href="https://www.wintellex.com/developers">Developers</a>
+    <a href="https://www.wintellex.com/partners">Partners</a>
+    <a href="https://www.wintellex.com/about">About</a>
+    <a href="https://www.wintellex.com/order" class="site-nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<div class="hero-top">
+  <div class="container-inner">
+    <div class="byline-row">
+      <div class="category">Funding &middot; Series F</div>
+      <div class="dateline">June 28, 2026</div>
+      <h1 class="headline">Wintellex raises $1.2B Series F at a $20B valuation</h1>
+      <p class="subhead">The round will accelerate expansion of Wintellex's global payment infrastructure, treasury coordination platform, and enterprise workflow systems. The financing was led by Starlite Capital Partners with participation from Fenelon Opportunity Fund and existing backers.</p>
+    </div>
+
+    <div class="round-strip" role="group" aria-label="Round summary">
+      <div class="round-cell"><div class="rc-label">Round</div><div class="rc-value">Series F</div></div>
+      <div class="round-cell"><div class="rc-label">Amount Raised</div><div class="rc-value accent">$1.2B</div></div>
+      <div class="round-cell"><div class="rc-label">Valuation</div><div class="rc-value accent">$20B</div></div>
+      <div class="round-cell"><div class="rc-label">Lead Investor</div><div class="rc-value">Starlite Capital Partners</div></div>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+  <div class="container-inner">
+  <article>
+    <div class="article-body">
+      <p><span class="lede-drop">W</span>intellex, the financial infrastructure platform connecting payments, treasury, and enterprise workflows, today announced it has raised $1.2 billion in a Series F funding round at a $20 billion post-money valuation.</p>
+
+      <p>The capital will be used to scale global settlement capabilities, deepen AI-driven compliance and fraud prevention tools, and expand its enterprise and government client base. Wintellex has experienced rapid adoption as organizations consolidate mission-critical financial operations onto a single infrastructure layer.</p>
+    </div>
+
+    <blockquote>
+      <p>"This round is validation that enterprises are ready for connected financial infrastructure. We're building the operating system for modern treasury and payments at global scale."</p>
+      <cite><strong>Gregory Fenelon</strong>, Founder &amp; CEO, Wintellex</cite>
+    </blockquote>
+
+    <h2 class="section-head">Use of Proceeds</h2>
+    <ul class="use-of-funds">
+      <li><span class="bullet"></span><span>Expansion of engineering and infrastructure teams focused on global settlement and treasury coordination.</span></li>
+      <li><span class="bullet"></span><span>International market expansion into Europe and Asia-Pacific.</span></li>
+      <li><span class="bullet"></span><span>Advancement of AI compliance, risk intelligence, and fraud prevention capabilities.</span></li>
+      <li><span class="bullet"></span><span>Growth of enterprise sales, government partnerships, and go-to-market teams.</span></li>
+    </ul>
+
+    <h2 class="section-head">Investor Participation</h2>
+    <div class="investor-row">
+      <span class="investor-chip">Starlite Capital Partners (Lead)</span>
+      <span class="investor-chip">Fenelon Opportunity Fund</span>
+      <span class="investor-chip">Existing Backers</span>
+    </div>
+    <p class="investor-note">Strategic capital and investment services for this round are provided in partnership with Starlite Capital Partners.</p>
+
+  </article>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" class="footer-brand-logo">
+      <p>Intelligent payment infrastructure for modern organizations and scalable financial systems.</p>
+      <p style="margin-top:18px;font-size:14px;line-height:1.7;color:#666;">1910 Pacific Ave Suite 2000<br>Dallas, TX 75201<br>United States</p>
+    </div>
+    <div class="footer-col"><h4>Company</h4><a href="https://www.wintellex.com/about">About</a><a href="https://www.wintellex.com/careers">Careers</a><a href="https://www.wintellex.com/press">Press</a><a href="https://www.wintellex.com/media">Media</a><a href="https://www.wintellex.com/contact">Contact</a></div>
+    <div class="footer-col"><h4>Solutions</h4><a href="https://www.wintellex.com/commercial">Commercial</a><a href="https://www.wintellex.com/government">Government</a></div>
+    <div class="footer-col"><h4>Platform</h4><a href="https://www.wintellex.com/pricing">Pricing</a><a href="https://www.wintellex.com/infrastructure">Infrastructure</a><a href="https://www.wintellex.com/security">Security</a><a href="https://www.wintellex.com/developers">Developers</a><a href="https://www.wintellex.com/partners">Partners</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="https://www.wintellex.com/privacy">Privacy Policy</a><a href="https://www.wintellex.com/terms">Terms of Use</a><a href="https://www.wintellex.com/compliance">Compliance</a><a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a></div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Wintellex &bull; Intelligent Payment Infrastructure</p>
+    <div class="social-links"><a href="https://x.com/wintellex" target="_blank">&#120143;</a><a href="https://www.instagram.com/wintellex/" target="_blank">&#128247;</a><a href="https://www.linkedin.com/company/wintellex" target="_blank">in</a><a href="https://www.youtube.com/@Wintellex" target="_blank">&#9654;</a></div>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 Wintellex. Wintellex is a financial infrastructure technology company founded by Gregory Fenelon. Banking services are provided by Choice Financial Group, Column N.A., Middlesex Federal Savings, and Coastal Community Bank, each a Member FDIC. Strategic capital and investment services are provided in partnership with Starlite Capital Partners. This press release contains forward-looking statements regarding Wintellex's business plans and growth; actual results may differ. Unauthorized reproduction or redistribution of copyrighted materials on this website and Wintellex's digital media pages is strictly prohibited. <a href="https://www.wintellex.com/privacy">Privacy Policy</a> &middot; <a href="https://www.wintellex.com/privacy#cookies">Cookie Policy</a> &middot; <button class="dnsmi-link" onclick="openDNSMI()">Do Not Share My Information</button></p>
+  </div>
+</footer>
+
+<!-- Do Not Share My Information Modal -->
+<div class="dnsmi-overlay" id="dnsmiOverlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="dnsmiTitle">
+  <div class="dnsmi-modal" id="dnsmiModal">
+    <div class="dnsmi-header">
+      <h2 id="dnsmiTitle">&#x1F512; Do Not Share My Information</h2>
+      <button class="dnsmi-header-close" onclick="closeDNSMI()" aria-label="Close">&times;</button>
+    </div>
+    <div class="dnsmi-body" id="dnsmiBody">
+      <p>Under applicable privacy laws including the CCPA, you have the right to opt out of the sale or sharing of your personal information. Please select your preference below. For more details, see our <a href="https://www.wintellex.com/privacy" target="_blank">Privacy Policy</a>.</p>
+      <div class="dnsmi-options" role="radiogroup" aria-label="Privacy preference options">
+        <label class="dnsmi-option" id="opt-all">
+          <input type="radio" name="dnsmi" value="all" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Opt out of all sharing</strong>
+            <span>Stop the sale and sharing of your personal information for advertising, analytics, and third-party purposes.</span>
+          </div>
+        </label>
+        <label class="dnsmi-option" id="opt-ads">
+          <input type="radio" name="dnsmi" value="ads" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Opt out of targeted advertising only</strong>
+            <span>Limit sharing to targeted advertising while allowing essential operational and analytics data sharing.</span>
+          </div>
+        </label>
+        <label class="dnsmi-option" id="opt-retain">
+          <input type="radio" name="dnsmi" value="retain" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Keep my current settings</strong>
+            <span>No changes will be made to how your information is currently shared.</span>
+          </div>
+        </label>
+      </div>
+      <div class="dnsmi-footer">
+        <button class="dnsmi-cancel" onclick="closeDNSMI()">Cancel</button>
+        <button class="dnsmi-confirm" id="dnsmiConfirm" onclick="confirmDNSMI()" disabled>Save Preference</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeDNSMI(); } });
+
+function openDNSMI(){
+  document.getElementById('dnsmiOverlay').style.display='flex';
+  document.body.style.overflow='hidden';
+  restoreDNSMIForm();
+}
+
+function restoreDNSMIForm(){
+  document.getElementById('dnsmiBody').innerHTML=
+    '<p>Under applicable privacy laws including the CCPA, you have the right to opt out of the sale or sharing of your personal information. Please select your preference below. For more details, see our <a href="https://www.wintellex.com/privacy" target="_blank">Privacy Policy</a>.</p>'
+    +'<div class="dnsmi-options" role="radiogroup" aria-label="Privacy preference options">'
+    +'<label class="dnsmi-option" id="opt-all"><input type="radio" name="dnsmi" value="all" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Opt out of all sharing</strong><span>Stop the sale and sharing of your personal information for advertising, analytics, and third-party purposes.</span></div></label>'
+    +'<label class="dnsmi-option" id="opt-ads"><input type="radio" name="dnsmi" value="ads" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Opt out of targeted advertising only</strong><span>Limit sharing to targeted advertising while allowing essential operational and analytics data sharing.</span></div></label>'
+    +'<label class="dnsmi-option" id="opt-retain"><input type="radio" name="dnsmi" value="retain" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Keep my current settings</strong><span>No changes will be made to how your current sharing settings remain in place.</span></div></label>'
+    +'</div>'
+    +'<div class="dnsmi-footer"><button class="dnsmi-cancel" onclick="closeDNSMI()">Cancel</button><button class="dnsmi-confirm" id="dnsmiConfirm" onclick="confirmDNSMI()" disabled>Save Preference</button></div>';
+}
+
+function closeDNSMI(){
+  document.getElementById('dnsmiOverlay').style.display='none';
+  document.body.style.overflow='';
+}
+
+function selectDNSMI(radio){
+  document.querySelectorAll('.dnsmi-option').forEach(function(o){ o.classList.remove('selected'); });
+  radio.closest('.dnsmi-option').classList.add('selected');
+  document.getElementById('dnsmiConfirm').disabled=false;
+}
+
+function confirmDNSMI(){
+  var selected=document.querySelector('input[name="dnsmi"]:checked');
+  if(!selected)return;
+  var messages={
+    'all':'Your preference has been saved. We will no longer sell or share your personal information with third parties.',
+    'ads':'Your preference has been saved. You have been opted out of targeted advertising data sharing.',
+    'retain':'No changes have been made. Your current sharing settings remain in place.'
+  };
+  try{ localStorage.setItem('wintellex_dnsmi', selected.value); }catch(e){}
+  document.getElementById('dnsmiBody').innerHTML=
+    '<div class="dnsmi-success">'
+    +'<span class="dnsmi-check">&#10003;</span>'
+    +'<h3>Preference Saved</h3>'
+    +'<p>'+messages[selected.value]+'</p>'
+    +'</div>'
+    +'<div class="dnsmi-footer" style="justify-content:center;margin-top:24px;"><button class="dnsmi-confirm" onclick="closeDNSMI()">Done</button></div>';
+}
+
+document.getElementById('dnsmiOverlay').addEventListener('click',function(e){ if(e.target===this) closeDNSMI(); });
+</script>
+
+</body>
+</html>
