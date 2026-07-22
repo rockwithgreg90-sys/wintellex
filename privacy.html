@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Wintellex — Privacy Policy</title>
+
+<link rel="stylesheet" href="https://use.typekit.net/eqv7jlu.css">
+
+<style>
+:root{
+  --purple:#5e1ab8;
+  --deep-purple:#2d0950;
+  --soft-bg:#f8f7f4;
+  --cream:#f0ede6;
+  --text:#1f1f1f;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html,body{
+  background:var(--soft-bg);
+  color:var(--text);
+  font-family:'Scale Variable','Inter',system-ui,sans-serif;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+.accent{
+  position:fixed; top:0; left:0; width:100%; height:5px;
+  background:linear-gradient(90deg,#2d0950,#3d0f73,#5e1ab8,#2d0950);
+  background-size:200%; animation:shimmer 8s linear infinite; z-index:7000;
+}
+
+@keyframes shimmer{ 0%{background-position:0%;} 100%{background-position:200%;} }
+
+.logo-bar{
+  position:fixed; top:5px; left:0; width:100%; z-index:6000;
+  background:linear-gradient(135deg,var(--deep-purple),var(--purple));
+  display:flex; align-items:center; justify-content:center;
+  padding:8px 24px;
+  box-shadow:0 10px 28px rgba(45,9,80,0.3);
+}
+
+.logo-bar a{
+  display:inline-flex; align-items:center; justify-content:center;
+  text-decoration:none;
+}
+
+.logo-bar img{ height:62px; width:auto; display:block; }
+
+@media(max-width:480px){
+  .logo-bar{ padding:6px 20px; }
+  .logo-bar img{ height:37px; }
+}
+
+.hero{
+  padding:170px 24px 80px;
+  background:
+    radial-gradient(circle at top left,rgba(94,26,184,0.12),transparent 34%),
+    linear-gradient(to bottom,#f8f7f4,#f0ede6);
+}
+
+.container{ max-width:980px; margin:0 auto; }
+
+.eyebrow{
+  color:var(--purple); font-size:14px; font-weight:800;
+  letter-spacing:0.14em; text-transform:uppercase; margin-bottom:18px;
+}
+
+.headline{
+  font-size:clamp(42px,7vw,76px); font-weight:780; line-height:1.02;
+  letter-spacing:-0.06em; margin-bottom:22px;
+  background:linear-gradient(135deg,#1f1f1f,#3d0f73);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+
+.subheadline{ font-size:20px; color:#555; max-width:760px; }
+
+.policy-wrap{ padding:0 24px 100px; }
+
+.policy-card{
+  max-width:980px; margin:0 auto; background:white;
+  border:1px solid #e0d4f5; border-radius:34px; padding:52px;
+  box-shadow:0 20px 60px rgba(94,26,184,0.08);
+}
+
+.updated{
+  display:inline-flex; align-items:center; gap:10px;
+  background:#f5efff; border:1px solid #e6dcf7; color:#5e1ab8;
+  padding:10px 16px; border-radius:999px; font-size:13px; font-weight:700; margin-bottom:38px;
+}
+
+.policy-section{ margin-bottom:48px; }
+.policy-section:last-child{ margin-bottom:0; }
+.policy-section h2{ font-size:30px; color:#2d0950; margin-bottom:18px; line-height:1.15; }
+.policy-section p{ color:#555; margin-bottom:18px; font-size:16px; }
+.policy-section ul{ padding-left:22px; color:#555; }
+.policy-section li{ margin-bottom:12px; }
+
+.highlight-box{
+  background:#f8f7f4; border:1px solid #e6dcf7;
+  border-radius:24px; padding:28px; margin-top:28px;
+}
+
+.highlight-box strong{ display:block; color:#2d0950; margin-bottom:10px; font-size:18px; }
+
+/* FOOTER — dark */
+footer{ background:#0d0a19; padding:70px 24px 0; color:#aaa; }
+
+.footer-grid{
+  max-width:1180px; margin:0 auto 50px;
+  display:grid; grid-template-columns:2fr repeat(4,1fr); gap:36px;
+}
+
+.footer-brand-logo{ height:48px; width:auto; display:block; margin-bottom:16px; }
+.footer-brand p{ max-width:360px; color:#aaa; }
+.footer-col h4{ color:#d4b8ff; margin-bottom:16px; font-size:14px; text-transform:uppercase; letter-spacing:0.1em; }
+.footer-col a{ display:block; color:#aaa; text-decoration:none; margin-bottom:10px; font-size:14px; transition:color 0.2s; }
+.footer-col a:hover{ color:#d4b8ff; }
+
+.footer-bottom{
+  max-width:1180px; margin:0 auto; padding-top:28px; padding-bottom:40px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+}
+
+.footer-bottom p{ color:#aaa; }
+.social-links a{ font-size:22px; margin-left:14px; color:#ccc; text-decoration:none; transition:color 0.2s; }
+.social-links a:hover{ color:#d4b8ff; }
+
+.footer-legal{ max-width:1180px; margin:0 auto; padding:28px 0 40px; border-top:1px solid rgba(255,255,255,0.08); }
+.footer-legal p{ font-size:12px; color:#666; line-height:1.9; }
+.footer-legal a{ color:#666; text-decoration:underline; }
+.footer-legal a:hover{ color:#b785ff; }
+
+@media(max-width:780px){
+  .accent{ height:4px; }
+  .hero{ padding:150px 20px 70px; }
+  .headline{ font-size:clamp(38px,13vw,58px); letter-spacing:-0.05em; }
+  .subheadline{ font-size:17px; line-height:1.6; }
+  .policy-wrap{ padding:0 20px 70px; }
+  .policy-card{ padding:34px 24px; border-radius:26px; }
+  .policy-section h2{ font-size:25px; }
+  .footer-grid{ grid-template-columns:1fr; }
+  .footer-bottom{ flex-direction:column; text-align:center; }
+  .social-links{ display:flex; gap:18px; justify-content:center; }
+  .social-links a{ margin-left:0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="accent"></div>
+
+<div class="logo-bar">
+  <a href="https://www.wintellex.com"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Legal</div>
+    <h1 class="headline">Privacy Policy</h1>
+    <p class="subheadline">This Privacy Policy explains how Wintellex may collect, use, store, and protect information related to visitors, users, organizations, and operational workflows associated with the platform.</p>
+  </div>
+</header>
+
+<section class="policy-wrap">
+  <div class="policy-card">
+
+    <div class="updated">Last Updated • May 2026</div>
+
+    <div class="policy-section">
+      <h2>1. Introduction</h2>
+      <p>Wintellex is focused on providing operational finance infrastructure, workflow systems, payment coordination concepts, treasury visibility tools, settlement workflows, and related services.</p>
+      <p>By accessing or using Wintellex websites, applications, infrastructure, APIs, or related services, you acknowledge and agree to the practices described in this Privacy Policy.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>2. Information We May Collect</h2>
+      <p>Wintellex may collect information including:</p>
+      <ul>
+        <li>Name, email address, and organization details</li>
+        <li>Account credentials and login activity</li>
+        <li>Operational workflow information</li>
+        <li>Invoice, payment, and transaction-related records</li>
+        <li>API requests and developer activity</li>
+        <li>Device, browser, IP address, and usage analytics</li>
+        <li>Support requests and communication records</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>Operational Data</strong>
+        <p>Organizations using Wintellex may store operational workflow information including invoices, payment records, contracts, approvals, client records, settlement data, treasury activity, and internal business documentation.</p>
+      </div>
+    </div>
+
+    <div class="policy-section">
+      <h2>3. How Information May Be Used</h2>
+      <p>Wintellex may use information for purposes including:</p>
+      <ul>
+        <li>Providing and improving platform functionality</li>
+        <li>Supporting operational workflows and reporting</li>
+        <li>Maintaining security and fraud prevention processes</li>
+        <li>Managing developer integrations and APIs</li>
+        <li>Supporting customer service and communications</li>
+        <li>Monitoring platform performance and infrastructure stability</li>
+        <li>Complying with applicable laws, regulations, and requests</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>4. Security & Protection</h2>
+      <p>Wintellex uses administrative, technical, and organizational safeguards designed to support platform security, operational governance, and access management.</p>
+      <p>Security measures may include:</p>
+      <ul>
+        <li>Access controls and authentication systems</li>
+        <li>Operational monitoring and audit visibility</li>
+        <li>Role-based permissions</li>
+        <li>Infrastructure review processes</li>
+        <li>Internal governance procedures</li>
+      </ul>
+      <p>No method of electronic transmission or storage is guaranteed to be fully secure. Users remain responsible for maintaining the confidentiality of their credentials and internal systems.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>5. Cookies & Analytics</h2>
+      <p>Wintellex may use cookies, analytics tools, and related technologies to:</p>
+      <ul>
+        <li>Improve platform functionality</li>
+        <li>Measure usage and performance</li>
+        <li>Maintain sessions and preferences</li>
+        <li>Support operational monitoring</li>
+        <li>Improve infrastructure reliability</li>
+      </ul>
+      <p>Users may adjust browser settings to limit or disable cookies where supported.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>6. Third-Party Services</h2>
+      <p>Wintellex may integrate with or reference third-party infrastructure providers, analytics tools, APIs, payment providers, hosting services, developer tools, and operational platforms.</p>
+      <p>Third-party services operate under their own policies and practices. Wintellex is not responsible for third-party websites, systems, products, or services.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>7. Data Retention</h2>
+      <p>Information may be retained for operational, legal, security, compliance, reporting, or infrastructure purposes for periods determined appropriate by Wintellex.</p>
+      <p>Retention periods may vary depending on:</p>
+      <ul>
+        <li>Operational requirements</li>
+        <li>Security reviews</li>
+        <li>Platform activity</li>
+        <li>Regulatory considerations</li>
+        <li>Internal governance procedures</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>8. User Responsibilities</h2>
+      <p>Organizations and users are responsible for:</p>
+      <ul>
+        <li>Maintaining secure credentials</li>
+        <li>Managing authorized user access</li>
+        <li>Reviewing operational workflows</li>
+        <li>Using infrastructure in accordance with applicable laws</li>
+        <li>Protecting sensitive business information</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>9. Policy Updates</h2>
+      <p>Wintellex may update or modify this Privacy Policy periodically. Updates become effective upon publication unless otherwise stated.</p>
+      <p>Continued use of Wintellex services following updates constitutes acceptance of revised terms.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>10. Contact</h2>
+      <p>Questions regarding this Privacy Policy or Wintellex operational practices may be directed through the official Wintellex contact channels.</p>
+      <div class="highlight-box">
+        <strong>Wintellex</strong>
+        <p>Operational Finance Infrastructure<br>Enterprise Workflow Systems<br>https://www.wintellex.com</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" class="footer-brand-logo">
+      <p>Intelligent payment infrastructure for modern organizations and scalable financial systems.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="https://www.wintellex.com/about">About</a>
+      <a href="https://www.wintellex.com/careers">Careers</a>
+      <a href="https://www.wintellex.com/press">Press</a>
+      <a href="https://www.wintellex.com/media">Media</a>
+      <a href="https://www.wintellex.com/order">Contact</a>
+      
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <a href="https://www.wintellex.com/commercial">Commercial</a>
+      <a href="https://www.wintellex.com/government">Government</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="https://www.wintellex.com/pricing">Pricing</a>
+      <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+      <a href="https://www.wintellex.com/security">Security</a>
+      <a href="https://www.wintellex.com/developers">Developers</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="https://www.wintellex.com/privacy">Privacy Policy</a>
+      <a href="https://www.wintellex.com/terms">Terms of Use</a>
+      <a href="https://www.wintellex.com/compliance">Compliance</a>
+      <a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Wintellex • Intelligent Payment Infrastructure</p>
+    <div class="social-links">
+      <a href="https://x.com/wintellex" target="_blank">𝕏</a>
+      <a href="https://www.instagram.com/wintellex/" target="_blank">📷</a>
+      <a href="https://www.linkedin.com/company/wintellex" target="_blank">in</a>
+      <a href="https://www.youtube.com/@Wintellex" target="_blank">▶</a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p>© 2026 Wintellex. Wintellex is a financial infrastructure technology company. Banking services are provided by Choice Financial Group and Column N.A., Members FDIC. Unauthorized reproduction or redistribution of copyrighted materials on this website and Wintellex's digital media pages is strictly prohibited. By clicking on some of the links above, you will leave Wintellex's website and be directed to a third-party website. The privacy practices of those third parties may differ from those of Wintellex. We recommend you review the privacy statements of those third-party websites, as Wintellex is not responsible for those third parties' privacy or security practices. Additional disclosures can be found in the resources section of our website. <a href="https://www.wintellex.com/privacy">Privacy Policy</a> &middot; <a href="https://www.wintellex.com/privacy#cookies">Cookie Policy</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
