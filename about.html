@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wintellex — About</title>
+<link rel="stylesheet" href="https://use.typekit.net/eqv7jlu.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--purple:#5e1ab8;--deep-purple:#2d0950;--soft-bg:#ffffff;--cream:#fafaf8;--text:#1f1f1f;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--soft-bg);color:var(--text);font-family:'Scale Variable','Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden;font-size:13px;}
+.accent{position:fixed;top:0;left:0;width:100%;height:5px;background:linear-gradient(90deg,#2d0950,#3d0f73,#5e1ab8,#2d0950);background-size:200%;animation:shimmer 8s linear infinite;z-index:7000;}
+@keyframes shimmer{0%{background-position:0%;}100%{background-position:200%;}}
+.site-header{width:100%;display:flex;flex-direction:column;}
+.logo-bar{position:fixed;top:5px;left:0;width:100%;z-index:6500;background:linear-gradient(135deg,var(--deep-purple),var(--purple));display:flex;align-items:center;justify-content:center;padding:8px 24px;box-shadow:0 10px 28px rgba(45,9,80,0.3);}
+.logo-bar a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;}
+.logo-bar img{height:62px;width:auto;display:block;}
+@media(max-width:480px){.logo-bar{padding:6px 20px;}.logo-bar img{height:37px;}}
+
+/* ─── Nav Menu Bar ─── */
+.main-nav{width:100%;margin-top:83px;background:#1c1233;border-top:1px solid rgba(139,92,255,0.15);border-bottom:1px solid rgba(139,92,255,0.15);box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+@media(max-width:480px){.main-nav{margin-top:58px;}}
+.main-nav-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:12px;min-height:64px;}
+.nav-link{color:#b8aed4;text-decoration:none;font-size:16px;font-weight:700;letter-spacing:0.01em;padding:22px 22px;position:relative;transition:color 0.2s ease;white-space:nowrap;}
+.nav-link:hover{color:#ffffff;}
+.nav-link::after{content:'';position:absolute;left:22px;right:22px;bottom:0;height:3px;background:linear-gradient(90deg,#8b5cff,#b785ff);transform:scaleX(0);transform-origin:center;transition:transform 0.2s ease;}
+.nav-link:hover::after{transform:scaleX(1);}
+.nav-link.nav-login{margin-left:8px;color:#e8dcff;border:1.5px solid rgba(139,92,255,0.4);border-radius:999px;padding:11px 26px;}
+.nav-link.nav-login:hover{background:rgba(139,92,255,0.12);border-color:rgba(139,92,255,0.7);color:#ffffff;}
+.nav-toggle{display:none;background:none;border:none;color:#f0ecfb;font-size:24px;cursor:pointer;padding:10px;margin:6px 0;}
+@media(max-width:780px){
+  .main-nav-inner{justify-content:space-between;padding:0 20px;flex-wrap:wrap;}
+  .nav-toggle{display:flex;align-items:center;justify-content:center;order:1;}
+  .nav-links{display:none;width:100%;flex-direction:column;align-items:stretch;text-align:center;order:2;padding-bottom:10px;}
+  .nav-links.nav-open{display:flex;}
+  .nav-link{padding:12px 18px;border-bottom:1px solid rgba(139,92,255,0.1);}
+  .nav-link::after{display:none;}
+  .nav-link.nav-login{margin:8px 18px 0;}
+}
+/* ─── End Nav Menu Bar ─── */
+
+.hero{position:relative;padding:208px 24px 110px;background:radial-gradient(circle at top left,rgba(94,26,184,0.08),transparent 30%),linear-gradient(to bottom,#ffffff,#fbfaf8);overflow:hidden;}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 42%,
+    rgba(94,26,184,0.10) 48%,
+    rgba(94,26,184,0.14) 54%,
+    rgba(94,26,184,0.10) 60%,
+    transparent 66%,
+    transparent 100%
+  );
+  pointer-events:none;
+  z-index:0;
+}
+.hero .container{position:relative;z-index:1;}
+.container{max-width:1180px;margin:0 auto;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.eyebrow{color:var(--purple);font-size:13px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:18px;}
+.headline{font-size:clamp(44px,7vw,84px);font-weight:780;line-height:1.02;letter-spacing:-0.06em;margin-bottom:24px;background:linear-gradient(135deg,#1f1f1f,#3d0f73);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.subheadline{font-size:13px;color:#4d4d4d;margin-bottom:38px;max-width:620px;}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+.primary-btn,.secondary-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:16px 34px;border-radius:999px;font-weight:850;transition:0.3s ease;}
+.primary-btn{background:linear-gradient(135deg,var(--deep-purple),var(--purple));color:white;box-shadow:0 16px 42px rgba(94,26,184,0.32);}
+.secondary-btn{background:white;color:#2d0950;border:1px solid #d7c6f1;}
+.primary-btn:hover,.secondary-btn:hover{transform:translateY(-4px);}
+.visual-card{background:linear-gradient(135deg,#2d0950,#5e1ab8);border-radius:34px;padding:38px;color:white;box-shadow:0 30px 80px rgba(94,26,184,0.28);position:relative;overflow:hidden;}
+.visual-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(255,255,255,0.18),transparent 30%);}
+.visual-card h3{font-size:36px;line-height:1.05;margin-bottom:20px;position:relative;z-index:2;}
+.visual-card p{color:#eee6ff;font-size:13px;margin-bottom:28px;position:relative;z-index:2;}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;position:relative;z-index:2;}
+.metric{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.18);border-radius:20px;padding:20px;}
+.metric strong{display:block;font-size:28px;margin-bottom:4px;}
+.metric span{color:#eee6ff;font-size:13px;}
+section{padding:100px 24px;}
+.section-title{font-size:clamp(34px,5vw,54px);text-align:center;margin-bottom:18px;font-weight:780;letter-spacing:-0.04em;}
+.section-lead{text-align:center;font-size:13px;max-width:760px;margin:0 auto 60px;color:#555;}
+.story{background:#ffffff;}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+.story-card{background:#fafaf8;border:1px solid #e6dcf7;border-radius:28px;padding:36px;}
+.story-card h3{color:#2d0950;font-size:30px;margin-bottom:18px;}
+.story-card p{color:#555;margin-bottom:18px;font-size:13px;}
+.founder{background:#fafaf8;}
+.founder-grid{display:grid;grid-template-columns:380px 1fr;gap:56px;align-items:center;background:white;border:1px solid #e6dcf7;border-radius:34px;padding:48px;box-shadow:0 24px 70px rgba(94,26,184,0.10);}
+.founder-photo-col{display:flex;flex-direction:column;align-items:center;}
+.founder-photo-wrap{border-radius:50%;overflow:hidden;box-shadow:0 24px 60px rgba(45,9,80,0.22);width:280px;height:280px;flex-shrink:0;background:#fff;}
+.founder-photo-wrap img{width:100%;height:100%;display:block;object-fit:cover;object-position:center top;}
+.founder-linkedin{display:block;text-align:center;margin:14px auto 0;text-decoration:none;color:#5e1ab8;font-weight:700;font-size:13px;}
+.founder-linkedin:hover{color:#2d0950;text-decoration:underline;}
+.founder-name{font-size:clamp(28px,4vw,38px);color:#2d0950;font-weight:800;letter-spacing:-0.03em;margin-bottom:6px;}
+.founder-title{color:var(--purple);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:22px;}
+.founder-bio p{color:#555;font-size:13px;margin-bottom:16px;}
+.founder-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px;}
+.founder-stat{background:#fafaf8;border:1px solid #e6dcf7;border-radius:18px;padding:18px 20px;}
+.founder-stat strong{display:block;font-size:26px;color:#5e1ab8;letter-spacing:-0.03em;margin-bottom:4px;}
+.founder-stat span{font-size:13px;color:#777;font-weight:600;}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px;}
+.value-card{background:white;border:1px solid #e0d4f5;border-radius:28px;padding:34px 30px;box-shadow:0 20px 60px rgba(94,26,184,0.08);transition:0.3s ease;}
+.value-card:hover{transform:translateY(-8px);box-shadow:0 26px 70px rgba(94,26,184,0.14);}
+.icon{width:54px;height:54px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2d0950,#5e1ab8);color:white;font-size:24px;margin-bottom:22px;}
+.value-card h3{font-size:23px;color:#2d0950;margin-bottom:12px;}
+.value-card p{color:#555;}
+.timeline{background:#ffffff;}
+.timeline-wrap{max-width:920px;margin:0 auto;display:grid;gap:22px;}
+.timeline-item{background:#fafaf8;border:1px solid #e6dcf7;border-radius:24px;padding:28px;}
+.timeline-item strong{display:block;color:#5e1ab8;margin-bottom:10px;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;}
+.timeline-item h3{color:#2d0950;margin-bottom:10px;font-size:24px;}
+.timeline-item p{color:#555;}
+.enterprise-band{background:linear-gradient(135deg,#2d0950,#5e1ab8);color:white;border-radius:34px;padding:58px 36px;text-align:center;box-shadow:0 30px 80px rgba(94,26,184,0.28);}
+.enterprise-band h2{font-size:clamp(32px,5vw,54px);line-height:1.08;margin-bottom:18px;}
+.enterprise-band p{max-width:760px;margin:0 auto 34px;color:#eee6ff;font-size:13px;}
+.enterprise-band a{display:inline-block;background:white;color:#2d0950;padding:16px 34px;border-radius:999px;text-decoration:none;font-weight:900;}
+.book-cta-section{padding:80px 24px 100px;background:radial-gradient(circle at 60% 50%,#34105e 0%,#0b0912 65%);}
+.book-cta-inner{max-width:1180px;margin:0 auto;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:36px;padding:64px 60px;display:flex;align-items:center;justify-content:space-between;gap:48px;backdrop-filter:blur(16px);}
+.book-cta-text .eyebrow{color:#bb95ff;margin-bottom:14px;}
+.book-cta-text h2{font-size:clamp(28px,4vw,48px);font-weight:780;letter-spacing:-0.05em;line-height:1.06;color:white;margin-bottom:14px;}
+.book-cta-text p{font-size:17px;color:#d7d1e7;max-width:520px;}
+.book-cta-btn{display:inline-flex;align-items:center;gap:10px;padding:18px 34px;border-radius:999px;background:linear-gradient(135deg,#5e1ab8,#8b5cff);color:white;font-size:16px;font-weight:800;border:none;cursor:pointer;font-family:inherit;white-space:nowrap;box-shadow:0 20px 50px rgba(94,26,184,0.4);transition:transform 0.25s ease,box-shadow 0.25s ease;}
+.book-cta-btn:hover{transform:translateY(-2px);box-shadow:0 28px 60px rgba(94,26,184,0.55);}
+.book-cta-btn .cal-icon{width:22px;height:22px;flex-shrink:0;background:rgba(255,255,255,0.18);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;}
+.float-book{position:fixed;bottom:30px;right:30px;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#2d0950,#5e1ab8);color:white;border:none;cursor:pointer;font-size:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(94,26,184,0.45);z-index:10000;transition:transform 0.25s ease;}
+.float-book:hover{transform:scale(1.1);}
+.calendly-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:20000;display:flex;align-items:center;justify-content:center;animation:fadeInOv 0.2s ease;}
+@keyframes fadeInOv{from{opacity:0;}to{opacity:1;}}
+.calendly-modal{background:white;border-radius:20px;overflow:hidden;width:90%;max-width:720px;height:82vh;display:flex;flex-direction:column;animation:slideUpMd 0.25s ease;}
+@keyframes slideUpMd{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.calendly-modal-header{background:linear-gradient(135deg,#2d0950,#5e1ab8);padding:16px 22px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+.calendly-modal-header span{color:white;font-weight:700;font-size:15px;}
+.calendly-modal-close{color:white;cursor:pointer;font-size:26px;line-height:1;padding:6px 10px;margin:-6px -10px;opacity:0.85;transition:opacity 0.15s;background:none;border:none;font-family:inherit;}
+.calendly-modal-close:hover{opacity:1;}
+.calendly-modal iframe{flex:1;border:none;width:100%;}
+footer{background:#0d0a19;padding:70px 24px 0;color:#aaa;}
+.footer-grid{max-width:1180px;margin:0 auto 50px;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:36px;}
+.footer-brand-logo{height:48px;width:auto;display:block;margin-bottom:16px;}
+.footer-brand p{max-width:360px;color:#aaa;font-size:12px;line-height:1.7;}
+.footer-col h4{color:#d4b8ff;margin-bottom:16px;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;}
+.footer-col a{display:block;color:#aaa;text-decoration:none;margin-bottom:10px;font-size:12px;transition:color 0.2s;}
+.footer-col a:hover{color:#d4b8ff;}
+.footer-bottom{max-width:1180px;margin:0 auto;padding-top:28px;padding-bottom:40px;border-top:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.footer-bottom p{color:#aaa;font-size:12px;}
+.social-links{display:flex;align-items:center;gap:6px;}
+.social-links a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:#ccc;text-decoration:none;font-size:16px;transition:background 0.2s,color 0.2s,border-color 0.2s;}
+.social-links a:hover{background:rgba(212,184,255,0.15);border-color:rgba(212,184,255,0.4);color:#d4b8ff;}
+.footer-legal{max-width:1180px;margin:0 auto;padding:28px 0 40px;border-top:1px solid rgba(255,255,255,0.08);}
+.footer-legal p{font-size:11px;color:#666;line-height:1.9;}
+.footer-legal a{color:#666;text-decoration:underline;}
+.footer-legal a:hover{color:#b785ff;}
+
+.dnsmi-link{background:none;border:none;cursor:pointer;color:#666;font-size:11px;text-decoration:underline;font-family:inherit;padding:0;line-height:inherit;}
+.dnsmi-link:hover{color:#b785ff;}
+
+.dnsmi-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:25000;display:flex;align-items:center;justify-content:center;animation:fadeInOverlay 0.2s ease;backdrop-filter:blur(4px);}
+.dnsmi-modal{background:#ffffff;border-radius:24px;width:90%;max-width:560px;overflow:hidden;animation:slideUpModal 0.25s ease;box-shadow:0 40px 100px rgba(0,0,0,0.25);}
+.dnsmi-header{background:linear-gradient(135deg,#2d0950,#5e1ab8);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;}
+.dnsmi-header h2{color:white;font-size:18px;font-weight:800;letter-spacing:-0.02em;}
+.dnsmi-header-close{background:none;border:none;color:white;cursor:pointer;font-size:26px;line-height:1;padding:4px 8px;opacity:0.85;transition:opacity 0.15s;}
+.dnsmi-header-close:hover{opacity:1;}
+.dnsmi-body{padding:28px;}
+.dnsmi-body p{font-size:14px;color:#555;line-height:1.75;margin-bottom:22px;}
+.dnsmi-body p a{color:#5e1ab8;text-decoration:underline;}
+.dnsmi-options{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
+.dnsmi-option{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;border:1.5px solid rgba(94,26,184,0.12);border-radius:16px;background:#faf8ff;cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+.dnsmi-option:hover{border-color:rgba(94,26,184,0.35);background:#f3eeff;}
+.dnsmi-option.selected{border-color:#5e1ab8;background:#f0ebff;}
+.dnsmi-option input[type="radio"]{accent-color:#5e1ab8;width:18px;height:18px;flex-shrink:0;margin-top:2px;cursor:pointer;}
+.dnsmi-option-text strong{display:block;font-size:14px;font-weight:800;color:#1a0535;margin-bottom:3px;}
+.dnsmi-option-text span{font-size:12px;color:#777;line-height:1.5;}
+.dnsmi-footer{display:flex;gap:12px;justify-content:flex-end;padding-top:4px;}
+.dnsmi-cancel{background:none;border:1.5px solid rgba(94,26,184,0.2);color:#5e1ab8;padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:background 0.2s;}
+.dnsmi-cancel:hover{background:rgba(94,26,184,0.06);}
+.dnsmi-confirm{background:linear-gradient(135deg,#2d0950,#5e1ab8);color:white;border:none;padding:11px 24px;border-radius:999px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;box-shadow:0 8px 20px rgba(94,26,184,0.25);transition:opacity 0.2s;}
+.dnsmi-confirm:hover{opacity:0.9;}
+.dnsmi-success{text-align:center;padding:16px 0 6px;}
+.dnsmi-success .dnsmi-check{font-size:42px;display:block;margin-bottom:12px;}
+.dnsmi-success h3{color:#1a0535;font-size:18px;font-weight:800;margin-bottom:8px;}
+.dnsmi-success p{color:#666;font-size:14px;}
+
+@keyframes fadeInOverlay{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUpModal{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:900px){
+  .book-cta-inner{flex-direction:column;text-align:center;padding:40px 28px;}
+  .book-cta-text p{max-width:100%;}
+}
+@media(max-width:780px){
+  .accent{height:4px;}
+  .hero{padding:180px 20px 76px;}
+  .hero-grid,.story-grid{grid-template-columns:1fr;}
+  .headline{font-size:clamp(38px,13vw,58px);letter-spacing:-0.05em;}
+  .subheadline{font-size:13px;line-height:1.6;}
+  .hero-actions{flex-direction:column;align-items:flex-start;}
+  .primary-btn,.secondary-btn{width:100%;max-width:320px;}
+  .visual-card{padding:28px;}
+  .metric-grid{grid-template-columns:1fr;}
+  section{padding:70px 20px;}
+  .section-title{font-size:clamp(30px,10vw,44px);}
+  .section-lead{font-size:13px;margin-bottom:40px;}
+  .founder-grid{grid-template-columns:1fr;padding:28px;border-radius:26px;gap:32px;}
+  .founder-photo-col{width:100%;align-items:center;}
+  .founder-photo-wrap{width:220px;height:220px;}
+  .founder-stats{grid-template-columns:1fr 1fr;}
+  .values-grid{grid-template-columns:1fr;}
+  .enterprise-band{padding:42px 24px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .social-links{justify-content:center;}
+  .float-book{bottom:16px;right:16px;width:54px;height:54px;font-size:20px;}
+  .calendly-modal{width:100%;height:100%;border-radius:0;}
+  .dnsmi-modal{width:96%;border-radius:16px;}
+  .dnsmi-body{padding:20px;}
+  .dnsmi-footer{flex-direction:column;}
+  .dnsmi-cancel,.dnsmi-confirm{width:100%;text-align:center;}
+}
+@media(max-width:600px){
+  .book-cta-inner{flex-direction:column;text-align:center;padding:40px 24px;gap:28px;}
+  .founder-photo-wrap{width:200px;height:200px;}
+}
+@media (prefers-reduced-motion: reduce){.accent{animation:none;}}
+</style>
+</head>
+<body>
+
+<div class="accent"></div>
+
+<div class="site-header">
+  <div class="logo-bar">
+    <a href="https://www.wintellex.com"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a>
+  </div>
+  <nav class="main-nav" aria-label="Primary">
+    <div class="main-nav-inner">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link" href="https://www.wintellex.com/home">Home</a>
+        <a class="nav-link" href="https://www.wintellex.com/pricing">Pricing</a>
+        <a class="nav-link" href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+        <a class="nav-link" href="https://www.wintellex.com/about">About</a>
+        <a class="nav-link" href="https://www.wintellex.com/developers">Developers</a>
+        <a class="nav-link nav-login" href="https://www.wintellex.com/login">Login</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">About Wintellex</div>
+        <h1 class="headline">Infrastructure for modern financial operations.</h1>
+        <p class="subheadline">Wintellex is building modular infrastructure concepts for payment workflows, treasury operations, settlement systems, invoice management, and intelligent operational finance.</p>
+        <div class="hero-actions">
+          <a href="https://www.wintellex.com/order" class="primary-btn">Contact Sales</a>
+          <a href="https://www.wintellex.com/infrastructure" class="secondary-btn">Explore Infrastructure</a>
+        </div>
+      </div>
+      <div class="visual-card">
+        <h3>Built around operational intelligence.</h3>
+        <p>Wintellex combines workflow visibility, payment coordination, treasury infrastructure, and scalable operational systems into a unified platform architecture.</p>
+        <div class="metric-grid">
+          <div class="metric"><strong>Modular</strong><span>Infrastructure architecture</span></div>
+          <div class="metric"><strong>Enterprise</strong><span>Workflow systems</span></div>
+          <div class="metric"><strong>API-Ready</strong><span>Developer integrations</span></div>
+          <div class="metric"><strong>Scalable</strong><span>Operational design</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="story">
+  <div class="container">
+    <h2 class="section-title">Why Wintellex exists.</h2>
+    <p class="section-lead">Modern organizations need infrastructure that connects financial workflows, operational visibility, and intelligent systems into a single operating layer.</p>
+    <div class="story-grid">
+      <div class="story-card">
+        <h3>The Problem</h3>
+        <p>Most organizations manage payments, invoices, treasury workflows, contracts, and operational records across fragmented systems that lack visibility and coordination.</p>
+        <p>Disconnected workflows create operational inefficiencies, fragmented reporting, approval bottlenecks, and limited oversight across financial operations.</p>
+        <p>Wintellex was designed around the idea that operational finance should feel connected, structured, and scalable.</p>
+      </div>
+      <div class="story-card">
+        <h3>The Vision</h3>
+        <p>Wintellex is focused on building intelligent infrastructure concepts for modern operational finance systems.</p>
+        <p>The platform is structured around modular workflow architecture that supports payment coordination, settlement systems, treasury visibility, invoice workflows, and operational governance.</p>
+        <p>Our goal is to help organizations create more connected financial operations through scalable infrastructure design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="founder">
+  <div class="container">
+    <h2 class="section-title">Meet the founder</h2>
+    <p class="section-lead">Built by a finance and payments professional with direct experience inside global banking infrastructure.</p>
+    <div class="founder-grid">
+      <div class="founder-photo-col">
+        <div class="founder-photo-wrap">
+          <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1782172858999x684074331623258900/Screenshot%202026-06-20%20at%202.45.50%E2%80%AFAM.png" alt="Gregory Fenelon, Founder of Wintellex">
+        </div>
+        <a href="https://www.linkedin.com/in/gregoryfenelon/" target="_blank" class="founder-linkedin">LinkedIn</a>
+      </div>
+      <div>
+        <div class="founder-name">Gregory Fenelon</div>
+        <div class="founder-title">Founder and Chairman, Wintellex</div>
+        <div class="founder-bio">
+          <p>Gregory Fenelon founded Wintellex to bring institutional-grade payment and treasury infrastructure thinking to modern organizations. With a decade of finance experience, his background spans wholesale banking, payments, and large-scale financial operations.</p>
+          <p>Prior to Wintellex, Gregory spent seven years at JPMorgan within wholesale banking, working directly within payments — gaining firsthand insight into how large financial institutions design, operate, and scale settlement and treasury infrastructure.</p>
+          <p>That experience shapes Wintellex's approach: infrastructure that is modular, connected, and built with the operational rigor of institutional finance.</p>
+        </div>
+        <div class="founder-stats">
+          <div class="founder-stat"><strong>10 Yrs</strong><span>Finance Experience</span></div>
+          <div class="founder-stat"><strong>7 Yrs</strong><span>JPMorgan — Wholesale Banking, Payments</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Core principles</h2>
+    <p class="section-lead">The ideas guiding how Wintellex approaches infrastructure, workflow systems, and operational finance.</p>
+    <div class="values-grid">
+      <div class="value-card"><div class="icon">◈</div><h3>Operational Visibility</h3><p>Infrastructure should create clarity around financial workflows, approvals, payments, invoices, and settlement activity.</p></div>
+      <div class="value-card"><div class="icon">API</div><h3>Developer-Ready</h3><p>Modern infrastructure should support integrations, automation, APIs, and scalable developer workflows.</p></div>
+      <div class="value-card"><div class="icon">↔</div><h3>Connected Systems</h3><p>Organizations operate more efficiently when payment, treasury, and operational workflows exist in connected environments.</p></div>
+      <div class="value-card"><div class="icon">▣</div><h3>Governance</h3><p>Financial infrastructure should support secure access, structured approvals, audit visibility, and operational accountability.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline">
+  <div class="container">
+    <h2 class="section-title">Platform evolution</h2>
+    <p class="section-lead">Wintellex continues to evolve around operational finance infrastructure and scalable workflow systems.</p>
+    <div class="timeline-wrap">
+      <div class="timeline-item"><strong>Phase 01</strong><h3>Workflow Infrastructure</h3><p>Building modular systems for invoices, contracts, payments, operational records, and workflow coordination.</p></div>
+      <div class="timeline-item"><strong>Phase 02</strong><h3>Treasury &amp; Settlement</h3><p>Expanding infrastructure concepts around treasury visibility, payment routing, settlement coordination, and financial operations.</p></div>
+      <div class="timeline-item"><strong>Phase 03</strong><h3>Developer Ecosystem</h3><p>Supporting APIs, integrations, automation, reporting systems, and connected enterprise workflows.</p></div>
+      <div class="timeline-item"><strong>Phase 04</strong><h3>Enterprise Infrastructure</h3><p>Scaling operational finance systems around governance, visibility, intelligent infrastructure, and organizational coordination.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="enterprise-band">
+      <h2>Build modern operational finance infrastructure with Wintellex.</h2>
+      <p>Connect payment workflows, invoices, treasury systems, settlement coordination, and operational records into a scalable infrastructure layer.</p>
+      <a href="https://www.wintellex.com/order">Contact Sales</a>
+    </div>
+  </div>
+</section>
+
+<section class="book-cta-section">
+  <div class="book-cta-inner">
+    <div class="book-cta-text">
+      <div class="eyebrow">Talk to Us</div>
+      <h2>Want to see Wintellex in action?</h2>
+      <p>Book a call with the Wintellex team — we'll walk you through the platform and how it fits your organization.</p>
+    </div>
+    <button class="book-cta-btn" onclick="openCalendly()">
+      <span class="cal-icon">&#128197;</span>
+      Book a Meeting
+    </button>
+  </div>
+</section>
+
+<button class="float-book" onclick="openCalendly()" aria-label="Book a meeting">&#128197;</button>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" class="footer-brand-logo">
+      <p>Intelligent payment infrastructure for modern organizations and scalable financial systems.</p>
+      <p style="margin-top:14px;color:#666;">1910 Pacific Ave Suite 2000<br>Dallas, TX 75201<br>United States</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="https://www.wintellex.com/about">About</a>
+      <a href="https://www.wintellex.com/careers">Careers</a>
+      <a href="https://www.wintellex.com/press">Press</a>
+      <a href="https://www.wintellex.com/media">Media</a>
+      <a href="https://www.wintellex.com/order">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <a href="https://www.wintellex.com/commercial">Commercial</a>
+      <a href="https://www.wintellex.com/government">Government</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="https://www.wintellex.com/pricing">Pricing</a>
+      <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+      <a href="https://www.wintellex.com/security">Security</a>
+      <a href="https://www.wintellex.com/developers">Developers</a>
+      <a href="https://www.wintellex.com/partners">Partners</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="https://www.wintellex.com/privacy">Privacy Policy</a>
+      <a href="https://www.wintellex.com/terms">Terms of Use</a>
+      <a href="https://www.wintellex.com/compliance">Compliance</a>
+      <a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Wintellex • Intelligent Payment Infrastructure</p>
+    <div class="social-links">
+      <a href="https://x.com/wintellex" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://www.instagram.com/wintellex/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/wintellex" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="https://www.youtube.com/@Wintellex" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p>© 2026 Wintellex. Wintellex is a financial infrastructure technology company. Banking services are provided by Choice Financial Group and Column N.A., Members FDIC. Unauthorized reproduction or redistribution of copyrighted materials on this website and Wintellex's digital media pages is strictly prohibited. By clicking on some of the links above, you will leave Wintellex's website and be directed to a third-party website. The privacy practices of those third parties may differ from those of Wintellex. We recommend you review the privacy statements of those third-party websites, as Wintellex is not responsible for those third parties' privacy or security practices. Additional disclosures can be found in the resources section of our website. <a href="https://www.wintellex.com/privacy">Privacy Policy</a> &middot; <a href="https://www.wintellex.com/privacy#cookies">Cookie Policy</a> &middot; <button class="dnsmi-link" onclick="openDNSMI()">Do Not Share My Information</button></p>
+  </div>
+</footer>
+
+<div class="dnsmi-overlay" id="dnsmiOverlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="dnsmiTitle">
+  <div class="dnsmi-modal" id="dnsmiModal">
+    <div class="dnsmi-header">
+      <h2 id="dnsmiTitle">&#x1F512; Do Not Share My Information</h2>
+      <button class="dnsmi-header-close" onclick="closeDNSMI()" aria-label="Close">&times;</button>
+    </div>
+    <div class="dnsmi-body" id="dnsmiBody">
+      <p>Under applicable privacy laws including the CCPA, you have the right to opt out of the sale or sharing of your personal information. Please select your preference below. For more details, see our <a href="https://www.wintellex.com/privacy" target="_blank">Privacy Policy</a>.</p>
+      <div class="dnsmi-options" role="radiogroup" aria-label="Privacy preference options">
+        <label class="dnsmi-option" id="opt-all">
+          <input type="radio" name="dnsmi" value="all" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Opt out of all sharing</strong>
+            <span>Stop the sale and sharing of your personal information for advertising, analytics, and third-party purposes.</span>
+          </div>
+        </label>
+        <label class="dnsmi-option" id="opt-ads">
+          <input type="radio" name="dnsmi" value="ads" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Opt out of targeted advertising only</strong>
+            <span>Limit sharing to targeted advertising while allowing essential operational and analytics data sharing.</span>
+          </div>
+        </label>
+        <label class="dnsmi-option" id="opt-retain">
+          <input type="radio" name="dnsmi" value="retain" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Keep my current settings</strong>
+            <span>No changes will be made to how your information is currently shared.</span>
+          </div>
+        </label>
+      </div>
+      <div class="dnsmi-footer">
+        <button class="dnsmi-cancel" onclick="closeDNSMI()">Cancel</button>
+        <button class="dnsmi-confirm" id="dnsmiConfirm" onclick="confirmDNSMI()" disabled>Save Preference</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var toggle=document.getElementById('navToggle');
+  var links=document.getElementById('navLinks');
+  if(!toggle||!links)return;
+  toggle.addEventListener('click',function(){
+    var open=links.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+  });
+})();
+
+function openCalendly(){
+  if(document.getElementById('calendlyOverlay'))return;
+  var overlay=document.createElement('div');
+  overlay.id='calendlyOverlay';
+  overlay.className='calendly-overlay';
+  overlay.innerHTML=
+    '<div class="calendly-modal">'
+    +'<div class="calendly-modal-header">'
+    +'<span>&#128197; Book a Meeting</span>'
+    +'<button class="calendly-modal-close" onclick="closeCalendly()" aria-label="Close">&times;</button>'
+    +'</div>'
+    +'<iframe src="https://calendly.com/wintellex" title="Book a meeting with Wintellex"></iframe>'
+    +'</div>';
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeCalendly();});
+  document.body.style.overflow='hidden';
+}
+function closeCalendly(){
+  var o=document.getElementById('calendlyOverlay');
+  if(o)o.remove();
+  document.body.style.overflow='';
+}
+
+document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeCalendly(); closeDNSMI(); } });
+
+function openDNSMI(){
+  document.getElementById('dnsmiOverlay').style.display='flex';
+  document.body.style.overflow='hidden';
+  restoreDNSMIForm();
+}
+
+function restoreDNSMIForm(){
+  document.getElementById('dnsmiBody').innerHTML=
+    '<p>Under applicable privacy laws including the CCPA, you have the right to opt out of the sale or sharing of your personal information. Please select your preference below. For more details, see our <a href="https://www.wintellex.com/privacy" target="_blank">Privacy Policy</a>.</p>'
+    +'<div class="dnsmi-options" role="radiogroup" aria-label="Privacy preference options">'
+    +'<label class="dnsmi-option" id="opt-all"><input type="radio" name="dnsmi" value="all" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Opt out of all sharing</strong><span>Stop the sale and sharing of your personal information for advertising, analytics, and third-party purposes.</span></div></label>'
+    +'<label class="dnsmi-option" id="opt-ads"><input type="radio" name="dnsmi" value="ads" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Opt out of targeted advertising only</strong><span>Limit sharing to targeted advertising while allowing essential operational and analytics data sharing.</span></div></label>'
+    +'<label class="dnsmi-option" id="opt-retain"><input type="radio" name="dnsmi" value="retain" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Keep my current settings</strong><span>No changes will be made to how your information is currently shared.</span></div></label>'
+    +'</div>'
+    +'<div class="dnsmi-footer"><button class="dnsmi-cancel" onclick="closeDNSMI()">Cancel</button><button class="dnsmi-confirm" id="dnsmiConfirm" onclick="confirmDNSMI()" disabled>Save Preference</button></div>';
+}
+
+function closeDNSMI(){
+  document.getElementById('dnsmiOverlay').style.display='none';
+  document.body.style.overflow='';
+}
+
+function selectDNSMI(radio){
+  document.querySelectorAll('.dnsmi-option').forEach(function(o){ o.classList.remove('selected'); });
+  radio.closest('.dnsmi-option').classList.add('selected');
+  document.getElementById('dnsmiConfirm').disabled=false;
+}
+
+function confirmDNSMI(){
+  var selected=document.querySelector('input[name="dnsmi"]:checked');
+  if(!selected)return;
+  var messages={
+    'all':'Your preference has been saved. We will no longer sell or share your personal information with third parties.',
+    'ads':'Your preference has been saved. You have been opted out of targeted advertising data sharing.',
+    'retain':'No changes have been made. Your current sharing settings remain in place.'
+  };
+  try{ localStorage.setItem('wintellex_dnsmi', selected.value); }catch(e){}
+  document.getElementById('dnsmiBody').innerHTML=
+    '<div class="dnsmi-success">'
+    +'<span class="dnsmi-check">&#10003;</span>'
+    +'<h3>Preference Saved</h3>'
+    +'<p>'+messages[selected.value]+'</p>'
+    +'</div>'
+    +'<div class="dnsmi-footer" style="justify-content:center;margin-top:24px;"><button class="dnsmi-confirm" onclick="closeDNSMI()">Done</button></div>';
+}
+
+document.getElementById('dnsmiOverlay').addEventListener('click',function(e){ if(e.target===this) closeDNSMI(); });
+</script>
+
+</body>
+</html>
