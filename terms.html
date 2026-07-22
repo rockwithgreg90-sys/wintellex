@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wintellex — Terms of Use</title>
+<link rel="stylesheet" href="https://use.typekit.net/eqv7jlu.css">
+<style>
+:root{
+  --purple:#5e1ab8;
+  --deep-purple:#2d0950;
+  --soft-bg:#f8f7f4;
+  --cream:#f0ede6;
+  --text:#1f1f1f;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{
+  background:var(--soft-bg);
+  color:var(--text);
+  font-family:'Scale Variable','Inter',system-ui,sans-serif;
+  font-size:13px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+.accent{
+  position:fixed; top:0; left:0; width:100%; height:5px;
+  background:linear-gradient(90deg,#2d0950,#3d0f73,#5e1ab8,#2d0950);
+  background-size:200%; animation:shimmer 8s linear infinite; z-index:7000;
+}
+@keyframes shimmer{ 0%{background-position:0%;} 100%{background-position:200%;} }
+
+.logo-bar{
+  position:fixed; top:5px; left:0; width:100%; z-index:6000;
+  background:linear-gradient(135deg,var(--deep-purple),var(--purple));
+  display:flex; align-items:center; justify-content:center;
+  padding:8px 24px;
+  box-shadow:0 10px 28px rgba(45,9,80,0.3);
+}
+.logo-bar a{
+  display:inline-flex; align-items:center; justify-content:center;
+  text-decoration:none;
+}
+.logo-bar img{ height:62px; width:auto; display:block; }
+
+/* Site navigation menu bar */
+.site-nav{
+  position:fixed; top:83px; left:0; width:100%; z-index:5500;
+  background:#ffffff;
+  border-bottom:1px solid rgba(94,26,184,0.10);
+  box-shadow:0 6px 18px rgba(45,9,80,0.06);
+}
+.site-nav-inner{
+  max-width:1180px; margin:0 auto;
+  display:flex; align-items:center; justify-content:center;
+  gap:28px; padding:12px 24px; flex-wrap:wrap;
+}
+.site-nav-inner a{
+  font-size:13px; font-weight:700; color:#4a3a63;
+  text-decoration:none; letter-spacing:0.01em;
+  transition:color 0.2s ease;
+  white-space:nowrap;
+}
+.site-nav-inner a:hover{ color:var(--purple); }
+.site-nav-inner a.site-nav-cta{
+  background:linear-gradient(135deg,var(--deep-purple),var(--purple));
+  color:#fff; padding:8px 18px; border-radius:999px; font-weight:800;
+  box-shadow:0 6px 16px rgba(94,26,184,0.25);
+}
+.site-nav-inner a.site-nav-cta:hover{ color:#fff; opacity:0.92; }
+@media(max-width:480px){
+  .site-nav{ top:54px; }
+  .site-nav-inner{ gap:16px; padding:10px 18px; justify-content:flex-start; overflow-x:auto; }
+}
+
+.hero{
+  padding:206px 24px 80px;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(94,26,184,0.6), transparent 50%),
+    linear-gradient(135deg, #2d0950 0%, #4a0e8f 45%, #5e1ab8 100%);
+}
+.container{ max-width:980px; margin:0 auto; }
+.eyebrow{
+  color:rgba(255,255,255,0.65); font-size:13px; font-weight:800;
+  letter-spacing:0.14em; text-transform:uppercase; margin-bottom:18px;
+}
+.headline{
+  font-size:clamp(42px,7vw,76px); font-weight:780; line-height:1.02;
+  letter-spacing:-0.06em; margin-bottom:22px; color:#ffffff;
+}
+.subheadline{ font-size:clamp(18px,3vw,20px); color:rgba(255,255,255,0.72); max-width:760px; }
+
+.terms-wrap{ padding:0 24px 100px; }
+.terms-card{
+  max-width:980px; margin:0 auto; background:white;
+  border:1px solid #e0d4f5; border-radius:34px; padding:52px;
+  box-shadow:0 20px 60px rgba(94,26,184,0.08);
+}
+.updated{
+  display:inline-flex; align-items:center; gap:10px;
+  background:#f5efff; border:1px solid #e6dcf7; color:#5e1ab8;
+  padding:10px 16px; border-radius:999px; font-size:13px; font-weight:700; margin-bottom:38px;
+}
+.terms-section{ margin-bottom:48px; }
+.terms-section:last-child{ margin-bottom:0; }
+.terms-section h2{ font-size:26px; color:#2d0950; margin-bottom:18px; line-height:1.15; }
+.terms-section p{ color:#555; margin-bottom:18px; font-size:13px; }
+.terms-section ul{ padding-left:22px; color:#555; font-size:13px; }
+.terms-section li{ margin-bottom:12px; }
+.highlight-box{
+  background:#f8f7f4; border:1px solid #e6dcf7;
+  border-radius:24px; padding:28px; margin-top:28px;
+}
+.highlight-box strong{ display:block; color:#2d0950; margin-bottom:10px; font-size:15px; }
+.highlight-box p{ font-size:13px; }
+
+footer{ background:#0d0a19; padding:70px 24px 0; color:#aaa; font-size:13px; }
+.footer-grid{
+  max-width:1180px; margin:0 auto 50px;
+  display:grid; grid-template-columns:2fr repeat(4,1fr); gap:36px;
+}
+.footer-brand-logo{ height:48px; width:auto; display:block; margin-bottom:16px; }
+.footer-brand p{ color:#aaa; font-size:13px; }
+.footer-col h4{ color:#d4b8ff; margin-bottom:16px; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; }
+.footer-col a{ display:block; color:#aaa; text-decoration:none; margin-bottom:10px; font-size:13px; transition:0.3s ease; }
+.footer-col a:hover{ color:#d4b8ff; }
+.footer-bottom{
+  max-width:1180px; margin:0 auto; padding:28px 0;
+  border-top:1px solid rgba(255,255,255,0.1);
+  display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+}
+.footer-bottom p{ color:#aaa; font-size:13px; }
+.social-links{ display:flex; align-items:center; gap:16px; }
+.social-links a{ font-size:22px; color:#ccc; text-decoration:none; transition:0.3s ease; }
+.social-links a:hover{ color:#d4b8ff; transform:translateY(-2px); }
+.footer-legal{ max-width:1180px; margin:0 auto; padding:28px 0 40px; border-top:1px solid rgba(255,255,255,0.08); }
+.footer-legal p{ font-size:12px; color:#666; line-height:1.9; }
+.footer-legal a{ color:#666; text-decoration:underline; }
+.footer-legal a:hover{ color:#b785ff; }
+
+@media(max-width:780px){
+  .logo-bar{ padding:6px 20px; }
+  .logo-bar img{ height:37px; }
+  .hero{ padding:167px 20px 70px; }
+  .headline{ font-size:clamp(38px,13vw,58px); letter-spacing:-0.05em; }
+  .subheadline{ font-size:17px; line-height:1.6; }
+  .terms-wrap{ padding:0 20px 70px; }
+  .terms-card{ padding:34px 24px; border-radius:26px; }
+  .terms-section h2{ font-size:22px; }
+  .footer-grid{ grid-template-columns:1fr; }
+  .footer-bottom{ flex-direction:column; text-align:center; }
+  .social-links{ justify-content:center; }
+}
+</style>
+</head>
+<body>
+
+<div class="accent"></div>
+
+<div class="logo-bar">
+  <a href="https://www.wintellex.com"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a>
+</div>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="site-nav-inner">
+    <a href="https://www.wintellex.com/commercial">Commercial</a>
+    <a href="https://www.wintellex.com/government">Government</a>
+    <a href="https://www.wintellex.com/pricing">Pricing</a>
+    <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+    <a href="https://www.wintellex.com/developers">Developers</a>
+    <a href="https://www.wintellex.com/partners">Partners</a>
+    <a href="https://www.wintellex.com/about">About</a>
+    <a href="https://www.wintellex.com/order" class="site-nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Legal</div>
+    <h1 class="headline">Terms of Use</h1>
+    <p class="subheadline">These Terms of Use govern access to and use of Wintellex websites, applications, APIs, infrastructure, operational systems, and related services.</p>
+  </div>
+</header>
+
+<section class="terms-wrap">
+  <div class="terms-card">
+
+    <div class="updated">Last Updated • May 2026</div>
+
+    <div class="terms-section">
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing or using Wintellex websites, services, APIs, applications, infrastructure, or operational systems, you agree to comply with these Terms of Use and all applicable laws and regulations.</p>
+      <p>If you do not agree with these Terms, you should discontinue use of Wintellex services immediately.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>2. Platform Overview</h2>
+      <p>Wintellex provides operational finance infrastructure concepts, workflow systems, payment coordination tools, invoice systems, treasury visibility, settlement workflow support, APIs, and related enterprise services.</p>
+      <p>Certain services, features, modules, or integrations may be modified, restricted, suspended, or discontinued at any time without prior notice.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>3. User Responsibilities</h2>
+      <p>Users and organizations are responsible for:</p>
+      <ul>
+        <li>Maintaining accurate account information</li>
+        <li>Protecting account credentials and access keys</li>
+        <li>Managing authorized users within their organization</li>
+        <li>Ensuring lawful use of Wintellex infrastructure</li>
+        <li>Reviewing operational workflows and approvals</li>
+        <li>Protecting sensitive internal information</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>Authorized Use</strong>
+        <p>Users may only access and use Wintellex services for lawful business, operational, development, or organizational purposes consistent with these Terms.</p>
+      </div>
+    </div>
+
+    <div class="terms-section">
+      <h2>4. Prohibited Activities</h2>
+      <p>Users may not:</p>
+      <ul>
+        <li>Attempt unauthorized access to systems or infrastructure</li>
+        <li>Interfere with platform operations or security controls</li>
+        <li>Use services for unlawful, fraudulent, or abusive purposes</li>
+        <li>Distribute malicious software or harmful code</li>
+        <li>Attempt to reverse engineer protected systems</li>
+        <li>Misrepresent organizational identity or authority</li>
+      </ul>
+    </div>
+
+    <div class="terms-section">
+      <h2>5. APIs & Developer Access</h2>
+      <p>Developer access may require API credentials, authentication systems, rate limitations, operational review procedures, or additional agreements.</p>
+      <p>Wintellex reserves the right to limit, suspend, rotate, or revoke API access for operational, security, governance, or compliance purposes.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>6. Intellectual Property</h2>
+      <p>Wintellex systems, infrastructure concepts, software, branding, designs, workflows, content, documentation, and related materials remain the property of Wintellex or its respective rights holders unless otherwise stated.</p>
+      <p>No license or ownership rights are transferred except as explicitly authorized.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>7. Operational Data</h2>
+      <p>Organizations using Wintellex may store operational information including invoices, workflow records, payment data, client records, treasury activity, settlement workflows, contracts, and internal business documentation.</p>
+      <p>Users remain responsible for the legality, accuracy, governance, and internal handling of information submitted to the platform.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>8. Service Availability</h2>
+      <p>Wintellex does not guarantee uninterrupted or error-free operation of services, APIs, systems, infrastructure, or integrations.</p>
+      <p>Maintenance, upgrades, outages, security reviews, or operational interruptions may occur periodically.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>9. Disclaimers</h2>
+      <p>Wintellex services are provided on an "as available" and "as is" basis without warranties of any kind unless otherwise stated in a separate written agreement.</p>
+      <p>Wintellex does not guarantee:</p>
+      <ul>
+        <li>Operational continuity</li>
+        <li>Specific business outcomes</li>
+        <li>Regulatory compliance suitability</li>
+        <li>Revenue generation</li>
+        <li>Infrastructure compatibility across all environments</li>
+      </ul>
+    </div>
+
+    <div class="terms-section">
+      <h2>10. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by law, Wintellex shall not be liable for indirect, incidental, consequential, special, punitive, or operational damages related to use of the platform or related systems.</p>
+      <p>Users assume responsibility for internal operational decisions, workflow management, organizational governance, and business activities conducted through the platform.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>11. Modifications</h2>
+      <p>Wintellex may modify these Terms of Use periodically. Updated terms become effective upon publication unless otherwise specified.</p>
+      <p>Continued use of Wintellex services following updates constitutes acceptance of revised Terms.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>12. Contact</h2>
+      <p>Questions regarding these Terms of Use may be directed through official Wintellex communication channels.</p>
+      <div class="highlight-box">
+        <strong>Wintellex</strong>
+        <p>
+          Operational Finance Infrastructure<br>
+          Enterprise Workflow Systems<br>
+          https://www.wintellex.com
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" class="footer-brand-logo">
+      <p>Intelligent payment infrastructure for modern organizations and scalable financial systems.</p>
+      <p style="margin-top:18px;font-size:13px;line-height:1.7;color:#777;">1910 Pacific Ave Suite 2000<br>Dallas, TX 75201<br>United States</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="https://www.wintellex.com/about">About</a>
+      <a href="https://www.wintellex.com/careers">Careers</a>
+      <a href="https://www.wintellex.com/press">Press</a>
+      <a href="https://www.wintellex.com/media">Media</a>
+      <a href="https://www.wintellex.com/contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <a href="https://www.wintellex.com/commercial">Commercial</a>
+      <a href="https://www.wintellex.com/government">Government</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="https://www.wintellex.com/pricing">Pricing</a>
+      <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+      <a href="https://www.wintellex.com/security">Security</a>
+      <a href="https://www.wintellex.com/developers">Developers</a>
+      <a href="https://www.wintellex.com/partners">Partners</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="https://www.wintellex.com/privacy">Privacy Policy</a>
+      <a href="https://www.wintellex.com/terms">Terms of Use</a>
+      <a href="https://www.wintellex.com/compliance">Compliance</a>
+      <a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Wintellex • Intelligent Payment Infrastructure</p>
+    <div class="social-links">
+      <a href="https://x.com/wintellex" target="_blank">𝕏</a>
+      <a href="https://www.instagram.com/wintellex/" target="_blank">📷</a>
+      <a href="https://www.linkedin.com/company/wintellex" target="_blank">in</a>
+      <a href="https://www.youtube.com/@Wintellex" target="_blank">▶</a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p>© 2026 Wintellex. Wintellex is a financial infrastructure technology company. Banking services are provided by Choice Financial Group and Column N.A., Members FDIC. Unauthorized reproduction or redistribution of copyrighted materials on this website and Wintellex's digital media pages is strictly prohibited. By clicking on some of the links above, you will leave Wintellex's website and be directed to a third-party website. The privacy practices of those third parties may differ from those of Wintellex. We recommend you review the privacy statements of those third-party websites, as Wintellex is not responsible for those third parties' privacy or security practices. Additional disclosures can be found in the resources section of our website. <a href="https://www.wintellex.com/privacy">Privacy Policy</a> &middot; <a href="https://www.wintellex.com/privacy#cookies">Cookie Policy</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
