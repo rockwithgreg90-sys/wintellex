@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Wintellex</title>
+<link rel="stylesheet" href="https://use.typekit.net/eqv7jlu.css">
+<style>
+:root{--purple:#5e1ab8;--deep-purple:#2d0950;--soft-bg:#f8f7f4;--text:#1f1f1f;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--soft-bg);color:var(--text);font-family:'Scale Variable','Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden;font-size:13px;}
+a{color:inherit;}
+.accent{position:fixed;top:0;left:0;width:100%;height:5px;background:linear-gradient(90deg,#2d0950,#3d0f73,#5e1ab8,#2d0950);background-size:200%;animation:shimmer 8s linear infinite;z-index:7000;}
+@keyframes shimmer{from{background-position:0%;}to{background-position:200%;}}
+.site-header{position:relative;width:100%;display:flex;flex-direction:column;}
+.logo-bar{position:fixed;top:0;left:0;width:100%;z-index:6500;background:linear-gradient(135deg,var(--deep-purple),var(--purple));display:flex;align-items:center;justify-content:center;padding:8px 24px;box-shadow:0 10px 28px rgba(45,9,80,0.3);}
+.logo-bar a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;}
+.logo-bar img{height:62px;width:auto;display:block;}
+@media(max-width:480px){.logo-bar{padding:6px 20px;}.logo-bar img{height:37px;}}
+
+.container{max-width:1180px;margin:0 auto;}
+section,header.hero{position:relative;}
+.diagonal-divider{position:absolute;bottom:-1px;left:0;width:100%;overflow:hidden;line-height:0;z-index:10;}
+.diagonal-divider svg{display:block;width:100%;}
+
+.hero{padding:178px 24px 150px;background:radial-gradient(circle at 74% 24%,rgba(139,92,255,0.32),transparent 32%),radial-gradient(circle at top,#2d0950 0%,#0a0a14 45%,#050509 100%);color:white;}
+.eyebrow{color:#b785ff;font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:18px;}
+.hero .eyebrow{justify-content:center;display:flex;}
+.headline{font-size:clamp(44px,6.5vw,76px);font-weight:780;line-height:1.04;letter-spacing:-0.05em;margin-bottom:22px;text-align:center;max-width:840px;margin-left:auto;margin-right:auto;}
+.subheadline{font-size:13px;color:#d7d3e8;max-width:680px;margin:0 auto;text-align:center;}
+
+.pricing-section{padding:100px 24px 60px;background:#f4f1ea;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;}
+.tier-card{background:white;border-radius:32px;padding:38px 32px;border:1px solid rgba(94,26,184,0.08);box-shadow:0 20px 50px rgba(0,0,0,0.05);display:flex;flex-direction:column;position:relative;}
+.tier-card.featured{background:#0d0a19;color:white;border:1px solid rgba(139,92,255,0.3);box-shadow:0 30px 80px rgba(45,9,80,0.35);transform:translateY(-14px);}
+.tier-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#5e1ab8,#8b5cff);color:white;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:6px 16px;border-radius:999px;box-shadow:0 10px 24px rgba(94,26,184,0.4);white-space:nowrap;}
+.tier-name{font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#5e1ab8;margin-bottom:14px;}
+.tier-card.featured .tier-name{color:#b785ff;}
+.tier-title{font-size:28px;font-weight:780;letter-spacing:-0.03em;color:#1f1f1f;margin-bottom:12px;}
+.tier-card.featured .tier-title{color:white;}
+.tier-desc{font-size:12px;color:#666;line-height:1.7;margin-bottom:28px;min-height:84px;}
+.tier-card.featured .tier-desc{color:#c8c2dd;}
+.tier-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:30px;}
+.tier-stat{background:#f7f4ee;border-radius:16px;padding:16px 14px;text-align:center;border:1px solid rgba(94,26,184,0.06);}
+.tier-card.featured .tier-stat{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.08);}
+.tier-stat h4{font-size:20px;color:#5e1ab8;letter-spacing:-0.03em;margin-bottom:4px;}
+.tier-card.featured .tier-stat h4{color:#b785ff;}
+.tier-stat p{font-size:10px;color:#888;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;line-height:1.4;}
+.tier-card.featured .tier-stat p{color:#9089a8;}
+.tier-cta{margin-top:auto;}
+.primary-btn,.secondary-btn,.tier-btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 28px;border-radius:999px;text-decoration:none;font-weight:800;transition:0.3s ease;width:100%;font-size:13px;}
+.primary-btn{background:linear-gradient(135deg,#5e1ab8,#8b5cff);color:white;box-shadow:0 20px 50px rgba(94,26,184,0.35);}
+.primary-btn:hover{transform:translateY(-2px);}
+.secondary-btn{background:rgba(255,255,255,0.08);color:white;border:1px solid rgba(255,255,255,0.16);}
+.tier-btn-outline{background:transparent;border:1.5px solid rgba(94,26,184,0.3);color:#5e1ab8;}
+.tier-btn-outline:hover{background:rgba(94,26,184,0.06);}
+.tier-card.featured .tier-btn-outline{border-color:rgba(255,255,255,0.25);color:white;}
+.tier-card.featured .tier-btn-outline:hover{background:rgba(255,255,255,0.08);}
+
+.pricing-footnote{text-align:center;max-width:640px;margin:46px auto 0;font-size:12px;color:#888;line-height:1.8;}
+.pricing-footnote a{color:#5e1ab8;font-weight:700;text-decoration:none;}
+
+.compare-section{padding:100px 24px 130px;background:#ffffff;}
+.compare-head{text-align:center;max-width:680px;margin:0 auto 56px;}
+.section-title{font-size:clamp(34px,4.4vw,52px);line-height:1.08;color:#1f1f1f;letter-spacing:-0.04em;margin-bottom:18px;}
+.section-text{font-size:13px;color:#555;}
+.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.compare-col{background:#f7f4ee;border:1px solid rgba(94,26,184,0.08);border-radius:24px;padding:26px 24px;}
+.compare-col h4{color:#2d0950;font-size:14px;margin-bottom:16px;}
+.compare-list{display:grid;gap:11px;}
+.compare-item{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:#555;line-height:1.5;}
+.compare-item .mark{color:#5e1ab8;font-weight:800;flex-shrink:0;}
+
+.faq-section{padding:100px 24px 130px;background:linear-gradient(to bottom,#ffffff,#f7f4ee);}
+.faq-head{text-align:center;max-width:680px;margin:0 auto 56px;}
+.faq-list{display:grid;gap:14px;max-width:840px;margin:0 auto;}
+.faq-row{background:white;border:1px solid rgba(94,26,184,0.08);border-radius:20px;padding:24px 28px;}
+.faq-row h3{color:#2d0950;font-size:15px;margin-bottom:8px;}
+.faq-row p{color:#555;font-size:12px;line-height:1.7;}
+
+.book-cta-section{padding:80px 24px 100px;background:radial-gradient(circle at 60% 50%,#34105e 0%,#0b0912 65%);}
+.book-cta-inner{max-width:1180px;margin:0 auto;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:36px;padding:64px 60px;display:flex;align-items:center;justify-content:space-between;gap:48px;backdrop-filter:blur(16px);}
+.book-cta-text .eyebrow{color:#bb95ff;margin-bottom:14px;}
+.book-cta-text h2{font-size:clamp(28px,4vw,48px);font-weight:780;letter-spacing:-0.05em;line-height:1.06;color:white;margin-bottom:14px;}
+.book-cta-text p{font-size:17px;color:#d7d1e7;max-width:520px;}
+.book-cta-btn{display:inline-flex;align-items:center;gap:10px;padding:18px 34px;border-radius:999px;background:linear-gradient(135deg,#5e1ab8,#8b5cff);color:white;font-size:16px;font-weight:800;border:none;cursor:pointer;font-family:inherit;white-space:nowrap;box-shadow:0 20px 50px rgba(94,26,184,0.4);transition:transform 0.25s ease,box-shadow 0.25s ease;}
+.book-cta-btn:hover{transform:translateY(-2px);box-shadow:0 28px 60px rgba(94,26,184,0.55);}
+.book-cta-btn .cal-icon{width:22px;height:22px;flex-shrink:0;background:rgba(255,255,255,0.18);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;}
+
+.float-book{position:fixed;bottom:30px;right:30px;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#2d0950,#5e1ab8);color:white;border:none;cursor:pointer;font-size:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(94,26,184,0.45);z-index:10000;transition:transform 0.25s ease;}
+.float-book:hover{transform:scale(1.1);}
+
+.calendly-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:20000;display:flex;align-items:center;justify-content:center;animation:fadeInOv 0.2s ease;}
+@keyframes fadeInOv{from{opacity:0;}to{opacity:1;}}
+.calendly-modal{background:white;border-radius:20px;overflow:hidden;width:90%;max-width:720px;height:82vh;display:flex;flex-direction:column;animation:slideUpMd 0.25s ease;}
+@keyframes slideUpMd{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.calendly-modal-header{background:linear-gradient(135deg,#2d0950,#5e1ab8);padding:16px 22px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+.calendly-modal-header span{color:white;font-weight:700;font-size:15px;}
+.calendly-modal-close{color:white;cursor:pointer;font-size:26px;line-height:1;padding:6px 10px;margin:-6px -10px;opacity:0.85;transition:opacity 0.15s;background:none;border:none;font-family:inherit;}
+.calendly-modal-close:hover{opacity:1;}
+.calendly-modal iframe{flex:1;border:none;width:100%;}
+
+/* Do Not Share My Information */
+.dnsmi-link{background:none;border:none;cursor:pointer;color:#666;font-size:11px;text-decoration:underline;font-family:inherit;padding:0;line-height:inherit;}
+.dnsmi-link:hover{color:#b785ff;}
+
+.dnsmi-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:25000;display:none;align-items:center;justify-content:center;animation:fadeInOv 0.2s ease;backdrop-filter:blur(4px);}
+.dnsmi-overlay.open{display:flex;}
+.dnsmi-modal{background:#ffffff;border-radius:24px;width:90%;max-width:560px;overflow:hidden;animation:slideUpMd 0.25s ease;box-shadow:0 40px 100px rgba(0,0,0,0.25);}
+.dnsmi-header{background:linear-gradient(135deg,#2d0950,#5e1ab8);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;}
+.dnsmi-header h2{color:white;font-size:18px;font-weight:800;letter-spacing:-0.02em;}
+.dnsmi-header-close{background:none;border:none;color:white;cursor:pointer;font-size:26px;line-height:1;padding:4px 8px;opacity:0.85;transition:opacity 0.15s;font-family:inherit;}
+.dnsmi-header-close:hover{opacity:1;}
+.dnsmi-body{padding:28px;}
+.dnsmi-body p{font-size:13px;color:#555;line-height:1.75;margin-bottom:22px;}
+.dnsmi-body p a{color:#5e1ab8;text-decoration:underline;}
+.dnsmi-options{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
+.dnsmi-option{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;border:1.5px solid rgba(94,26,184,0.12);border-radius:16px;background:#faf8ff;cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+.dnsmi-option:hover{border-color:rgba(94,26,184,0.35);background:#f3eeff;}
+.dnsmi-option.selected{border-color:#5e1ab8;background:#f0ebff;}
+.dnsmi-option input[type="radio"]{accent-color:#5e1ab8;width:18px;height:18px;flex-shrink:0;margin-top:2px;cursor:pointer;}
+.dnsmi-option-text strong{display:block;font-size:13px;font-weight:800;color:#1a0535;margin-bottom:3px;}
+.dnsmi-option-text span{font-size:12px;color:#777;line-height:1.5;}
+.dnsmi-footer{display:flex;gap:12px;justify-content:flex-end;}
+.dnsmi-cancel{background:none;border:1.5px solid rgba(94,26,184,0.2);color:#5e1ab8;padding:11px 22px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;transition:background 0.2s;}
+.dnsmi-cancel:hover{background:rgba(94,26,184,0.06);}
+.dnsmi-confirm{background:linear-gradient(135deg,#2d0950,#5e1ab8);color:white;border:none;padding:11px 24px;border-radius:999px;font-weight:800;font-size:13px;cursor:pointer;font-family:inherit;box-shadow:0 8px 20px rgba(94,26,184,0.25);transition:opacity 0.2s;}
+.dnsmi-confirm:hover{opacity:0.9;}
+.dnsmi-confirm:disabled{opacity:0.38;cursor:not-allowed;}
+.dnsmi-success{text-align:center;padding:16px 0 6px;}
+.dnsmi-success .dnsmi-check{font-size:42px;display:block;margin-bottom:12px;}
+.dnsmi-success h3{color:#1a0535;font-size:18px;font-weight:800;margin-bottom:8px;}
+.dnsmi-success p{color:#666;font-size:13px;}
+
+.enterprise-cta{padding:100px 24px 130px;background:radial-gradient(circle at top,#34105e 0%,#0b0912 60%);}
+.cta-box{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:40px;padding:56px;color:white;display:flex;justify-content:space-between;align-items:center;gap:40px;backdrop-filter:blur(20px);}
+.cta-box h2{font-size:clamp(32px,4.2vw,48px);line-height:1.08;margin-bottom:16px;letter-spacing:-0.04em;}
+.cta-box p{color:#d7d3e8;max-width:560px;font-size:13px;}
+
+footer{background:#0d0a19;padding:70px 24px 0;color:#aaa;}
+.footer-grid{max-width:1180px;margin:0 auto 50px;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:36px;}
+.footer-brand-logo{height:48px;width:auto;display:block;margin-bottom:16px;}
+.footer-brand h2{color:#fff;font-size:32px;margin-bottom:12px;}
+.footer-brand p{color:#aaa;font-size:12px;}
+.footer-col h4{color:#d4b8ff;margin-bottom:16px;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;}
+.footer-col a{display:block;color:#aaa;text-decoration:none;margin-bottom:10px;font-size:12px;}
+.footer-col a:hover{color:#d4b8ff;}
+.footer-bottom{max-width:1180px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.footer-bottom p{color:#aaa;font-size:12px;}
+.social-links{display:flex;gap:16px;}
+.social-links a{font-size:20px;color:#ccc;text-decoration:none;}
+.footer-legal{max-width:1180px;margin:40px auto 0;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);padding-bottom:40px;}
+.footer-legal p{font-size:11px;color:#666;line-height:1.9;}
+.footer-legal a{color:#666;text-decoration:underline;}
+.footer-legal a:hover{color:#b785ff;}
+
+@media(max-width:900px){
+  .pricing-grid,.compare-grid{grid-template-columns:1fr;}
+  .tier-card.featured{transform:none;}
+  .book-cta-inner{flex-direction:column;text-align:center;padding:40px 28px;}
+  .book-cta-text p{max-width:100%;}
+}
+@media(max-width:780px){
+  .hero{padding:118px 20px 110px;}
+  .cta-box{flex-direction:column;text-align:center;padding:42px 28px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .float-book{bottom:16px;right:16px;width:54px;height:54px;font-size:20px;}
+  .calendly-modal{width:100%;height:100%;border-radius:0;}
+  .dnsmi-modal{width:96%;border-radius:16px;}
+  .dnsmi-body{padding:20px;}
+  .dnsmi-footer{flex-direction:column;}
+  .dnsmi-cancel,.dnsmi-confirm{width:100%;text-align:center;}
+}
+@media(max-width:600px){
+  .book-cta-inner{flex-direction:column;text-align:center;padding:40px 24px;gap:28px;}
+}
+@media(prefers-reduced-motion:reduce){.accent{animation:none;}}
+
+/* ─── Nav Menu Bar ─── */
+.main-nav{width:100%;margin-top:78px;background:#1c1233;border-top:1px solid rgba(139,92,255,0.15);border-bottom:1px solid rgba(139,92,255,0.15);box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+@media(max-width:480px){.main-nav{margin-top:53px;}}
+.main-nav-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:12px;min-height:64px;}
+.nav-link{color:#b8aed4;text-decoration:none;font-size:16px;font-weight:700;letter-spacing:0.01em;padding:22px 22px;position:relative;transition:color 0.2s ease;white-space:nowrap;}
+.nav-link:hover{color:#ffffff;}
+.nav-link::after{content:'';position:absolute;left:22px;right:22px;bottom:0;height:3px;background:linear-gradient(90deg,#8b5cff,#b785ff);transform:scaleX(0);transform-origin:center;transition:transform 0.2s ease;}
+.nav-link:hover::after{transform:scaleX(1);}
+.nav-link.nav-login{margin-left:8px;color:#e8dcff;border:1.5px solid rgba(139,92,255,0.4);border-radius:999px;padding:11px 26px;}
+.nav-link.nav-login:hover{background:rgba(139,92,255,0.12);border-color:rgba(139,92,255,0.7);color:#ffffff;}
+.nav-toggle{display:none;background:none;border:none;color:#f0ecfb;font-size:24px;cursor:pointer;padding:10px;margin:6px 0;}
+@media(max-width:780px){
+  .main-nav-inner{justify-content:space-between;padding:0 20px;flex-wrap:wrap;}
+  .nav-toggle{display:flex;align-items:center;justify-content:center;order:1;}
+  .nav-links{display:none;width:100%;flex-direction:column;align-items:stretch;text-align:center;order:2;padding-bottom:10px;}
+  .nav-links.nav-open{display:flex;}
+  .nav-link{padding:12px 18px;border-bottom:1px solid rgba(139,92,255,0.1);}
+  .nav-link::after{display:none;}
+  .nav-link.nav-login{margin:8px 18px 0;}
+}
+/* ─── End Nav Menu Bar ─── */
+</style>
+</head>
+<body>
+<div class="accent"></div>
+
+<div class="site-header">
+  <div class="logo-bar"><a href="https://www.wintellex.com"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a></div>
+  <nav class="main-nav" aria-label="Primary">
+    <div class="main-nav-inner">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link" href="https://www.wintellex.com/home">Home</a>
+        <a class="nav-link" href="https://www.wintellex.com/pricing">Pricing</a>
+        <a class="nav-link" href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+        <a class="nav-link" href="https://www.wintellex.com/about">About</a>
+        <a class="nav-link" href="https://www.wintellex.com/developers">Developers</a>
+        <a class="nav-link nav-login" href="https://www.wintellex.com/login">Login</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Pricing</div>
+    <h1 class="headline">Infrastructure pricing built around how you operate.</h1>
+    <p class="subheadline">Three tiers, one connected platform. Every plan scales with your transaction volume, workflow complexity, and compliance requirements — our team will help you find the right fit.</p>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 Q720,90 1440,0 L1440,80 L0,80 Z" fill="#f4f1ea"/></svg></div>
+</header>
+
+<section class="pricing-section">
+  <div class="container">
+    <div class="pricing-grid">
+      <div class="tier-card">
+        <div class="tier-name">Starter</div>
+        <div class="tier-title">For growing teams</div>
+        <p class="tier-desc">A payment dashboard, basic reporting, and client records — everything a smaller team needs to get moving without unnecessary complexity.</p>
+        <div class="tier-stats">
+          <div class="tier-stat"><h4>Core</h4><p>Payment Dashboard</p></div>
+          <div class="tier-stat"><h4>Basic</h4><p>Reporting Tools</p></div>
+          <div class="tier-stat"><h4>Standard</h4><p>Client Records</p></div>
+          <div class="tier-stat"><h4>Email</h4><p>Support Channel</p></div>
+        </div>
+        <div class="tier-cta">
+          <a href="https://www.wintellex.com/order" class="tier-btn tier-btn-outline">Get Started</a>
+        </div>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-badge">Most Popular</div>
+        <div class="tier-name">Enterprise</div>
+        <div class="tier-title">For scaling operations</div>
+        <p class="tier-desc">Full treasury systems, settlement workflows, and priority support — built for organizations coordinating payments and operations at scale.</p>
+        <div class="tier-stats">
+          <div class="tier-stat"><h4>Full</h4><p>Treasury Systems</p></div>
+          <div class="tier-stat"><h4>Connected</h4><p>Settlement Workflows</p></div>
+          <div class="tier-stat"><h4>Priority</h4><p>Support Tier</p></div>
+          <div class="tier-stat"><h4>Custom</h4><p>Reporting</p></div>
+        </div>
+        <div class="tier-cta">
+          <a href="https://www.wintellex.com/order" class="primary-btn">Request Access</a>
+        </div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name">Institutional</div>
+        <div class="tier-title">For complex infrastructure</div>
+        <p class="tier-desc">Custody concepts, stablecoin workflows, and strategic support for institutions operating at the edge of financial infrastructure.</p>
+        <div class="tier-stats">
+          <div class="tier-stat"><h4>Custody</h4><p>Concepts &amp; Controls</p></div>
+          <div class="tier-stat"><h4>Stablecoin</h4><p>Workflow Support</p></div>
+          <div class="tier-stat"><h4>Strategic</h4><p>Account Support</p></div>
+          <div class="tier-stat"><h4>Dedicated</h4><p>Infra Specialist</p></div>
+        </div>
+        <div class="tier-cta">
+          <a href="https://www.wintellex.com/order" class="tier-btn tier-btn-outline">Talk to Sales</a>
+        </div>
+      </div>
+    </div>
+    <p class="pricing-footnote">All plans are custom-priced based on transaction volume, modules, and integration needs. There's no public price list — <a href="https://www.wintellex.com/order">request access</a> and our team will scope the right plan with you directly.</p>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,80 Q720,30 1440,80 L1440,80 L0,80 Z" fill="#ffffff"/></svg></div>
+</section>
+
+<section class="compare-section">
+  <div class="container">
+    <div class="compare-head">
+      <div class="eyebrow" style="color:#5e1ab8;">What's Included</div>
+      <h2 class="section-title">A closer look at each tier.</h2>
+      <p class="section-text">Every tier runs on the same infrastructure layer — what changes is depth of access, support, and operational tooling.</p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <h4>Starter</h4>
+        <div class="compare-list">
+          <div class="compare-item"><span class="mark">＋</span>Payment dashboard &amp; transaction visibility</div>
+          <div class="compare-item"><span class="mark">＋</span>Basic reporting and exports</div>
+          <div class="compare-item"><span class="mark">＋</span>Client record management</div>
+          <div class="compare-item"><span class="mark">＋</span>Email support</div>
+        </div>
+      </div>
+      <div class="compare-col">
+        <h4>Enterprise</h4>
+        <div class="compare-list">
+          <div class="compare-item"><span class="mark">＋</span>Everything in Starter</div>
+          <div class="compare-item"><span class="mark">＋</span>Treasury coordination &amp; liquidity visibility</div>
+          <div class="compare-item"><span class="mark">＋</span>Settlement workflow automation</div>
+          <div class="compare-item"><span class="mark">＋</span>Custom reporting &amp; priority support</div>
+        </div>
+      </div>
+      <div class="compare-col">
+        <h4>Institutional</h4>
+        <div class="compare-list">
+          <div class="compare-item"><span class="mark">＋</span>Everything in Enterprise</div>
+          <div class="compare-item"><span class="mark">＋</span>Custody concepts &amp; controls</div>
+          <div class="compare-item"><span class="mark">＋</span>Stablecoin workflow support</div>
+          <div class="compare-item"><span class="mark">＋</span>Strategic, dedicated account support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 Q720,90 1440,0 L1440,80 L0,80 Z" fill="#f7f4ee"/></svg></div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-head">
+      <div class="eyebrow" style="color:#5e1ab8;">Pricing Questions</div>
+      <h2 class="section-title">Frequently asked.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-row">
+        <h3>Why isn't pricing listed publicly?</h3>
+        <p>Costs depend on transaction volume, the modules you need, and integration complexity — a flat price list wouldn't reflect what most organizations actually pay. Our team scopes pricing directly so it matches how you'll use the platform.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Can I move between tiers later?</h3>
+        <p>Yes. Most organizations start on Starter or Enterprise and move up as transaction volume or workflow needs grow. Your account team can help plan that transition.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Is there a free trial or sandbox?</h3>
+        <p>Developers can request sandbox API access independent of a paid tier — reach out through <a href="https://www.wintellex.com/order">our access form</a> and our team will get you set up.</p>
+      </div>
+      <div class="faq-row">
+        <h3>What does "Institutional" mean in practice?</h3>
+        <p>It's built for organizations with more complex regulatory, custody, or stablecoin-related needs — typically larger institutions that need a dedicated infrastructure specialist alongside the platform.</p>
+      </div>
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,80 Q720,30 1440,80 L1440,80 L0,80 Z" fill="#0b0912"/></svg></div>
+</section>
+
+<section class="book-cta-section">
+  <div class="book-cta-inner">
+    <div class="book-cta-text">
+      <div class="eyebrow">Talk to Us</div>
+      <h2>Ready to find the right plan?</h2>
+      <p>Book a call with the Wintellex team — we'll walk you through the platform and help scope the right tier for your organization.</p>
+    </div>
+    <button class="book-cta-btn" onclick="openCalendly()">
+      <span class="cal-icon">&#128197;</span>
+      Book a Meeting
+    </button>
+  </div>
+</section>
+
+<button class="float-book" onclick="openCalendly()" aria-label="Book a meeting">&#128197;</button>
+
+<!-- Do Not Share My Information Modal -->
+<div class="dnsmi-overlay" id="dnsmiOverlay" role="dialog" aria-modal="true" aria-labelledby="dnsmiTitle">
+  <div class="dnsmi-modal">
+    <div class="dnsmi-header">
+      <h2 id="dnsmiTitle">&#x1F512; Do Not Share My Information</h2>
+      <button class="dnsmi-header-close" onclick="closeDNSMI()" aria-label="Close">&times;</button>
+    </div>
+    <div class="dnsmi-body" id="dnsmiBody"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" class="footer-brand-logo">
+      <p>Intelligent payment infrastructure for modern organizations and scalable financial systems.</p>
+      <p style="margin-top:18px;line-height:1.7;color:#666;">1910 Pacific Ave Suite 2000<br>Dallas, TX 75201<br>United States</p>
+    </div>
+    <div class="footer-col"><h4>Company</h4><a href="https://www.wintellex.com/about">About</a><a href="https://www.wintellex.com/careers">Careers</a><a href="https://www.wintellex.com/press">Press</a><a href="https://www.wintellex.com/media">Media</a><a href="https://www.wintellex.com/contact">Contact</a></div>
+    <div class="footer-col"><h4>Solutions</h4><a href="https://www.wintellex.com/commercial">Commercial</a><a href="https://www.wintellex.com/government">Government</a></div>
+    <div class="footer-col"><h4>Platform</h4><a href="https://www.wintellex.com/pricing">Pricing</a><a href="https://www.wintellex.com/infrastructure">Infrastructure</a><a href="https://www.wintellex.com/security">Security</a><a href="https://www.wintellex.com/developers">Developers</a><a href="https://www.wintellex.com/partners">Partners</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="https://www.wintellex.com/privacy">Privacy Policy</a><a href="https://www.wintellex.com/terms">Terms of Use</a><a href="https://www.wintellex.com/compliance">Compliance</a><a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a></div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Wintellex &bull; Intelligent Payment Infrastructure</p>
+    <div class="social-links"><a href="https://x.com/wintellex" target="_blank">&#120143;</a><a href="https://www.instagram.com/wintellex/" target="_blank">&#128247;</a><a href="https://www.linkedin.com/company/wintellex" target="_blank">in</a><a href="https://www.youtube.com/@Wintellex" target="_blank">&#9654;</a></div>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 Wintellex. Wintellex is a financial infrastructure technology company. Banking services are provided by Choice Financial Group and Column N.A., Members FDIC. Unauthorized reproduction or redistribution of copyrighted materials on this website and Wintellex's digital media pages is strictly prohibited. By clicking on some of the links above, you will leave Wintellex's website and be directed to a third-party website. The privacy practices of those third parties may differ from those of Wintellex. We recommend you review the privacy statements of those third-party websites, as Wintellex is not responsible for those third parties' privacy or security practices. Additional disclosures can be found in the resources section of our website. <a href="https://www.wintellex.com/privacy">Privacy Policy</a> &middot; <a href="https://www.wintellex.com/privacy#cookies">Cookie Policy</a> &middot; <button class="dnsmi-link" onclick="openDNSMI()">Do Not Share My Information</button></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var toggle=document.getElementById('navToggle');
+  var links=document.getElementById('navLinks');
+  if(!toggle||!links)return;
+  toggle.addEventListener('click',function(){
+    var open=links.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+  });
+})();
+
+function openCalendly(){
+  if(document.getElementById('calendlyOverlay'))return;
+  var overlay=document.createElement('div');
+  overlay.id='calendlyOverlay';
+  overlay.className='calendly-overlay';
+  overlay.innerHTML='<div class="calendly-modal"><div class="calendly-modal-header"><span>&#128197; Book a Meeting</span><button class="calendly-modal-close" onclick="closeCalendly()" aria-label="Close">&times;</button></div><iframe src="https://calendly.com/wintellex" title="Book a meeting with Wintellex"></iframe></div>';
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeCalendly();});
+  document.body.style.overflow='hidden';
+}
+function closeCalendly(){var o=document.getElementById('calendlyOverlay');if(o)o.remove();document.body.style.overflow='';}
+
+// DNSMI
+function buildDNSMIForm(){
+  return '<p>Under applicable privacy laws including the CCPA, you have the right to opt out of the sale or sharing of your personal information. Please select your preference below. For more details, see our <a href="https://www.wintellex.com/privacy" target="_blank">Privacy Policy</a>.</p>'
+    +'<div class="dnsmi-options" role="radiogroup">'
+    +'<label class="dnsmi-option" id="opt-all"><input type="radio" name="dnsmi" value="all" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Opt out of all sharing</strong><span>Stop the sale and sharing of your personal information for advertising, analytics, and third-party purposes.</span></div></label>'
+    +'<label class="dnsmi-option" id="opt-ads"><input type="radio" name="dnsmi" value="ads" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Opt out of targeted advertising only</strong><span>Limit sharing to targeted advertising while allowing essential operational and analytics data sharing.</span></div></label>'
+    +'<label class="dnsmi-option" id="opt-retain"><input type="radio" name="dnsmi" value="retain" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Keep my current settings</strong><span>No changes will be made to how your information is currently shared.</span></div></label>'
+    +'</div>'
+    +'<div class="dnsmi-footer"><button class="dnsmi-cancel" onclick="closeDNSMI()">Cancel</button><button class="dnsmi-confirm" id="dnsmiConfirm" onclick="confirmDNSMI()" disabled>Save Preference</button></div>';
+}
+function openDNSMI(){
+  var overlay=document.getElementById('dnsmiOverlay');
+  document.getElementById('dnsmiBody').innerHTML=buildDNSMIForm();
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeDNSMI(){
+  document.getElementById('dnsmiOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function selectDNSMI(radio){
+  document.querySelectorAll('.dnsmi-option').forEach(function(o){o.classList.remove('selected');});
+  radio.closest('.dnsmi-option').classList.add('selected');
+  document.getElementById('dnsmiConfirm').disabled=false;
+}
+function confirmDNSMI(){
+  var selected=document.querySelector('input[name="dnsmi"]:checked');
+  if(!selected)return;
+  var messages={
+    'all':'Your preference has been saved. We will no longer sell or share your personal information with third parties.',
+    'ads':'Your preference has been saved. You have been opted out of targeted advertising data sharing.',
+    'retain':'No changes have been made. Your current sharing settings remain in place.'
+  };
+  try{localStorage.setItem('wintellex_dnsmi',selected.value);}catch(e){}
+  document.getElementById('dnsmiBody').innerHTML=
+    '<div class="dnsmi-success"><span class="dnsmi-check">&#10003;</span><h3>Preference Saved</h3><p>'+messages[selected.value]+'</p></div>'
+    +'<div class="dnsmi-footer" style="justify-content:center;margin-top:24px;"><button class="dnsmi-confirm" onclick="closeDNSMI()">Done</button></div>';
+}
+document.getElementById('dnsmiOverlay').addEventListener('click',function(e){if(e.target===this)closeDNSMI();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeCalendly();closeDNSMI();}});
+</script>
+</body>
+</html>
