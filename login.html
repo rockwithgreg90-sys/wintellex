@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wintellex – Secure Login</title>
+<link rel="stylesheet" href="https://use.typekit.net/eqv7jlu.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;background:#0a0616;color:#fff;font-family:'Scale Variable','Inter',sans-serif;overflow-x:hidden;}
+  canvas{position:fixed;inset:0;width:100%;height:100%;z-index:1;}
+  .login-wrap{position:relative;z-index:10;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px 60px;}
+  .login-card{max-width:420px;width:100%;padding:44px 36px 48px;background:#0f0b1f;border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,0.85);border:1px solid rgba(45,9,80,0.45);text-align:center;backdrop-filter:blur(18px);}
+  .logo{width:240px;max-width:80vw;margin:0 auto 20px;filter:drop-shadow(0 0 60px rgba(77,15,179,0.9)) drop-shadow(0 0 120px rgba(45,9,80,0.7));}
+  .headline{font-size:clamp(32px,7vw,52px);font-weight:780;line-height:1.02;letter-spacing:-0.06em;margin:0 0 8px 0;background:linear-gradient(135deg,#ffffff 0%,#f0e8ff 75%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  h1{font-size:22px;font-weight:700;color:#c8b8e8;margin:6px 0 24px;letter-spacing:-0.02em;}
+  .input-wrap{position:relative;margin-bottom:14px;text-align:left;}
+  .input-wrap label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#9980c8;margin-bottom:7px;}
+  .input-wrap input{width:100%;padding:14px 18px;border-radius:14px;border:1.5px solid rgba(94,26,184,0.3);font-size:15px;background:#1a1428;color:#fff;font-family:inherit;transition:all .3s;}
+  .input-wrap input::placeholder{color:#555;}
+  .input-wrap input:focus{outline:none;border-color:#5e1ab8;box-shadow:0 0 0 4px rgba(94,26,184,0.22);background:#1f1836;}
+  .input-wrap .toggle-pw{position:absolute;right:16px;bottom:14px;background:none;border:none;color:#666;cursor:pointer;font-size:16px;padding:0;width:auto;transform:none;box-shadow:none;margin:0;transition:color 0.2s;}
+  .input-wrap .toggle-pw:hover{color:#b785ff;transform:none;box-shadow:none;background:none;}
+  .forgot{text-align:right;margin-top:-6px;margin-bottom:22px;}
+  .forgot a{font-size:13px;color:#7a60b8;text-decoration:none;transition:color 0.2s;}
+  .forgot a:hover{color:#b785ff;}
+  .submit-btn{width:100%;padding:16px;border:none;border-radius:50px;background:linear-gradient(135deg,#2d0950,#3d0f73);color:#fff;font-size:17px;font-weight:760;cursor:pointer;transition:all .36s ease;box-shadow:0 14px 56px rgba(45,9,80,0.64);border:2px solid rgba(61,15,115,0.65);font-family:inherit;position:relative;overflow:hidden;}
+  .submit-btn:hover:not(:disabled){transform:translateY(-5px);background:linear-gradient(135deg,#3a0d66,#4d1a8f);box-shadow:0 28px 90px rgba(45,9,80,0.94);}
+  .submit-btn:disabled{opacity:0.65;cursor:not-allowed;}
+  .btn-inner{display:flex;align-items:center;justify-content:center;gap:10px;}
+  .spinner{width:18px;height:18px;border:2.5px solid rgba(255,255,255,0.25);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .error-msg{margin-top:18px;padding:13px 16px;background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.3);border-radius:12px;color:#fca5a5;font-size:14px;font-weight:600;display:none;text-align:center;}
+  .error-msg.show{display:block;}
+  .success-msg{margin-top:18px;padding:13px 16px;background:rgba(62,207,142,0.1);border:1px solid rgba(62,207,142,0.3);border-radius:12px;color:#6ee7b7;font-size:14px;font-weight:600;display:none;text-align:center;}
+  .success-msg.show{display:block;}
+  .divider{margin:28px 0 20px;display:flex;align-items:center;gap:12px;color:#444;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:rgba(255,255,255,0.08);}
+  .register-link{font-size:14px;color:#7a60b8;margin-top:4px;}
+  .register-link a{color:#b785ff;text-decoration:none;font-weight:700;}
+  .register-link a:hover{text-decoration:underline;}
+
+  /* FOOTER — matched to home page */
+  footer{background:#0d0a19;padding:70px 24px 0;color:#aaa;position:relative;z-index:10;}
+  .footer-grid{max-width:1180px;margin:0 auto 50px;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:36px;}
+  .footer-brand-logo{height:48px;width:auto;display:block;margin-bottom:16px;}
+  .footer-brand h2{color:#ffffff;font-size:32px;margin-bottom:12px;}
+  .footer-brand p{color:#aaa;max-width:360px;}
+  .footer-col h4{color:#d4b8ff;margin-bottom:16px;font-size:14px;text-transform:uppercase;}
+  .footer-col a{display:block;color:#aaa;text-decoration:none;margin-bottom:10px;font-size:14px;}
+  .footer-col a:hover{color:#d4b8ff;}
+  .footer-bottom{max-width:1180px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .footer-bottom p{color:#aaa;}
+  .social-links{display:flex;gap:16px;}
+  .social-links a{font-size:22px;color:#ccc;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:color 0.2s;}
+  .social-links a:hover{color:#d4b8ff;}
+  .footer-legal{max-width:1180px;margin:40px auto 0;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);padding-bottom:40px;}
+  .footer-legal p{font-size:12px;color:#666;line-height:1.9;}
+  .footer-legal a{color:#666;text-decoration:underline;}
+  .footer-legal a:hover{color:#b785ff;}
+
+  /* Do Not Share link */
+  .dnsmi-link{background:none;border:none;cursor:pointer;color:#666;font-size:12px;text-decoration:underline;font-family:inherit;padding:0;line-height:inherit;}
+  .dnsmi-link:hover{color:#b785ff;}
+
+  /* Do Not Share My Information Modal */
+  .dnsmi-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:25000;display:flex;align-items:center;justify-content:center;animation:fadeInOverlay 0.2s ease;backdrop-filter:blur(4px);}
+  .dnsmi-modal{background:#ffffff;border-radius:24px;width:90%;max-width:560px;overflow:hidden;animation:slideUpModal 0.25s ease;box-shadow:0 40px 100px rgba(0,0,0,0.25);}
+  .dnsmi-header{background:linear-gradient(135deg,#2d0950,#5e1ab8);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;}
+  .dnsmi-header h2{color:white;font-size:18px;font-weight:800;letter-spacing:-0.02em;}
+  .dnsmi-header-close{background:none;border:none;color:white;cursor:pointer;font-size:26px;line-height:1;padding:4px 8px;opacity:0.85;transition:opacity 0.15s;}
+  .dnsmi-header-close:hover{opacity:1;}
+  .dnsmi-body{padding:28px;}
+  .dnsmi-body p{font-size:14px;color:#555;line-height:1.75;margin-bottom:22px;}
+  .dnsmi-body p a{color:#5e1ab8;text-decoration:underline;}
+  .dnsmi-options{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
+  .dnsmi-option{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;border:1.5px solid rgba(94,26,184,0.12);border-radius:16px;background:#faf8ff;cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+  .dnsmi-option:hover{border-color:rgba(94,26,184,0.35);background:#f3eeff;}
+  .dnsmi-option.selected{border-color:#5e1ab8;background:#f0ebff;}
+  .dnsmi-option input[type="radio"]{accent-color:#5e1ab8;width:18px;height:18px;flex-shrink:0;margin-top:2px;cursor:pointer;}
+  .dnsmi-option-text strong{display:block;font-size:14px;font-weight:800;color:#1a0535;margin-bottom:3px;}
+  .dnsmi-option-text span{font-size:12px;color:#777;line-height:1.5;}
+  .dnsmi-footer{display:flex;gap:12px;justify-content:flex-end;padding-top:4px;}
+  .dnsmi-cancel{background:none;border:1.5px solid rgba(94,26,184,0.2);color:#5e1ab8;padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:background 0.2s;}
+  .dnsmi-cancel:hover{background:rgba(94,26,184,0.06);}
+  .dnsmi-confirm{background:linear-gradient(135deg,#2d0950,#5e1ab8);color:white;border:none;padding:11px 24px;border-radius:999px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;box-shadow:0 8px 20px rgba(94,26,184,0.25);transition:opacity 0.2s;}
+  .dnsmi-confirm:hover{opacity:0.9;}
+  .dnsmi-success{text-align:center;padding:16px 0 6px;}
+  .dnsmi-success .dnsmi-check{font-size:42px;display:block;margin-bottom:12px;}
+  .dnsmi-success h3{color:#1a0535;font-size:18px;font-weight:800;margin-bottom:8px;}
+  .dnsmi-success p{color:#666;font-size:14px;}
+
+  @keyframes fadeInOverlay{from{opacity:0;}to{opacity:1;}}
+  @keyframes slideUpModal{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+  @media(max-width:768px){
+    .login-card{padding:36px 24px 40px;}
+    .footer-grid{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column;text-align:center;}
+    .social-links{justify-content:center;}
+    .dnsmi-modal{width:96%;border-radius:16px;}
+    .dnsmi-body{padding:20px;}
+    .dnsmi-footer{flex-direction:column;}
+    .dnsmi-cancel,.dnsmi-confirm{width:100%;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div class="login-wrap">
+  <div class="login-card">
+    <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1764103880577x917914741743599700/Wintellex%20Trans%20PNG.png?_gl=1*1p66o42*_gcl_au*MTQ1MzE2MzM2MS4xNzYzNjk4Mzg5*_ga*MTU2MTcwOTYxNi4xNzYyODQ2MTUw*_ga_BFPVR2DEE2*czE3NjQxMDM4MDIkbzEyJGcxJHQxNzY0MTQwMzY2JGo0OSRsMCRoMA.." alt="Wintellex" class="logo">
+    <h2 class="headline">Welcome back.</h2>
+    <h1>Sign in to your account</h1>
+    <div class="input-wrap">
+      <label for="email">Email address</label>
+      <input type="email" id="email" placeholder="you@company.com" required autocomplete="email">
+    </div>
+    <div class="input-wrap">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required autocomplete="current-password">
+      <button type="button" class="toggle-pw" onclick="togglePassword()" aria-label="Toggle password visibility">
+        <i class="fa-regular fa-eye" id="eyeIcon"></i>
+      </button>
+    </div>
+    <div class="forgot">
+      <a href="https://www.wintellex.com/contact">Forgot password? Contact support</a>
+    </div>
+    <button class="submit-btn" id="loginBtn" onclick="handleLogin()">
+      <span class="btn-inner">
+        <span class="spinner" id="spinner"></span>
+        <span id="btnText">Sign In</span>
+      </span>
+    </button>
+    <div class="error-msg" id="errorMsg">
+      <i class="fa-solid fa-circle-exclamation" style="margin-right:6px;"></i>
+      Invalid email or password. Please try again.
+    </div>
+    <div class="success-msg" id="successMsg">
+      <i class="fa-solid fa-circle-check" style="margin-right:6px;"></i>
+      Login successful — redirecting...
+    </div>
+    <div class="divider">or</div>
+    <div class="register-link">
+      Need access? <a href="https://www.wintellex.com/contact">Contact your administrator</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" class="footer-brand-logo">
+      <p>Intelligent payment infrastructure for modern organizations and scalable financial systems.</p>
+      <p style="margin-top:18px;font-size:14px;line-height:1.7;color:#666;">1910 Pacific Ave Suite 2000<br>Dallas, TX 75201<br>United States</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="https://www.wintellex.com/about">About</a>
+      <a href="https://www.wintellex.com/careers">Careers</a>
+      <a href="https://www.wintellex.com/press">Press</a>
+      <a href="https://www.wintellex.com/media">Media</a>
+      <a href="https://www.wintellex.com/contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <a href="https://www.wintellex.com/solutions/commercial">Commercial</a>
+      <a href="https://www.wintellex.com/solutions/government">Government</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="https://www.wintellex.com/pricing">Pricing</a>
+      <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+      <a href="https://www.wintellex.com/security">Security</a>
+      <a href="https://www.wintellex.com/developers">Developers</a>
+      <a href="https://www.wintellex.com/partners">Partners</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="https://www.wintellex.com/privacy">Privacy Policy</a>
+      <a href="https://www.wintellex.com/terms">Terms of Use</a>
+      <a href="https://www.wintellex.com/compliance">Compliance</a>
+      <a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Wintellex &bull; Intelligent Payment Infrastructure</p>
+    <div class="social-links">
+      <a href="https://x.com/wintellex" target="_blank" aria-label="X">&#120143;</a>
+      <a href="https://www.instagram.com/wintellex/" target="_blank" aria-label="Instagram">&#128247;</a>
+      <a href="https://www.linkedin.com/company/wintellex" target="_blank" aria-label="LinkedIn">in</a>
+      <a href="https://www.youtube.com/@Wintellex" target="_blank" aria-label="YouTube">&#9654;</a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 Wintellex. Wintellex is a financial infrastructure technology company. Banking services are provided by Choice Financial Group, Column N.A., Middlesex Federal Savings, and Coastal Community Bank, each a Member FDIC. Strategic capital and investment services are provided in partnership with Starlite Capital Partners. Unauthorized reproduction or redistribution of copyrighted materials on this website and Wintellex's digital media pages is strictly prohibited. By clicking on some of the links above, you will leave Wintellex's website and be directed to a third-party website. The privacy practices of those third parties may differ from those of Wintellex. We recommend you review the privacy statements of those third-party websites, as Wintellex is not responsible for those third parties' privacy or security practices. Additional disclosures can be found in the resources section of our website. <a href="https://www.wintellex.com/privacy">Privacy Policy</a> &middot; <a href="https://www.wintellex.com/privacy#cookies">Cookie Policy</a> &middot; <button class="dnsmi-link" onclick="openDNSMI()">Do Not Share My Information</button></p>
+  </div>
+</footer>
+
+<!-- Do Not Share My Information Modal -->
+<div class="dnsmi-overlay" id="dnsmiOverlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="dnsmiTitle">
+  <div class="dnsmi-modal" id="dnsmiModal">
+    <div class="dnsmi-header">
+      <h2 id="dnsmiTitle">&#x1F512; Do Not Share My Information</h2>
+      <button class="dnsmi-header-close" onclick="closeDNSMI()" aria-label="Close">&times;</button>
+    </div>
+    <div class="dnsmi-body" id="dnsmiBody">
+      <p>Under applicable privacy laws including the CCPA, you have the right to opt out of the sale or sharing of your personal information. Please select your preference below. For more details, see our <a href="https://www.wintellex.com/privacy" target="_blank">Privacy Policy</a>.</p>
+      <div class="dnsmi-options" role="radiogroup" aria-label="Privacy preference options">
+        <label class="dnsmi-option" id="opt-all">
+          <input type="radio" name="dnsmi" value="all" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Opt out of all sharing</strong>
+            <span>Stop the sale and sharing of your personal information for advertising, analytics, and third-party purposes.</span>
+          </div>
+        </label>
+        <label class="dnsmi-option" id="opt-ads">
+          <input type="radio" name="dnsmi" value="ads" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Opt out of targeted advertising only</strong>
+            <span>Limit sharing to targeted advertising while allowing essential operational and analytics data sharing.</span>
+          </div>
+        </label>
+        <label class="dnsmi-option" id="opt-retain">
+          <input type="radio" name="dnsmi" value="retain" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Keep my current settings</strong>
+            <span>No changes will be made to how your information is currently shared.</span>
+          </div>
+        </label>
+      </div>
+      <div class="dnsmi-footer">
+        <button class="dnsmi-cancel" onclick="closeDNSMI()">Cancel</button>
+        <button class="dnsmi-confirm" id="dnsmiConfirm" onclick="confirmDNSMI()" disabled>Save Preference</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let w, h, ribbons = [];
+function resize() {
+  w = canvas.width = innerWidth * devicePixelRatio;
+  h = canvas.height = innerHeight * devicePixelRatio;
+  canvas.style.width = innerWidth + 'px';
+  canvas.style.height = innerHeight + 'px';
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+}
+resize();
+window.addEventListener('resize', resize);
+class Ribbon {
+  constructor() { this.reset(); this.points = []; }
+  reset() {
+    const side = Math.floor(Math.random() * 4);
+    if (side === 0) { this.x = Math.random() * innerWidth; this.y = -60; }
+    if (side === 1) { this.x = innerWidth + 60; this.y = Math.random() * innerHeight; }
+    if (side === 2) { this.x = Math.random() * innerWidth; this.y = innerHeight + 60; }
+    if (side === 3) { this.x = -60; this.y = Math.random() * innerHeight; }
+    this.vx = (Math.random() - 0.5) * 3.2;
+    this.vy = (Math.random() - 0.5) * 3.2;
+    this.life = 0;
+    this.maxLife = 90 + Math.random() * 80;
+    this.width = 2.5 + Math.random() * 6;
+    this.hue = Math.random() > 0.5 ? 270 : 285;
+    this.points = [];
+  }
+  update() {
+    this.life++;
+    if (this.life > this.maxLife) this.reset();
+    this.points.push({ x: this.x, y: this.y });
+    if (this.points.length > 34) this.points.shift();
+    this.x += this.vx; this.y += this.vy;
+    this.vy += 0.035;
+    this.vx += Math.sin(this.life * 0.035) * 0.12;
+  }
+  draw() {
+    if (this.points.length < 2) return;
+    ctx.lineWidth = this.width;
+    ctx.shadowBlur = 28;
+    ctx.shadowColor = `hsla(${this.hue}, 100%, 72%, 0.9)`;
+    const grad = ctx.createLinearGradient(
+      this.points[0].x, this.points[0].y,
+      this.points[this.points.length-1].x, this.points[this.points.length-1].y
+    );
+    grad.addColorStop(0, `hsla(${this.hue}, 96%, 72%, 0.95)`);
+    grad.addColorStop(1, `hsla(${this.hue + 20}, 100%, 65%, 0)`);
+    ctx.strokeStyle = grad;
+    ctx.beginPath();
+    ctx.moveTo(this.points[0].x, this.points[0].y);
+    for (let i = 1; i < this.points.length - 2; i++) {
+      const xc = (this.points[i].x + this.points[i + 1].x) / 2;
+      const yc = (this.points[i].y + this.points[i + 1].y) / 2;
+      ctx.quadraticCurveTo(this.points[i].x, this.points[i].y, xc, yc);
+    }
+    ctx.stroke();
+  }
+}
+for (let i = 0; i < (innerWidth < 768 ? 34 : 62); i++) {
+  const r = new Ribbon();
+  r.life = Math.random() * 120;
+  ribbons.push(r);
+}
+function animate() {
+  ctx.fillStyle = 'rgba(10, 6, 22, 0.09)';
+  ctx.fillRect(0, 0, innerWidth, innerHeight);
+  ribbons.forEach(r => { r.update(); r.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+
+function togglePassword() {
+  const input = document.getElementById('password');
+  const icon  = document.getElementById('eyeIcon');
+  if (input.type === 'password') {
+    input.type = 'text';
+    icon.classList.replace('fa-eye', 'fa-eye-slash');
+  } else {
+    input.type = 'password';
+    icon.classList.replace('fa-eye-slash', 'fa-eye');
+  }
+}
+
+function setLoading(on) {
+  const btn = document.getElementById('loginBtn');
+  const spinner = document.getElementById('spinner');
+  const btnText = document.getElementById('btnText');
+  btn.disabled = on;
+  spinner.style.display = on ? 'block' : 'none';
+  btnText.textContent = on ? 'Signing in...' : 'Sign In';
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorMsg');
+  el.innerHTML = '<i class="fa-solid fa-circle-exclamation" style="margin-right:6px;"></i>' + msg;
+  el.classList.add('show');
+  document.getElementById('successMsg').classList.remove('show');
+}
+
+function showSuccess() {
+  document.getElementById('successMsg').classList.add('show');
+  document.getElementById('errorMsg').classList.remove('show');
+  document.getElementById('loginBtn').disabled = true;
+  document.getElementById('btnText').textContent = 'Redirecting...';
+}
+
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxZW5dLi_V0NkVAc5dv4YCqCB-Uw-wBtEUJ9-PH5P_vzvlsY2jUIo2k-yb_51lHfc4k/exec';
+
+async function handleLogin() {
+  const email    = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
+  document.getElementById('errorMsg').classList.remove('show');
+  document.getElementById('successMsg').classList.remove('show');
+  if (!email || !password) {
+    showError('Please enter both your email and password.');
+    return;
+  }
+  setLoading(true);
+  try {
+    const response = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await response.json();
+    setLoading(false);
+    if (data.status === 'success') {
+      showSuccess();
+      setTimeout(() => { window.open('https://wintellex.store/wintellex_os_home', '_blank'); }, 1000);
+    } else {
+      showError('Invalid email or password. Please try again.');
+      document.getElementById('password').value = '';
+      document.getElementById('password').focus();
+    }
+  } catch (err) {
+    setLoading(false);
+    showError('Connection error — please try again.');
+    console.error('Login error:', err);
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') handleLogin();
+});
+
+document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeDNSMI(); } });
+
+function openDNSMI(){
+  document.getElementById('dnsmiOverlay').style.display='flex';
+  document.body.style.overflow='hidden';
+  restoreDNSMIForm();
+}
+
+function restoreDNSMIForm(){
+  document.getElementById('dnsmiBody').innerHTML=
+    '<p>Under applicable privacy laws including the CCPA, you have the right to opt out of the sale or sharing of your personal information. Please select your preference below. For more details, see our <a href="https://www.wintellex.com/privacy" target="_blank">Privacy Policy</a>.</p>'
+    +'<div class="dnsmi-options" role="radiogroup" aria-label="Privacy preference options">'
+    +'<label class="dnsmi-option" id="opt-all"><input type="radio" name="dnsmi" value="all" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Opt out of all sharing</strong><span>Stop the sale and sharing of your personal information for advertising, analytics, and third-party purposes.</span></div></label>'
+    +'<label class="dnsmi-option" id="opt-ads"><input type="radio" name="dnsmi" value="ads" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Opt out of targeted advertising only</strong><span>Limit sharing to targeted advertising while allowing essential operational and analytics data sharing.</span></div></label>'
+    +'<label class="dnsmi-option" id="opt-retain"><input type="radio" name="dnsmi" value="retain" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Keep my current settings</strong><span>No changes will be made to how your information is currently shared.</span></div></label>'
+    +'</div>'
+    +'<div class="dnsmi-footer"><button class="dnsmi-cancel" onclick="closeDNSMI()">Cancel</button><button class="dnsmi-confirm" id="dnsmiConfirm" onclick="confirmDNSMI()" disabled>Save Preference</button></div>';
+}
+
+function closeDNSMI(){
+  document.getElementById('dnsmiOverlay').style.display='none';
+  document.body.style.overflow='';
+}
+
+function selectDNSMI(radio){
+  document.querySelectorAll('.dnsmi-option').forEach(function(o){ o.classList.remove('selected'); });
+  radio.closest('.dnsmi-option').classList.add('selected');
+  document.getElementById('dnsmiConfirm').disabled=false;
+}
+
+function confirmDNSMI(){
+  var selected=document.querySelector('input[name="dnsmi"]:checked');
+  if(!selected)return;
+  var messages={
+    'all':'Your preference has been saved. We will no longer sell or share your personal information with third parties.',
+    'ads':'Your preference has been saved. You have been opted out of targeted advertising data sharing.',
+    'retain':'No changes have been made. Your current sharing settings remain in place.'
+  };
+  try{ localStorage.setItem('wintellex_dnsmi', selected.value); }catch(e){}
+  document.getElementById('dnsmiBody').innerHTML=
+    '<div class="dnsmi-success">'
+    +'<span class="dnsmi-check">&#10003;</span>'
+    +'<h3>Preference Saved</h3>'
+    +'<p>'+messages[selected.value]+'</p>'
+    +'</div>'
+    +'<div class="dnsmi-footer" style="justify-content:center;margin-top:24px;"><button class="dnsmi-confirm" onclick="closeDNSMI()">Done</button></div>';
+}
+
+document.getElementById('dnsmiOverlay').addEventListener('click',function(e){ if(e.target===this) closeDNSMI(); });
+</script>
+</body>
+</html>
