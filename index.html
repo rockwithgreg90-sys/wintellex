@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wintellex — Global Infrastructure</title>
+<link rel="stylesheet" href="https://use.typekit.net/eqv7jlu.css">
+<style>
+:root{--purple:#8b5cff;--deep-purple:#2d0950;--soft-bg:#0d0a19;--panel-bg:#161029;--panel-bg-alt:#1c1533;--text:#f0ecfb;--text-dim:#b8aed4;--border:rgba(139,92,255,0.18);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--soft-bg);color:var(--text);font-family:'Scale Variable','Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden;}
+.accent{position:fixed;top:0;left:0;width:100%;height:5px;background:linear-gradient(90deg,#2d0950,#3d0f73,#8b5cff,#2d0950);background-size:200%;animation:shimmer 8s linear infinite;z-index:7000;}
+@keyframes shimmer{from{background-position:0%;}to{background-position:200%;}}
+.site-header{position:relative;width:100%;display:flex;flex-direction:column;}
+.logo-bar{position:fixed;top:0;left:0;width:100%;z-index:6500;background:linear-gradient(135deg,var(--deep-purple),#3d0f73);display:flex;align-items:center;justify-content:center;padding:8px 24px;box-shadow:0 10px 28px rgba(0,0,0,0.5);}
+.logo-bar a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;}
+.logo-bar img{height:62px;width:auto;display:block;}
+@media(max-width:480px){.logo-bar{padding:6px 20px;}.logo-bar img{height:37px;}}
+.capital-banner{position:relative;width:100%;overflow:hidden;max-height:140px;margin-top:0;background:linear-gradient(90deg,#2d0950,#5e1ab8,#8b5cff,#2d0950);background-size:220%;animation:bannerFlow 12s linear infinite;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:max-height 0.45s cubic-bezier(.4,0,.2,1),opacity 0.35s ease,box-shadow 0.45s ease,margin-top 0.45s cubic-bezier(.4,0,.2,1);}
+.capital-banner.banner-hidden{max-height:0;opacity:0;box-shadow:none;}
+.capital-banner-inner{max-width:1180px;margin:0 auto;padding:13px 24px;color:white;display:flex;align-items:center;justify-content:center;gap:12px;text-align:center;font-size:clamp(7px,1.3vw,12px);font-weight:650;line-height:1.4;white-space:nowrap;overflow:hidden;}
+.capital-banner strong{font-weight:900;}
+.capital-banner a{color:white;text-decoration:none;font-weight:800;margin-left:10px;border-bottom:1px solid rgba(255,255,255,0.5);}
+@keyframes bannerFlow{from{background-position:0%;}to{background-position:220%;}}
+@media(max-width:480px){.capital-banner{margin-top:0;}}
+section,header.hero{position:relative;}
+.diagonal-divider{position:absolute;bottom:-1px;left:0;width:100%;overflow:hidden;line-height:0;z-index:10;}
+.diagonal-divider svg{display:block;width:100%;}
+
+/* ─── Hero with diagonal purple slash ─── */
+.hero{padding:80px 24px 160px;background:linear-gradient(160deg,#0d0a19 0%,#120c22 50%,#170f2b 100%);color:var(--text);overflow:hidden;}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 42%,
+    rgba(139,92,255,0.14) 48%,
+    rgba(139,92,255,0.18) 54%,
+    rgba(139,92,255,0.14) 60%,
+    transparent 66%,
+    transparent 100%
+  );
+  pointer-events:none;
+  z-index:0;
+}
+.hero .container{position:relative;z-index:1;}
+/* ─── End Hero slash ─── */
+
+.container{max-width:1180px;margin:0 auto;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.eyebrow{color:#b785ff;font-size:14px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:18px;}
+.headline{font-size:clamp(48px,7vw,86px);font-weight:780;line-height:1.02;letter-spacing:-0.06em;margin-bottom:24px;color:#ffffff;}
+.subheadline{font-size:clamp(18px,3vw,24px);color:var(--text-dim);margin-bottom:38px;max-width:700px;}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;}
+.primary-btn,.secondary-btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 28px;border-radius:999px;text-decoration:none;font-weight:800;transition:0.3s ease;}
+.primary-btn{background:linear-gradient(135deg,#5e1ab8,#8b5cff);color:white;box-shadow:0 12px 32px rgba(139,92,255,0.3);}
+.primary-btn:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(139,92,255,0.45);}
+.secondary-btn{background:transparent;color:#f0ecfb;border:1.5px solid rgba(139,92,255,0.35);}
+.secondary-btn:hover{border-color:rgba(139,92,255,0.6);background:rgba(139,92,255,0.08);}
+.hero-visual{position:relative;width:100%;aspect-ratio:1/1;max-width:520px;margin:0 auto;display:flex;align-items:center;justify-content:center;}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(139,92,255,0.16);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.ring-1{width:86%;height:86%;border-color:rgba(139,92,255,0.12);animation:ring-pulse 4s ease-in-out infinite;}
+.ring-2{width:67%;height:67%;border-color:rgba(139,92,255,0.18);animation:ring-pulse 4s ease-in-out infinite 0.8s;}
+.ring-3{width:49%;height:49%;border-color:rgba(139,92,255,0.26);animation:ring-pulse 4s ease-in-out infinite 1.6s;}
+@keyframes ring-pulse{0%,100%{opacity:0.6;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.015);}}
+.core{position:absolute;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 38% 38%,#7e3fff,#2d0950);border:1.5px solid rgba(183,133,255,0.5);display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 0 40px rgba(139,92,255,0.4),0 0 80px rgba(139,92,255,0.15);animation:core-breathe 3s ease-in-out infinite;}
+.core-label{font-size:8px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:#d4b8ff;text-align:center;line-height:1.4;}
+@keyframes core-breathe{0%,100%{box-shadow:0 0 40px rgba(139,92,255,0.4),0 0 80px rgba(139,92,255,0.15);}50%{box-shadow:0 0 60px rgba(139,92,255,0.6),0 0 120px rgba(139,92,255,0.25);}}
+.orbit-wrapper{position:absolute;top:50%;left:50%;width:0;height:0;transform:translate(-50%,-50%);}
+.ow-1{animation:orbit-cw 18s linear infinite;}
+.ow-2{animation:orbit-ccw 22s linear infinite;}
+.ow-3{animation:orbit-cw 26s linear infinite 3s;}
+.ow-4{animation:orbit-ccw 20s linear infinite 6s;}
+.ow-5{animation:orbit-cw 24s linear infinite 9s;}
+@keyframes orbit-cw{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(360deg);}}
+@keyframes orbit-ccw{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(-360deg);}}
+.orbit-node{position:absolute;width:52px;height:52px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:translate(-50%,-50%);border:1px solid;transition:box-shadow 0.4s;}
+.orbit-node .icon{font-size:15px;line-height:1;}
+.orbit-node .nlabel{font-size:6.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;opacity:0.85;}
+.ow-1 .orbit-node{animation:counter-cw 18s linear infinite;top:-43%;}
+.ow-2 .orbit-node{animation:counter-ccw 22s linear infinite;top:-34%;}
+.ow-3 .orbit-node{animation:counter-cw 26s linear infinite 3s;top:-40%;left:6%;}
+.ow-4 .orbit-node{animation:counter-ccw 20s linear infinite 6s;top:-37%;left:-4%;}
+.ow-5 .orbit-node{animation:counter-cw 24s linear infinite 9s;top:-36%;left:2%;}
+@keyframes counter-cw{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(-360deg);}}
+@keyframes counter-ccw{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(360deg);}}
+.n-gateway{background:#0f1e30;border-color:#4a9eea;color:#4a9eea;}
+.n-settle{background:#0c2019;border-color:#3ecf8e;color:#3ecf8e;}
+.n-ai{background:#241a06;border-color:#e0a840;color:#e0a840;}
+.n-treasury{background:#240c14;border-color:#e0698f;color:#e0698f;}
+.n-comply{background:#1c1233;border-color:#b785ff;color:#b785ff;}
+#beam-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:5;overflow:visible;}
+.data-chips{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:20;}
+.dchip{position:absolute;background:rgba(22,16,41,0.95);border:0.5px solid;border-radius:20px;padding:5px 11px;font-size:9px;font-weight:800;letter-spacing:0.07em;white-space:nowrap;opacity:0;animation:chip-float 6s ease-in-out infinite;box-shadow:0 4px 12px rgba(0,0,0,0.3);}
+.dchip-1{border-color:#3ecf8e;color:#3ecf8e;top:11%;left:4%;animation-delay:0s;animation-duration:7s;}
+.dchip-2{border-color:#4a9eea;color:#4a9eea;top:19%;right:4%;animation-delay:1.6s;animation-duration:8s;}
+.dchip-3{border-color:#e0a840;color:#e0a840;top:70%;left:2%;animation-delay:3.2s;animation-duration:6.5s;}
+.dchip-4{border-color:#b785ff;color:#b785ff;top:77%;right:3%;animation-delay:4.8s;animation-duration:7.5s;}
+.dchip-5{border-color:#e0698f;color:#e0698f;top:46%;left:1%;animation-delay:2.2s;animation-duration:9s;}
+@keyframes chip-float{0%{opacity:0;transform:translateY(6px);}15%{opacity:1;transform:translateY(0);}75%{opacity:1;transform:translateY(-4px);}100%{opacity:0;transform:translateY(-10px);}}
+.glow-blob{position:absolute;border-radius:50%;filter:blur(50px);pointer-events:none;z-index:0;}
+.gb-1{width:42%;height:42%;background:rgba(139,92,255,0.12);top:18%;left:8%;animation:blob-drift 8s ease-in-out infinite;}
+.gb-2{width:34%;height:34%;background:rgba(62,207,142,0.08);bottom:12%;right:12%;animation:blob-drift 10s ease-in-out infinite 2s;}
+.gb-3{width:26%;height:26%;background:rgba(74,158,234,0.08);top:48%;right:6%;animation:blob-drift 12s ease-in-out infinite 4s;}
+@keyframes blob-drift{0%,100%{transform:translate(0,0);}33%{transform:translate(12px,-18px);}66%{transform:translate(-8px,10px);}}
+
+/* ─── Credit Card Animation (flat) ─── */
+#card-stage{
+  position:absolute;
+  top:0;left:0;width:100%;height:100%;
+  pointer-events:none;
+  z-index:50;
+  display:flex;align-items:center;justify-content:center;
+}
+.credit-card{
+  position:absolute;
+  width:220px;
+  height:138px;
+  border-radius:16px;
+  background:#5e1ab8;
+  border:1.5px solid rgba(212,184,255,0.35);
+  box-shadow:0 10px 0 0 rgba(45,9,80,0.5);
+  transform:translateY(40px) scale(0.92);
+  opacity:0;
+  will-change:transform,opacity;
+}
+.cc-chip{
+  position:absolute;top:22px;left:20px;
+  width:34px;height:26px;border-radius:5px;
+  background:#e0c458;
+  border:1.5px solid rgba(45,9,80,0.4);
+}
+.cc-chip::after{
+  content:'';position:absolute;top:50%;left:0;right:0;height:1.5px;
+  background:rgba(45,9,80,0.4);transform:translateY(-50%);
+}
+.cc-chip::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;width:1.5px;
+  background:rgba(45,9,80,0.4);transform:translateX(-50%);
+}
+.cc-logo{
+  position:absolute;top:18px;right:18px;
+  display:flex;gap:-6px;
+}
+.cc-logo-circle{
+  width:22px;height:22px;border-radius:50%;opacity:0.95;
+}
+.cc-logo-circle:first-child{background:#e8302a;margin-right:-7px;}
+.cc-logo-circle:last-child{background:#f0820a;}
+.cc-number{
+  position:absolute;bottom:40px;left:20px;right:20px;
+  font-size:11px;font-weight:700;letter-spacing:0.22em;color:rgba(255,255,255,0.9);
+  font-family:'Courier New',monospace;
+}
+.cc-name{
+  position:absolute;bottom:16px;left:20px;
+  font-size:8.5px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(255,255,255,0.75);
+}
+.cc-expiry{
+  position:absolute;bottom:16px;right:20px;
+  font-size:8.5px;font-weight:700;letter-spacing:0.1em;
+  color:rgba(255,255,255,0.65);
+}
+.cc-contactless{
+  position:absolute;top:22px;right:60px;
+  width:16px;height:16px;opacity:0.6;
+}
+/* flat expanding ring accent, replaces the old blurred glow */
+.cc-glow-ring{
+  position:absolute;inset:0;border-radius:16px;
+  border:2px solid rgba(139,92,255,0);
+  pointer-events:none;
+}
+/* flat checkmark badge, replaces the old magician hand-wave */
+.hand-wave{
+  position:absolute;
+  width:104px;
+  height:122px;
+  left:50%;
+  top:50%;
+  margin-left:-52px;
+  margin-top:-61px;
+  opacity:0;
+  pointer-events:none;
+  transform-origin:50% 55%;
+  z-index:61;
+  will-change:transform,opacity;
+}
+.hand-wave svg{width:100%;height:100%;display:block;}
+.sparkle-layer{
+  position:absolute;
+  top:0;left:0;width:100%;height:100%;
+  pointer-events:none;
+  z-index:60;
+  overflow:visible;
+}
+.wand-sparkle{
+  position:absolute;
+  pointer-events:none;
+  opacity:0;
+  will-change:transform,opacity;
+}
+.wand-sparkle svg{width:100%;height:100%;display:block;}
+.check-badge{
+  position:absolute;
+  width:44px;
+  height:44px;
+  left:50%;
+  top:50%;
+  margin-left:-22px;
+  margin-top:-22px;
+  opacity:0;
+  pointer-events:none;
+  z-index:62;
+  will-change:transform,opacity;
+}
+.check-badge svg{width:100%;height:100%;display:block;}
+/* ─── End Credit Card ─── */
+
+.platform-strip{padding:100px 24px 130px;background:#0f0b1f;}
+.strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.strip-card{background:var(--panel-bg);padding:30px;border-radius:28px;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.25);}
+.strip-card h3{color:#d4b8ff;margin-bottom:14px;font-size:20px;}
+.strip-card p{color:var(--text-dim);}
+
+.people-section{padding:100px 24px 130px;background:#0d0a19;}
+.people-header{text-align:center;margin-bottom:56px;}
+.people-header .eyebrow{justify-content:center;display:flex;}
+.people-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.people-card{border-radius:28px;overflow:hidden;position:relative;aspect-ratio:3/4;box-shadow:0 12px 36px rgba(0,0,0,0.4);}
+.people-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+.people-card:hover img{transform:scale(1.04);}
+.people-card-overlay{position:absolute;bottom:0;left:0;right:0;padding:24px 20px 20px;background:linear-gradient(to top,rgba(13,10,25,0.92),transparent);color:white;}
+.people-card-overlay strong{display:block;font-size:14px;font-weight:800;letter-spacing:0.04em;margin-bottom:4px;}
+.people-card-overlay span{font-size:12px;color:#d4b8ff;font-weight:600;}
+
+.metrics-section{padding:100px 24px 130px;background:#0d0a19;color:var(--text);}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.metric-card{padding:40px 24px;border-radius:30px;background:var(--panel-bg);border:1px solid var(--border);text-align:center;}
+.metric-card h2{font-size:52px;color:#b785ff;margin-bottom:12px;}
+.metric-card p{color:var(--text-dim);}
+
+.intelligence-section{padding:100px 24px 130px;background:#0d0a19;}
+.intelligence-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:80px;align-items:start;}
+.section-title{font-size:clamp(40px,5vw,68px);line-height:1.05;color:#ffffff;margin-bottom:24px;letter-spacing:-0.05em;}
+.section-text{font-size:18px;color:var(--text-dim);margin-bottom:24px;}
+.feature-list{display:grid;gap:18px;}
+.feature-row{background:var(--panel-bg);border:1px solid var(--border);border-radius:24px;padding:24px;}
+.feature-row h3{color:#d4b8ff;margin-bottom:8px;}
+.feature-row p{color:var(--text-dim);}
+.inline-photo{width:100%;border-radius:26px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.4);border:1px solid var(--border);margin-top:8px;}
+.inline-photo img{width:100%;height:auto;display:block;}
+.inline-photo-caption{padding:16px 22px;background:var(--panel-bg-alt);}
+.inline-photo-caption strong{display:block;color:#ffffff;font-size:14px;margin-bottom:2px;}
+.inline-photo-caption span{color:var(--text-dim);font-size:12px;}
+
+.infrastructure-section{padding:100px 24px 130px;background:#0f0b1f;}
+.infra-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.infra-panel{background:var(--panel-bg);border-radius:32px;padding:34px;color:var(--text);box-shadow:0 20px 60px rgba(0,0,0,0.35);border:1px solid var(--border);}
+.infra-line{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid var(--border);}
+.infra-line:last-child{border-bottom:none;}
+.infra-line span:first-child{color:var(--text-dim);}
+.infra-line span:last-child{color:#b785ff;font-weight:800;}
+
+.os-section{padding:100px 24px 130px;background:#0d0a19;color:var(--text);}
+.os-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.os-panel{border-radius:34px;background:var(--panel-bg);border:1px solid var(--border);padding:34px;box-shadow:0 20px 60px rgba(0,0,0,0.35);}
+.os-top{display:flex;gap:8px;margin-bottom:30px;}
+.os-dot{width:10px;height:10px;border-radius:50%;background:#8b5cff;}
+.os-module{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding:18px 0;}
+.os-module:last-child{border-bottom:none;}
+.os-module strong{color:#ffffff;}
+.os-module span{color:#b785ff;font-size:13px;font-weight:800;}
+
+.trust-section{padding:100px 24px 130px;background:#0d0a19;}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:46px;}
+.trust-card{background:var(--panel-bg);border-radius:30px;padding:34px;border:1px solid var(--border);min-height:220px;}
+.trust-card h3{color:#d4b8ff;margin-bottom:12px;font-size:22px;}
+.trust-card p{color:var(--text-dim);}
+
+.partners-section{padding:100px 24px 120px;background:#0d0a19;position:relative;}
+.partners-header{text-align:center;max-width:680px;margin:0 auto 64px;}
+.partners-header h2{font-size:clamp(32px,4vw,52px);line-height:1.05;color:#ffffff;margin-bottom:18px;letter-spacing:-0.05em;}
+.partners-header p{font-size:17px;color:var(--text-dim);line-height:1.75;}
+.partners-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:1180px;margin:0 auto;}
+.partner-card{background:var(--panel-bg);border:1px solid var(--border);border-radius:20px;padding:26px 16px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;transition:background 0.25s ease,box-shadow 0.25s ease,transform 0.25s ease;}
+.partner-card:hover{background:var(--panel-bg-alt);box-shadow:0 12px 36px rgba(139,92,255,0.15);transform:translateY(-3px);}
+.partner-logo-wrap{width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:14px;overflow:hidden;background:#ffffff;border:1px solid rgba(255,255,255,0.08);}
+.partner-logo-wrap img{width:42px;height:42px;object-fit:contain;display:block;}
+.partner-card span{font-size:13px;font-weight:700;color:#e8dcff;text-align:center;}
+.partner-card small{font-size:11px;color:#8577a3;font-weight:500;text-align:center;line-height:1.4;}
+
+.enterprise-cta{padding:100px 24px 130px;background:linear-gradient(160deg,#0d0a19 0%,#170f2b 100%);}
+.cta-box{background:var(--panel-bg);border:1px solid var(--border);border-radius:40px;padding:60px;color:var(--text);display:flex;justify-content:space-between;align-items:center;gap:40px;box-shadow:0 24px 64px rgba(0,0,0,0.35);}
+.cta-box h2{font-size:clamp(38px,5vw,64px);line-height:1.05;margin-bottom:20px;letter-spacing:-0.05em;color:#ffffff;}
+.cta-box p{color:var(--text-dim);max-width:700px;font-size:18px;}
+.cta-box .eyebrow{color:#b785ff;}
+
+footer{background:#0d0a19;padding:70px 24px 0;color:#aaa;}
+.footer-grid{max-width:1180px;margin:0 auto 50px;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:36px;}
+.footer-brand-logo{height:48px;width:auto;display:block;margin-bottom:16px;}
+.footer-brand h2{color:#ffffff;font-size:32px;margin-bottom:12px;}
+.footer-brand p{color:#aaa;}
+.footer-col h4{color:#d4b8ff;margin-bottom:16px;font-size:14px;text-transform:uppercase;}
+.footer-col a{display:block;color:#aaa;text-decoration:none;margin-bottom:10px;font-size:14px;}
+.footer-col a:hover{color:#d4b8ff;}
+.footer-bottom{max-width:1180px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.footer-bottom p{color:#aaa;}
+.social-links{display:flex;gap:16px;}
+.social-links a{font-size:22px;color:#ccc;text-decoration:none;}
+.footer-legal{max-width:1180px;margin:40px auto 0;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);padding-bottom:40px;}
+.footer-legal p{font-size:12px;color:#666;line-height:1.9;}
+.footer-legal a{color:#666;text-decoration:underline;}
+.footer-legal a:hover{color:#b785ff;}
+
+.dnsmi-link{background:none;border:none;cursor:pointer;color:#666;font-size:12px;text-decoration:underline;font-family:inherit;padding:0;line-height:inherit;}
+.dnsmi-link:hover{color:#b785ff;}
+
+.dnsmi-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:25000;display:flex;align-items:center;justify-content:center;animation:fadeInOverlay 0.2s ease;backdrop-filter:blur(4px);}
+.dnsmi-modal{background:var(--panel-bg);border-radius:24px;width:90%;max-width:560px;overflow:hidden;animation:slideUpModal 0.25s ease;box-shadow:0 40px 100px rgba(0,0,0,0.5);border:1px solid var(--border);}
+.dnsmi-header{background:linear-gradient(135deg,#2d0950,#5e1ab8);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;}
+.dnsmi-header h2{color:white;font-size:18px;font-weight:800;letter-spacing:-0.02em;}
+.dnsmi-header-close{background:none;border:none;color:white;cursor:pointer;font-size:26px;line-height:1;padding:4px 8px;opacity:0.85;transition:opacity 0.15s;}
+.dnsmi-header-close:hover{opacity:1;}
+.dnsmi-body{padding:28px;}
+.dnsmi-body p{font-size:14px;color:var(--text-dim);line-height:1.75;margin-bottom:22px;}
+.dnsmi-body p a{color:#b785ff;text-decoration:underline;}
+.dnsmi-options{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
+.dnsmi-option{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;border:1.5px solid var(--border);border-radius:16px;background:var(--panel-bg-alt);cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+.dnsmi-option:hover{border-color:rgba(139,92,255,0.45);background:#221a3d;}
+.dnsmi-option.selected{border-color:#8b5cff;background:#241a45;}
+.dnsmi-option input[type="radio"]{accent-color:#8b5cff;width:18px;height:18px;flex-shrink:0;margin-top:2px;cursor:pointer;}
+.dnsmi-option-text strong{display:block;font-size:14px;font-weight:800;color:#ffffff;margin-bottom:3px;}
+.dnsmi-option-text span{font-size:12px;color:var(--text-dim);line-height:1.5;}
+.dnsmi-footer{display:flex;gap:12px;justify-content:flex-end;padding-top:4px;}
+.dnsmi-cancel{background:none;border:1.5px solid rgba(139,92,255,0.3);color:#b785ff;padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:background 0.2s;}
+.dnsmi-cancel:hover{background:rgba(139,92,255,0.1);}
+.dnsmi-confirm{background:linear-gradient(135deg,#2d0950,#8b5cff);color:white;border:none;padding:11px 24px;border-radius:999px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;box-shadow:0 8px 20px rgba(139,92,255,0.35);transition:opacity 0.2s;}
+.dnsmi-confirm:hover{opacity:0.9;}
+.dnsmi-success{text-align:center;padding:16px 0 6px;}
+.dnsmi-success .dnsmi-check{font-size:42px;display:block;margin-bottom:12px;}
+.dnsmi-success h3{color:#ffffff;font-size:18px;font-weight:800;margin-bottom:8px;}
+.dnsmi-success p{color:var(--text-dim);font-size:14px;}
+
+@keyframes fadeInOverlay{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUpModal{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:780px){
+  .capital-banner-inner{padding:10px 16px;}
+  .hero{padding:60px 20px 100px;}
+  .hero-grid,.strip-grid,.metrics-grid,.intelligence-grid,.infra-grid,.os-grid,.trust-grid,.footer-grid,.people-grid{grid-template-columns:1fr;}
+  .hero-grid{text-align:center;gap:50px;}
+  .hero-buttons{justify-content:center;}
+  .hero-visual{max-width:340px;}
+  .cta-box{flex-direction:column;text-align:center;padding:42px 28px;}
+  .people-grid{grid-template-columns:repeat(2,1fr);}
+  .partners-grid{grid-template-columns:repeat(2,1fr);}
+  .dnsmi-modal{width:96%;border-radius:16px;}
+  .dnsmi-body{padding:20px;}
+  .dnsmi-footer{flex-direction:column;}
+  .dnsmi-cancel,.dnsmi-confirm{width:100%;text-align:center;}
+}
+.chat-toggle{position:fixed;bottom:30px;right:30px;width:62px;height:62px;background:linear-gradient(135deg,var(--deep-purple),#8b5cff);color:white;border:none;border-radius:50%;font-size:28px;cursor:pointer;box-shadow:0 10px 30px rgba(139,92,255,0.4);z-index:10000;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;}
+.chat-toggle:hover{transform:scale(1.1);}
+.chat-window{position:fixed;bottom:110px;right:30px;width:400px;height:560px;background:var(--panel-bg);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.5);display:none;flex-direction:column;overflow:hidden;z-index:10001;border:1px solid var(--border);}
+.chat-window.open{display:flex;}
+@media(max-width:768px){.chat-toggle{bottom:16px;right:16px;width:54px;height:54px;font-size:22px;}.chat-window{position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100%;height:100dvh;border-radius:0;border:none;}.chat-input-area{padding:10px 12px;padding-bottom:max(10px, env(safe-area-inset-bottom));}}
+.chat-header{background:linear-gradient(135deg,var(--deep-purple),#8b5cff);color:white;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
+.chat-header-left{display:flex;align-items:center;gap:10px;}
+.chat-status-dot{width:8px;height:8px;border-radius:50%;background:#3ecf8e;flex-shrink:0;}
+.chat-header-title{font-weight:700;font-size:15px;}
+.chat-header-sub{font-size:11px;opacity:0.85;}
+.chat-close{cursor:pointer;font-size:24px;opacity:0.9;line-height:1;padding:8px;margin:-8px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;}
+.chat-body{flex:1;padding:18px;overflow-y:auto;background:#0f0b1f;display:flex;flex-direction:column;gap:10px;}
+.chat-message{max-width:85%;padding:11px 15px;border-radius:18px;font-size:14px;line-height:1.5;}
+.chat-message.bot{align-self:flex-start;background:var(--panel-bg-alt);border:1px solid var(--border);border-bottom-left-radius:4px;color:var(--text);}
+.chat-message.user{align-self:flex-end;background:#8b5cff;color:white;border-bottom-right-radius:4px;}
+.book-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;margin-top:2px;padding:9px 16px;border-radius:999px;background:linear-gradient(135deg,var(--deep-purple),#8b5cff);color:white;text-decoration:none;font-size:13px;font-weight:700;box-shadow:0 6px 18px rgba(139,92,255,0.35);border:none;cursor:pointer;font-family:inherit;}
+.chip-row{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px 14px;}
+.chip{font-size:12px;padding:5px 12px;border-radius:999px;border:1px solid rgba(139,92,255,0.4);color:#b785ff;background:transparent;cursor:pointer;transition:background 0.15s;}
+.chip:hover{background:rgba(139,92,255,0.12);}
+.chip.chip-book{border-color:#8b5cff;background:rgba(139,92,255,0.1);font-weight:700;}
+.chat-input-area{padding:14px 16px;background:var(--panel-bg);border-top:1px solid var(--border);display:flex;gap:10px;}
+.chat-input{flex:1;padding:10px 16px;border:1px solid var(--border);background:#0f0b1f;color:var(--text);border-radius:999px;font-size:14px;outline:none;font-family:inherit;}
+.chat-input::placeholder{color:#7a6f96;}
+.chat-input:focus{border-color:rgba(139,92,255,0.5);}
+.chat-send{background:#8b5cff;color:white;border:none;width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:opacity 0.2s;}
+.chat-send:disabled{opacity:0.4;cursor:not-allowed;}
+.privacy-bar{position:fixed;bottom:0;left:0;width:100%;background:#0d0a19;color:#ddd;padding:16px 24px;display:none;align-items:center;justify-content:center;gap:20px;z-index:9999;font-size:14px;box-shadow:0 -4px 20px rgba(0,0,0,0.4);flex-wrap:wrap;border-top:1px solid var(--border);}
+.privacy-bar.show{display:flex;}
+.privacy-bar a{color:#b785ff;}
+.privacy-bar button{background:#8b5cff;color:white;border:none;padding:10px 24px;border-radius:999px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.hero-video-wrap{position:relative;left:50%;margin-left:-50vw;width:100vw;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);background:#000;}
+.hero-video-wrap .video-aspect{padding:56.25% 0 0 0;position:relative;}
+.hero-video-wrap .video-aspect iframe{position:absolute;top:50%;left:50%;width:100%;height:100%;transform:translate(-50%,-50%);}
+@media(max-width:780px){.hero-video-wrap .video-aspect{padding:75% 0 0 0;}}
+.video-overlay-layer{position:absolute;top:0;left:0;width:100%;height:100%;z-index:6;pointer-events:none;overflow:hidden;}
+.ledger-card{position:absolute;background:#161029;border:1px solid var(--border);border-radius:14px;padding:10px 14px;box-shadow:0 4px 0 0 rgba(0,0,0,0.35);color:var(--text);font-family:'Scale Variable','Inter',system-ui,sans-serif;opacity:0;animation:ledgerFloat var(--dur,9s) ease-in-out infinite;animation-delay:var(--delay,0s);min-width:168px;}
+.ledger-card .lc-top{display:flex;align-items:center;gap:7px;margin-bottom:5px;}
+.ledger-card .lc-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:currentColor;}
+.ledger-card .lc-label{font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;opacity:0.75;white-space:nowrap;color:var(--text-dim);}
+.ledger-card .lc-amount{font-size:18px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;white-space:nowrap;}
+.ledger-card .lc-sub{font-size:10px;font-weight:600;opacity:0.65;margin-top:3px;white-space:nowrap;color:var(--text-dim);}
+.lc-deposit .lc-dot,.lc-deposit .lc-amount{color:#3ecf8e;}
+.lc-settle .lc-dot,.lc-settle .lc-amount{color:#4a9eea;}
+.lc-treasury .lc-dot,.lc-treasury .lc-amount{color:#e0698f;}
+.lc-routed .lc-dot,.lc-routed .lc-amount{color:#e0a840;}
+.lc-comply .lc-dot,.lc-comply .lc-amount{color:#b785ff;}
+@keyframes ledgerFloat{0%{opacity:0;transform:translateY(14px) scale(0.96);}8%{opacity:1;transform:translateY(0) scale(1);}82%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-14px) scale(0.96);}}
+.lc-1{left:4%;top:18%;--dur:9s;--delay:0s;}
+.lc-2{left:3.5%;top:46%;--dur:10s;--delay:3.2s;}
+.lc-3{left:5%;top:72%;--dur:8.5s;--delay:6.4s;}
+.lc-4{right:4%;top:24%;--dur:9.5s;--delay:1.6s;}
+.lc-5{right:4.5%;top:52%;--dur:8.8s;--delay:4.8s;}
+.lc-6{right:3.5%;top:78%;--dur:10.2s;--delay:8s;}
+@media(max-width:900px){.ledger-card{padding:6px 9px;min-width:108px;border-radius:10px;}.ledger-card .lc-amount{font-size:12px;}.ledger-card .lc-label{font-size:7px;}.ledger-card .lc-sub{font-size:7px;margin-top:2px;}.ledger-card .lc-dot{width:5px;height:5px;}.ledger-card .lc-top{gap:5px;margin-bottom:3px;}.lc-1{left:2%;}.lc-2{left:1.5%;}.lc-3{left:2.5%;}.lc-4{right:2%;}.lc-5{right:2.5%;}.lc-6{right:1.5%;}}
+@media(max-width:600px){.ledger-card{padding:5px 8px;min-width:92px;border-radius:9px;}.ledger-card .lc-amount{font-size:11px;}.ledger-card .lc-label{font-size:6.5px;}.ledger-card .lc-sub{display:none;}.lc-3,.lc-6{display:none;}}
+.bottom-blur-overlay{position:fixed;bottom:0;left:0;width:100%;height:160px;pointer-events:none;z-index:5000;background:linear-gradient(to bottom,rgba(13,10,25,0) 0%,rgba(13,10,25,0.6) 50%,rgba(13,10,25,0.94) 100%);backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);transition:opacity 0.2s ease;}
+.bottom-blur-overlay::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:80px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);-webkit-mask-image:linear-gradient(to bottom,transparent,black);mask-image:linear-gradient(to bottom,transparent,black);}
+.calendly-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.65);z-index:20000;display:flex;align-items:center;justify-content:center;animation:fadeInOverlay 0.2s ease;}
+.calendly-modal{background:var(--panel-bg);border-radius:20px;overflow:hidden;width:90%;max-width:720px;height:82vh;display:flex;flex-direction:column;animation:slideUpModal 0.25s ease;border:1px solid var(--border);}
+.calendly-modal-header{background:linear-gradient(135deg,#2d0950,#8b5cff);padding:16px 22px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+.calendly-modal-header span{color:white;font-weight:700;font-size:15px;}
+.calendly-modal-close{color:white;cursor:pointer;font-size:26px;line-height:1;padding:6px 10px;margin:-6px -10px;opacity:0.85;transition:opacity 0.15s;background:none;border:none;}
+.calendly-modal-close:hover{opacity:1;}
+.calendly-modal iframe{flex:1;border:none;width:100%;}
+@media(max-width:600px){.calendly-modal{width:100%;height:100%;border-radius:0;}}
+
+/* ─── Nav Menu Bar ─── */
+.main-nav{width:100%;margin-top:78px;background:#1c1233;border-top:1px solid rgba(139,92,255,0.15);}
+@media(max-width:480px){.main-nav{margin-top:53px;}}
+.main-nav-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.nav-link{color:var(--text-dim);text-decoration:none;font-size:14px;font-weight:700;letter-spacing:0.01em;padding:14px 18px;position:relative;transition:color 0.2s ease;white-space:nowrap;}
+.nav-link:hover{color:#ffffff;}
+.nav-link::after{content:'';position:absolute;left:18px;right:18px;bottom:0;height:2px;background:linear-gradient(90deg,#8b5cff,#b785ff);transform:scaleX(0);transform-origin:center;transition:transform 0.2s ease;}
+.nav-link:hover::after{transform:scaleX(1);}
+.nav-link.nav-login{margin-left:8px;color:#e8dcff;border:1.5px solid rgba(139,92,255,0.4);border-radius:999px;padding:8px 20px;}
+.nav-link.nav-login:hover{background:rgba(139,92,255,0.12);border-color:rgba(139,92,255,0.7);color:#ffffff;}
+.nav-toggle{display:none;background:none;border:none;color:#f0ecfb;font-size:24px;cursor:pointer;padding:10px;margin:6px 0;}
+@media(max-width:780px){
+  .main-nav-inner{justify-content:space-between;padding:0 20px;flex-wrap:wrap;}
+  .nav-toggle{display:flex;align-items:center;justify-content:center;order:1;}
+  .nav-links{display:none;width:100%;flex-direction:column;align-items:stretch;text-align:center;order:2;padding-bottom:10px;}
+  .nav-links.nav-open{display:flex;}
+  .nav-link{padding:12px 18px;border-bottom:1px solid rgba(139,92,255,0.1);}
+  .nav-link::after{display:none;}
+  .nav-link.nav-login{margin:8px 18px 0;}
+}
+/* ─── End Nav Menu Bar ─── */
+</style>
+</head>
+<body>
+<div class="accent"></div>
+
+<div class="site-header" id="siteHeader">
+  <div class="logo-bar"><a href="https://www.wintellex.com"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a></div>
+  <nav class="main-nav" aria-label="Primary">
+    <div class="main-nav-inner">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link" href="https://www.wintellex.com/home">Home</a>
+        <a class="nav-link" href="https://www.wintellex.com/pricing">Pricing</a>
+        <a class="nav-link" href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+        <a class="nav-link" href="https://www.wintellex.com/about">About</a>
+        <a class="nav-link" href="https://www.wintellex.com/developers">Developers</a>
+        <a class="nav-link nav-login" href="https://www.wintellex.com/login">Login</a>
+      </div>
+    </div>
+  </nav>
+  <div class="capital-banner" id="capitalBanner">
+    <div class="capital-banner-inner">
+      <span>Wintellex has raised <strong>$1.2B</strong> in its <strong>Series F</strong> round, at a <strong>$20B valuation</strong>, to support intelligent payment infrastructure, treasury coordination, and enterprise-scale financial systems.<a href="https://www.wintellex.com/press">Read Now &rarr;</a></span>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Global Infrastructure</div>
+      <h1 class="headline">Connected financial systems for modern enterprise.</h1>
+      <p class="subheadline">Intelligent transaction routing, treasury coordination, settlement infrastructure, and enterprise-scale financial systems connected across the globe.</p>
+      <div class="hero-buttons">
+        <a href="https://www.wintellex.com/infrastructure" class="primary-btn">Explore Infrastructure</a>
+        <a href="https://www.wintellex.com/developers" class="secondary-btn">Developer APIs</a>
+      </div>
+    </div>
+    <div class="hero-visual" id="heroVis">
+      <div class="glow-blob gb-1"></div>
+      <div class="glow-blob gb-2"></div>
+      <div class="glow-blob gb-3"></div>
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+      <svg id="beam-svg" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <defs><filter id="gf" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      </svg>
+      <div class="core"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" style="width:64px;height:auto;display:block;filter:brightness(0) invert(1);"></div>
+      <div class="orbit-wrapper ow-1"><div class="orbit-node n-gateway" id="n-gateway"><span class="icon">&#x2B21;</span><span class="nlabel">Gateway</span></div></div>
+      <div class="orbit-wrapper ow-2"><div class="orbit-node n-settle" id="n-settle"><span class="icon">&#x25C8;</span><span class="nlabel">Settle</span></div></div>
+      <div class="orbit-wrapper ow-3"><div class="orbit-node n-ai" id="n-ai"><span class="icon">&#x2B21;</span><span class="nlabel">AI Layer</span></div></div>
+      <div class="orbit-wrapper ow-4"><div class="orbit-node n-treasury" id="n-treasury"><span class="icon">&#x25C8;</span><span class="nlabel">Treasury</span></div></div>
+      <div class="orbit-wrapper ow-5"><div class="orbit-node n-comply" id="n-comply"><span class="icon">&#x25C9;</span><span class="nlabel">Comply</span></div></div>
+      <div class="data-chips">
+        <div class="dchip dchip-1">SETTLED $2.4M</div>
+        <div class="dchip dchip-2">TX ROUTED &#10003;</div>
+        <div class="dchip dchip-3">AI VERIFIED</div>
+        <div class="dchip dchip-4">99.99% UPTIME</div>
+        <div class="dchip dchip-5">TREASURY SYNC</div>
+      </div>
+
+      <!-- Credit Card Stage — only visible during intro animation -->
+      <div id="card-stage">
+        <div class="credit-card" id="heroCard">
+          <div class="cc-chip"></div>
+          <!-- Mastercard-style circles -->
+          <div class="cc-logo">
+            <div class="cc-logo-circle"></div>
+            <div class="cc-logo-circle"></div>
+          </div>
+          <!-- Contactless icon SVG -->
+          <svg class="cc-contactless" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none"/>
+            <path d="M8 12c0-2.21 1.79-4 4-4" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M5 12c0-3.87 3.13-7 7-7" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div class="cc-number">4716 •••• •••• 2847</div>
+          <div class="cc-name">WINTELLEX ENTERPRISE</div>
+          <div class="cc-expiry">12/28</div>
+          <div class="cc-glow-ring" id="cardGlowRing"></div>
+        </div>
+        <div class="sparkle-layer" id="sparkleLayer"></div>
+        <div class="hand-wave" id="handWave">
+          <svg viewBox="0 0 140 160" xmlns="http://www.w3.org/2000/svg">
+            <!-- wand: flat solid stroke, no gradient/shadow -->
+            <line x1="18" y1="142" x2="112" y2="16" stroke="#8b5cff" stroke-width="5" stroke-linecap="round"/>
+            <!-- wand tip star: flat solid fill -->
+            <g transform="translate(112,16)">
+              <path d="M0,-11 L2.8,-2.8 L11,0 L2.8,2.8 L0,11 L-2.8,2.8 L-11,0 L-2.8,-2.8 Z" fill="#ffffff"/>
+            </g>
+            <!-- glove / hand: flat fills, flat strokes, no drop-shadow -->
+            <g transform="translate(8,108)">
+              <rect x="-8" y="18" width="46" height="20" rx="9" fill="#5e1ab8" stroke="#8b5cff" stroke-width="2"/>
+              <ellipse cx="15" cy="10" rx="21" ry="17" fill="#f0ecfb" stroke="#8b5cff" stroke-width="2"/>
+              <rect x="-2" y="-14" width="9" height="23" rx="4.5" fill="#f0ecfb" stroke="#8b5cff" stroke-width="1.5" transform="rotate(-12 2.5 -2.5)"/>
+              <rect x="8" y="-19" width="9" height="27" rx="4.5" fill="#f0ecfb" stroke="#8b5cff" stroke-width="1.5" transform="rotate(-4 12.5 -5.5)"/>
+              <rect x="18" y="-19" width="9" height="27" rx="4.5" fill="#f0ecfb" stroke="#8b5cff" stroke-width="1.5" transform="rotate(4 22.5 -5.5)"/>
+              <rect x="28" y="-14" width="9" height="23" rx="4.5" fill="#f0ecfb" stroke="#8b5cff" stroke-width="1.5" transform="rotate(12 32.5 -2.5)"/>
+              <rect x="-16" y="4" width="9" height="19" rx="4.5" fill="#f0ecfb" stroke="#8b5cff" stroke-width="1.5" transform="rotate(-48 -11.5 13.5)"/>
+            </g>
+          </svg>
+        </div>
+        <div class="check-badge" id="checkBadge">
+          <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="20" fill="#3ecf8e"/>
+            <path d="M13 22.5 L19 28.5 L31 15.5" stroke="#0d0a19" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 Q720,90 1440,0 L1440,80 L0,80 Z" fill="#0f0b1f"/></svg></div>
+</header>
+
+<div class="hero-video-wrap">
+  <div class="video-aspect">
+    <iframe id="vimeoPlayer" src="https://player.vimeo.com/video/1202934535?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;background=1&amp;controls=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="0619"></iframe>
+  </div>
+  <div class="video-overlay-layer" aria-hidden="true">
+    <div class="ledger-card lc-deposit lc-1"><div class="lc-top"><span class="lc-dot"></span><span class="lc-label">Deposit</span></div><div class="lc-amount">+$1,240.00</div><div class="lc-sub">Operating account &middot; USD</div></div>
+    <div class="ledger-card lc-treasury lc-2"><div class="lc-top"><span class="lc-dot"></span><span class="lc-label">Treasury Sync</span></div><div class="lc-amount">$3,860.00</div><div class="lc-sub">Liquidity rebalanced</div></div>
+    <div class="ledger-card lc-comply lc-3"><div class="lc-top"><span class="lc-dot"></span><span class="lc-label">Compliance</span></div><div class="lc-amount">Verified &#10003;</div><div class="lc-sub">Risk check passed</div></div>
+    <div class="ledger-card lc-settle lc-4"><div class="lc-top"><span class="lc-dot"></span><span class="lc-label">Settled</span></div><div class="lc-amount">$960.00</div><div class="lc-sub">Cross-border &middot; 0.4s</div></div>
+    <div class="ledger-card lc-routed lc-5"><div class="lc-top"><span class="lc-dot"></span><span class="lc-label">Routed</span></div><div class="lc-amount">TX #4417</div><div class="lc-sub">Gateway &rarr; Settlement</div></div>
+    <div class="ledger-card lc-deposit lc-6"><div class="lc-top"><span class="lc-dot"></span><span class="lc-label">Deposit</span></div><div class="lc-amount">+$1,085.00</div><div class="lc-sub">Merchant payout</div></div>
+  </div>
+</div>
+
+<section class="platform-strip">
+  <div class="container">
+    <div class="strip-grid">
+      <div class="strip-card"><h3>Global Settlement</h3><p>Enterprise-grade transaction routing and financial coordination across distributed systems.</p></div>
+      <div class="strip-card"><h3>Treasury Intelligence</h3><p>Unified liquidity visibility and programmable treasury operations for modern organizations.</p></div>
+      <div class="strip-card"><h3>AI Infrastructure</h3><p>Machine-assisted workflow systems designed for operational scale and automation.</p></div>
+      <div class="strip-card"><h3>Enterprise APIs</h3><p>Developer-ready infrastructure powering secure integrations and scalable deployment.</p></div>
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,80 Q720,30 1440,80 L1440,80 L0,80 Z" fill="#0d0a19"/></svg></div>
+</section>
+
+<section class="people-section">
+  <div class="container">
+    <div class="people-header">
+      <div class="eyebrow" style="color:#b785ff;">Real-World Payments</div>
+      <h2 class="section-title" style="text-align:center;font-size:clamp(32px,4vw,52px);">Powering the moments that matter.</h2>
+    </div>
+    <div class="people-grid">
+      <div class="people-card"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781111490356x411298302190219440/pexels-yankrukov-6816413.jpg" alt="Person making a payment"><div class="people-card-overlay"><strong>Point of Sale</strong><span>Instant settlement</span></div></div>
+      <div class="people-card"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781111480226x886750833035037600/pexels-viktoria-slowikowska-5332524.jpg" alt="Person paying with card"><div class="people-card-overlay"><strong>Contactless Pay</strong><span>Sub-second routing</span></div></div>
+      <div class="people-card"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781111470709x636882782172329300/pexels-shvets-production-7561698.jpg" alt="Mobile payment transaction"><div class="people-card-overlay"><strong>Mobile Checkout</strong><span>AI fraud detection</span></div></div>
+      <div class="people-card"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1782285556468x727572313251077400/pexels-tranmautritam-6406691.jpg?_gl=1*uw4zhj*_gcl_au*OTI4ODI3MjM2LjE3ODEyNjAxMjM.*_ga*MTU2NDY0MjY3OS4xNzc4MDQ3NTM5*_ga_BFPVR2DEE2*czE3ODIyNzAxNDMkbzMxJGcxJHQxNzgyMjg1NTQxJGo1NSRsMCRoMA.." alt="Digital payment on device"><div class="people-card-overlay"><strong>Digital Wallet</strong><span>Global treasury sync</span></div></div>
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 Q720,90 1440,0 L1440,80 L0,80 Z" fill="#0d0a19"/></svg></div>
+</section>
+
+<section class="metrics-section">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric-card"><h2>$20B+</h2><p>Annual processing volume</p></div>
+      <div class="metric-card"><h2>120+</h2><p>Enterprise workflow modules</p></div>
+      <div class="metric-card"><h2>99.99%</h2><p>Infrastructure uptime target</p></div>
+      <div class="metric-card"><h2>Global</h2><p>Cross-border system architecture</p></div>
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,80 Q720,30 1440,80 L1440,80 L0,80 Z" fill="#0d0a19"/></svg></div>
+</section>
+
+<section class="intelligence-section">
+  <div class="container intelligence-grid">
+    <div>
+      <div class="eyebrow">Unified Infrastructure</div>
+      <h2 class="section-title">One operating layer for payments, treasury, and enterprise workflows.</h2>
+      <p class="section-text">Wintellex is designed as a connected infrastructure environment for organizations that need financial coordination, operational visibility, contract intelligence, and scalable workflow systems in one place.</p>
+    </div>
+    <div class="feature-list">
+      <div class="feature-row"><h3>Payment Orchestration</h3><p>Coordinate transaction activity, settlement workflows, and payment operations through a unified infrastructure layer.</p></div>
+      <div class="feature-row"><h3>Treasury Coordination</h3><p>Support visibility across liquidity, receivables, obligations, and financial movement across enterprise systems.</p></div>
+      <div class="feature-row"><h3>Contract Intelligence</h3><p>Connect agreements, workflows, documentation, and operational execution across departments and partners.</p></div>
+      <div class="feature-row"><h3>Enterprise Automation</h3><p>Build repeatable workflows that reduce manual coordination and improve infrastructure-level control.</p></div>
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 Q720,90 1440,0 L1440,80 L0,80 Z" fill="#0f0b1f"/></svg></div>
+</section>
+
+<section class="infrastructure-section">
+  <div class="container infra-grid">
+    <div>
+      <div class="eyebrow">Infrastructure Layer</div>
+      <h2 class="section-title">Built for organizations operating at scale.</h2>
+      <p class="section-text">Wintellex combines intelligent payment infrastructure, enterprise treasury systems, workflow automation, and scalable coordination layers into a unified operational platform.</p>
+      <a href="https://www.wintellex.com/infrastructure" class="primary-btn">Explore Platform</a>
+    </div>
+    <div>
+      <div class="infra-panel">
+        <div class="infra-line"><span>Settlement Routing</span><span>ACTIVE</span></div>
+        <div class="infra-line"><span>Treasury Coordination</span><span>CONNECTED</span></div>
+        <div class="infra-line"><span>Infrastructure APIs</span><span>LIVE</span></div>
+        <div class="infra-line"><span>Enterprise Nodes</span><span>GLOBAL</span></div>
+        <div class="infra-line"><span>AI Processing Layer</span><span>ONLINE</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,80 Q720,30 1440,80 L1440,80 L0,80 Z" fill="#0d0a19"/></svg></div>
+</section>
+
+<section class="os-section">
+  <div class="container os-grid">
+    <div class="os-panel">
+      <div class="os-top"><div class="os-dot"></div><div class="os-dot"></div><div class="os-dot"></div></div>
+      <div class="os-module"><strong>Payments</strong><span>CONNECTED</span></div>
+      <div class="os-module"><strong>Treasury</strong><span>ACTIVE</span></div>
+      <div class="os-module"><strong>Contracts</strong><span>READY</span></div>
+      <div class="os-module"><strong>Settlement</strong><span>ONLINE</span></div>
+      <div class="os-module"><strong>Compliance</strong><span>VERIFIED</span></div>
+      <div class="os-module"><strong>Operations</strong><span>UNIFIED</span></div>
+    </div>
+    <div>
+      <div class="eyebrow">Wintellex OS</div>
+      <h2 class="section-title" style="color:#ffffff;">Financial infrastructure that behaves like an operating system.</h2>
+      <p class="section-text" style="color:var(--text-dim);">Instead of separating payments, contracts, treasury, and operational workflows into disconnected systems, Wintellex brings the core layers together into one enterprise environment.</p>
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 Q720,90 1440,0 L1440,80 L0,80 Z" fill="#0d0a19"/></svg></div>
+</section>
+
+<section class="trust-section">
+  <div class="container">
+    <div class="eyebrow">Enterprise Foundation</div>
+    <h2 class="section-title">Designed for trust, scale, and operational control.</h2>
+    <div class="trust-grid">
+      <div class="trust-card"><h3>Security First</h3><p>Built around controlled access, operational visibility, and infrastructure practices for sensitive financial workflows.</p></div>
+      <div class="trust-card"><h3>Scalable Architecture</h3><p>Structured to support enterprise workflows, multi-system coordination, and infrastructure expansion.</p></div>
+      <div class="trust-card"><h3>Institutional Positioning</h3><p>Designed for organizations that need serious systems for payments, treasury, contracts, and execution.</p></div>
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,80 Q720,30 1440,80 L1440,80 L0,80 Z" fill="#0d0a19"/></svg></div>
+</section>
+
+<section class="partners-section">
+  <div class="container">
+    <div class="partners-header">
+      <div class="eyebrow">Powered By</div>
+      <h2>Powered by the tools you trust.</h2>
+      <p>Wintellex is built on the enterprise technology stack your teams already rely on &mdash; from cloud infrastructure and payments to workflow automation, data, and AI.</p>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=microsoft.com'"></div><span>Microsoft</span><small>Azure Cloud &amp; M365</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/google.com" alt="Google" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=google.com'"></div><span>Google</span><small>GCP &amp; Workspace</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/stripe.com" alt="Stripe" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=stripe.com'"></div><span>Stripe</span><small>Payment Rails</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/servicenow.com" alt="ServiceNow" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=servicenow.com'"></div><span>ServiceNow</span><small>Workflow Automation</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/palantir.com" alt="Palantir" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=palantir.com'"></div><span>Palantir</span><small>Data Intelligence</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/aws.amazon.com" alt="AWS" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=aws.amazon.com'"></div><span>AWS</span><small>Cloud Infrastructure</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/salesforce.com" alt="Salesforce" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=salesforce.com'"></div><span>Salesforce</span><small>CRM &amp; Platform</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/sap.com" alt="SAP" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=sap.com'"></div><span>SAP</span><small>ERP &amp; Finance</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/oracle.com" alt="Oracle" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=oracle.com'"></div><span>Oracle</span><small>Database &amp; Cloud</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/snowflake.com" alt="Snowflake" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=snowflake.com'"></div><span>Snowflake</span><small>Data Warehouse</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/workday.com" alt="Workday" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=workday.com'"></div><span>Workday</span><small>HR &amp; Finance Ops</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/plaid.com" alt="Plaid" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=plaid.com'"></div><span>Plaid</span><small>Banking Data Layer</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/twilio.com" alt="Twilio" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=twilio.com'"></div><span>Twilio</span><small>Comms &amp; Messaging</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/databricks.com" alt="Databricks" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=databricks.com'"></div><span>Databricks</span><small>AI &amp; Analytics</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/docusign.com" alt="DocuSign" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=docusign.com'"></div><span>DocuSign</span><small>Contract Execution</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/coupa.com" alt="Coupa" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=coupa.com'"></div><span>Coupa</span><small>Spend Management</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/visa.com" alt="Visa" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=visa.com'"></div><span>Visa</span><small>Card Network Rails</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/mastercard.com" alt="Mastercard" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=mastercard.com'"></div><span>Mastercard</span><small>Global Payments</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/okta.com" alt="Okta" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=okta.com'"></div><span>Okta</span><small>Identity &amp; Access</small></div>
+      <div class="partner-card"><div class="partner-logo-wrap"><img src="https://logo.clearbit.com/openai.com" alt="OpenAI" onerror="this.src='https://www.google.com/s2/favicons?sz=64&domain=openai.com'"></div><span>OpenAI</span><small>AI Processing Layer</small></div>
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,80 Q720,30 1440,80 L1440,80 L0,80 Z" fill="#170f2b"/></svg></div>
+</section>
+
+<section class="enterprise-cta">
+  <div class="container">
+    <div class="cta-box">
+      <div>
+        <div class="eyebrow">Enterprise Access</div>
+        <h2>Infrastructure designed for modern financial systems.</h2>
+        <p>Connect treasury, payments, contracts, and intelligent workflow systems into a unified platform.</p>
+      </div>
+      <button onclick="openCalendly()" class="primary-btn" style="white-space:nowrap;">Request Access</button>
+    </div>
+  </div>
+  <div class="diagonal-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 Q720,90 1440,0 L1440,80 L0,80 Z" fill="#0d0a19"/></svg></div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" class="footer-brand-logo">
+      <p>Intelligent payment infrastructure for modern organizations and scalable financial systems.</p>
+      <p style="margin-top:18px;font-size:14px;line-height:1.7;color:#666;">1910 Pacific Ave Suite 2000<br>Dallas, TX 75201<br>United States</p>
+    </div>
+    <div class="footer-col"><h4>Company</h4><a href="https://www.wintellex.com/about">About</a><a href="https://www.wintellex.com/careers">Careers</a><a href="https://www.wintellex.com/press">Press</a><a href="https://www.wintellex.com/media">Media</a><a href="https://www.wintellex.com/contact">Contact</a></div>
+    <div class="footer-col"><h4>Solutions</h4><a href="https://www.wintellex.com/commercial">Commercial</a><a href="https://www.wintellex.com/government">Government</a></div>
+    <div class="footer-col"><h4>Platform</h4><a href="https://www.wintellex.com/pricing">Pricing</a><a href="https://www.wintellex.com/infrastructure">Infrastructure</a><a href="https://www.wintellex.com/security">Security</a><a href="https://www.wintellex.com/developers">Developers</a><a href="https://www.wintellex.com/partners">Partners</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="https://www.wintellex.com/privacy">Privacy Policy</a><a href="https://www.wintellex.com/terms">Terms of Use</a><a href="https://www.wintellex.com/compliance">Compliance</a><a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a></div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Wintellex &bull; Intelligent Payment Infrastructure</p>
+    <div class="social-links"><a href="https://x.com/wintellex" target="_blank">&#120143;</a><a href="https://www.instagram.com/wintellex/" target="_blank">&#128247;</a><a href="https://www.linkedin.com/company/wintellex" target="_blank">in</a><a href="https://www.youtube.com/@Wintellex" target="_blank">&#9654;</a></div>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 Wintellex. Wintellex is a financial infrastructure technology company. Banking services are provided by Choice Financial Group and Column N.A., Members FDIC. Unauthorized reproduction or redistribution of copyrighted materials on this website and Wintellex's digital media pages is strictly prohibited. By clicking on some of the links above, you will leave Wintellex's website and be directed to a third-party website. The privacy practices of those third parties may differ from those of Wintellex. We recommend you review the privacy statements of those third-party websites, as Wintellex is not responsible for those third parties' privacy or security practices. Additional disclosures can be found in the resources section of our website. <a href="https://www.wintellex.com/privacy">Privacy Policy</a> &middot; <a href="https://www.wintellex.com/privacy#cookies">Cookie Policy</a> &middot; <button class="dnsmi-link" onclick="openDNSMI()">Do Not Share My Information</button></p>
+  </div>
+</footer>
+
+<div class="dnsmi-overlay" id="dnsmiOverlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="dnsmiTitle">
+  <div class="dnsmi-modal" id="dnsmiModal">
+    <div class="dnsmi-header">
+      <h2 id="dnsmiTitle">&#x1F512; Do Not Share My Information</h2>
+      <button class="dnsmi-header-close" onclick="closeDNSMI()" aria-label="Close">&times;</button>
+    </div>
+    <div class="dnsmi-body" id="dnsmiBody">
+      <p>Under applicable privacy laws including the CCPA, you have the right to opt out of the sale or sharing of your personal information. Please select your preference below. For more details, see our <a href="https://www.wintellex.com/privacy" target="_blank">Privacy Policy</a>.</p>
+      <div class="dnsmi-options" role="radiogroup" aria-label="Privacy preference options">
+        <label class="dnsmi-option" id="opt-all">
+          <input type="radio" name="dnsmi" value="all" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Opt out of all sharing</strong>
+            <span>Stop the sale and sharing of your personal information for advertising, analytics, and third-party purposes.</span>
+          </div>
+        </label>
+        <label class="dnsmi-option" id="opt-ads">
+          <input type="radio" name="dnsmi" value="ads" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Opt out of targeted advertising only</strong>
+            <span>Limit sharing to targeted advertising while allowing essential operational and analytics data sharing.</span>
+          </div>
+        </label>
+        <label class="dnsmi-option" id="opt-retain">
+          <input type="radio" name="dnsmi" value="retain" onchange="selectDNSMI(this)">
+          <div class="dnsmi-option-text">
+            <strong>Keep my current settings</strong>
+            <span>No changes will be made to how your information is currently shared.</span>
+          </div>
+        </label>
+      </div>
+      <div class="dnsmi-footer">
+        <button class="dnsmi-cancel" onclick="closeDNSMI()">Cancel</button>
+        <button class="dnsmi-confirm" id="dnsmiConfirm" onclick="confirmDNSMI()" disabled>Save Preference</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-blur-overlay" id="bottomBlur"></div>
+
+<div class="privacy-bar" id="privacyBar">
+  <p>We use cookies to enhance your experience and analyze site traffic. <a href="https://www.wintellex.com/privacy">Learn more</a></p>
+  <button onclick="acceptPrivacy()">Accept &amp; Continue</button>
+</div>
+
+<button class="chat-toggle" onclick="toggleChat()" aria-label="Open chat">&#128172;</button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-header-left"><div class="chat-status-dot"></div><div><div class="chat-header-title">Wintellex Assistant</div><div class="chat-header-sub">Usually replies instantly</div></div></div>
+    <span class="chat-close" onclick="toggleChat()">&#10005;</span>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-message bot">Hi! I'm the Wintellex assistant. Ask me about our platform &mdash; payments, treasury, settlement, infrastructure, pricing &mdash; or book a call with our team below.</div>
+    <button class="book-btn" onclick="openCalendly()">&#128197; Book an Appointment</button>
+  </div>
+  <div class="chip-row" id="chipRow">
+    <button class="chip" onclick="quickAsk('What does Wintellex do?')">What does Wintellex do?</button>
+    <button class="chip" onclick="quickAsk('How does settlement work?')">How does settlement work?</button>
+    <button class="chip" onclick="quickAsk('What is treasury coordination?')">Treasury coordination</button>
+    <button class="chip" onclick="quickAsk('What does pricing look like?')">Pricing</button>
+    <button class="chip" onclick="quickAsk('Is Wintellex secure?')">Security</button>
+    <button class="chip" onclick="quickAsk('How do I contact sales?')">Contact sales</button>
+    <button class="chip chip-book" onclick="openCalendly()">&#128197; Book appointment</button>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about Wintellex or payments&hellip;" onkeydown="if(event.key==='Enter')sendMessage()">
+    <button class="chat-send" id="sendBtn" onclick="sendMessage()" aria-label="Send">&#8593;</button>
+  </div>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script>
+(function(){
+  var toggle=document.getElementById('navToggle');
+  var links=document.getElementById('navLinks');
+  if(!toggle||!links)return;
+  toggle.addEventListener('click',function(){
+    var open=links.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+  });
+})();
+
+/* ─────────────────────────────────────────────
+   CREDIT CARD INTRO ANIMATION — now starts when the
+   hero visual scrolls into view (fixes mobile issue
+   where the animation had already finished by the
+   time the user scrolled down to it).
+   ───────────────────────────────────────────── */
+(function(){
+  var card     = document.getElementById('heroCard');
+  var glowRing = document.getElementById('cardGlowRing');
+  var stage    = document.getElementById('card-stage');
+  var handWave  = document.getElementById('handWave');
+  var sparkleLayer = document.getElementById('sparkleLayer');
+  var checkBadge = document.getElementById('checkBadge');
+  var heroVis = document.getElementById('heroVis');
+  if(!card || !stage || !heroVis) return;
+
+  var FALL_DUR    = 900;
+  var HOLD_DUR    = 1200;
+  var GLOW_START  = FALL_DUR + 60;
+  var BEAM_START  = FALL_DUR + 280;
+  var HAND_START  = FALL_DUR + 220;
+  var HAND_DUR    = 620;
+  var HAND_FADE   = 200;
+  var CHECK_START = HAND_START + HAND_DUR + 80;
+  var DISSOLVE_START = FALL_DUR + HOLD_DUR;
+  var DISSOLVE_DUR   = 900;
+  var TOTAL = DISSOLVE_START + DISSOLVE_DUR + 100;
+
+  var t0; // set when the animation actually starts, not at page load
+
+  function easeOutBack(t){var c1=1.70158,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2);}
+  function easeInCubic(t){return t*t*t;}
+  function easeOutCubic(t){return 1-Math.pow(1-t,3);}
+  function easeOutQuint(t){return 1-Math.pow(1-t,5);}
+  function easeInOutCubic(t){return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function lerp(a,b,t){return a+(b-a)*t;}
+
+  /* ── flat wand sparkle — small flat star that pops near the wand tip as it sweeps ── */
+  function spawnSparkle(handX, handY, rot){
+    if(!sparkleLayer) return;
+    var rad = rot * Math.PI/180;
+    var tipOffsetX = 33, tipOffsetY = -52;
+    var offX = tipOffsetX*Math.cos(rad) - tipOffsetY*Math.sin(rad);
+    var offY = tipOffsetX*Math.sin(rad) + tipOffsetY*Math.cos(rad);
+    var sx = handX + offX, sy = handY + offY;
+
+    var star = document.createElement('div');
+    star.className = 'wand-sparkle';
+    var size = 9 + Math.random()*8;
+    star.style.width = size+'px';
+    star.style.height = size+'px';
+    star.style.left = '50%';
+    star.style.top = '50%';
+    star.style.marginLeft = (sx - size/2)+'px';
+    star.style.marginTop = (sy - size/2)+'px';
+    star.innerHTML = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10,0 L12.6,7.4 L20,10 L12.6,12.6 L10,20 L7.4,12.6 L0,10 L7.4,7.4 Z" fill="#e8d9ff"/></svg>';
+    sparkleLayer.appendChild(star);
+
+    var st0 = performance.now();
+    var sdur = 380 + Math.random()*160;
+    (function sstep(t){
+      var p = clamp((t-st0)/sdur, 0, 1);
+      var scale = lerp(0.3, 1, 1-Math.pow(1-p,3));
+      var op = p < 0.2 ? lerp(0,1,p/0.2) : lerp(1,0,(p-0.2)/0.8);
+      star.style.transform = 'scale('+scale+') rotate('+(p*90)+'deg)';
+      star.style.opacity = op;
+      if(p < 1){ requestAnimationFrame(sstep); }
+      else if(sparkleLayer.contains(star)){ sparkleLayer.removeChild(star); }
+    })(st0);
+  }
+
+  var lastSparkleAt = -9999;
+  /* ── flat wand sweep — moves the wand flat across the card, no perspective/rotateX ── */
+  function updateHand(elapsed){
+    if(!handWave) return;
+    var localT = elapsed - HAND_START;
+    var totalHand = HAND_DUR + HAND_FADE;
+    if(localT < 0 || localT > totalHand){
+      handWave.style.opacity = '0';
+      return;
+    }
+    var moveP = clamp(localT/HAND_DUR, 0, 1);
+    var e = easeInOutCubic(moveP);
+    var x = lerp(-150, 150, e);
+    var arc = -Math.sin(moveP*Math.PI) * 26;
+    var y = -18 + arc;
+    var rot = lerp(-25, 20, e);
+
+    var op;
+    if(localT < 90){ op = clamp(localT/90, 0, 1); }
+    else if(localT > HAND_DUR){ op = 1 - clamp((localT-HAND_DUR)/HAND_FADE, 0, 1); }
+    else { op = 1; }
+
+    handWave.style.transform = 'translate('+x+'px,'+y+'px) rotate('+rot+'deg)';
+    handWave.style.opacity = op;
+
+    if(moveP < 1 && elapsed - lastSparkleAt > 55){
+      lastSparkleAt = elapsed;
+      spawnSparkle(x, y, rot);
+    }
+  }
+
+  /* ── green checkmark badge — pops in once the wand sweep finishes ── */
+  function updateCheck(elapsed){
+    if(!checkBadge) return;
+    var localT = elapsed - CHECK_START;
+    if(localT < 0){
+      checkBadge.style.opacity = '0';
+      return;
+    }
+    var popP = clamp(localT/220, 0, 1);
+    var scale = Math.max(easeOutBack(popP), 0);
+    var op;
+    if(elapsed >= DISSOLVE_START){
+      op = 1 - clamp((elapsed - DISSOLVE_START)/400, 0, 1);
+    } else {
+      op = clamp(localT/120, 0, 1);
+    }
+    checkBadge.style.transform = 'translateY(-64px) scale('+scale+')';
+    checkBadge.style.opacity = op;
+  }
+
+  function tick(now){
+    var elapsed = now - t0;
+
+    if(elapsed < FALL_DUR){
+      var p  = clamp(elapsed/FALL_DUR, 0, 1);
+      var pe = easeOutBack(p);
+      var ty = lerp(40, 0, pe);
+      var sc = lerp(0.92, 1, easeOutCubic(p));
+      var op = clamp(p*3, 0, 1);
+      card.style.transform = 'translateY('+ty+'px) scale('+sc+')';
+      card.style.opacity   = op;
+    }
+
+    if(elapsed >= FALL_DUR && elapsed < DISSOLVE_START){
+      var hp = (elapsed - FALL_DUR) / HOLD_DUR;
+      var hov = Math.sin(hp * Math.PI) * 4;
+      card.style.transform = 'translateY('+(-hov)+'px) scale(1)';
+      card.style.opacity   = '1';
+    }
+
+    if(elapsed >= GLOW_START && elapsed < GLOW_START + 700){
+      var gp = clamp((elapsed - GLOW_START)/700, 0, 1);
+      var ease = easeOutQuint(gp);
+      var op2 = gp < 0.3 ? lerp(0, 0.9, gp/0.3) : lerp(0.9, 0, (gp-0.3)/0.7);
+      glowRing.style.borderColor = 'rgba(139,92,255,'+op2.toFixed(3)+')';
+      glowRing.style.transform = 'scale('+lerp(1,1.06,ease)+')';
+    } else if(elapsed >= GLOW_START + 700){
+      glowRing.style.borderColor = 'rgba(139,92,255,0)';
+      glowRing.style.transform = 'scale(1)';
+    }
+
+    if(elapsed >= DISSOLVE_START){
+      var dp = clamp((elapsed - DISSOLVE_START)/DISSOLVE_DUR, 0, 1);
+      var de = easeInCubic(dp);
+      var ty2 = lerp(0, -30, de);
+      var sc2 = lerp(1, 0.9, de);
+      var op3 = lerp(1, 0, de);
+      card.style.transform = 'translateY('+ty2+'px) scale('+sc2+')';
+      card.style.opacity   = op3;
+    }
+
+    if(elapsed >= BEAM_START && !tick._beamFired){
+      tick._beamFired = true;
+      fireTreasuryBeam();
+    }
+
+    updateHand(elapsed);
+    updateCheck(elapsed);
+
+    if(elapsed < TOTAL){
+      requestAnimationFrame(tick);
+    } else {
+      stage.style.display = 'none';
+    }
+  }
+
+  function startCardAnimation(){
+    if(startCardAnimation._done) return;
+    startCardAnimation._done = true;
+    t0 = performance.now();
+    tick._beamFired = false;
+    requestAnimationFrame(tick);
+  }
+
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          startCardAnimation();
+          io.disconnect();
+        }
+      });
+    }, {threshold: 0.4});
+    io.observe(heroVis);
+  } else {
+    // fallback for very old browsers without IntersectionObserver support
+    startCardAnimation();
+  }
+
+  function fireTreasuryBeam(){
+    var svg   = document.getElementById('beam-svg');
+    var vis   = document.getElementById('heroVis');
+    var tNode = document.getElementById('n-treasury');
+    if(!svg || !vis || !tNode) return;
+
+    var vr = vis.getBoundingClientRect();
+    var cx = vr.width / 2;
+    var cy = vr.height / 2;
+    var scaleX = 520 / vr.width;
+    var scaleY = 520 / vr.height;
+    var from = { x: cx * scaleX, y: cy * scaleY };
+
+    function getCenter(el){
+      var er = el.getBoundingClientRect();
+      return {
+        x: ((er.left + er.width/2  - vr.left)) * scaleX,
+        y: ((er.top  + er.height/2 - vr.top )) * scaleY
+      };
+    }
+
+    var to = getCenter(tNode);
+    [0, 90, 180].forEach(function(delay){
+      setTimeout(function(){
+        fireBeamSVG(svg, from, to, '#e0698f', 420, function(){
+          flashNodeEl(tNode);
+        });
+      }, delay);
+    });
+  }
+
+  function fireBeamSVG(svg, from, to, color, dur, cb){
+    var line = document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1', from.x); line.setAttribute('y1', from.y);
+    line.setAttribute('x2', from.x); line.setAttribute('y2', from.y);
+    line.setAttribute('stroke', color);
+    line.setAttribute('stroke-width','2');
+    line.setAttribute('stroke-linecap','round');
+    line.setAttribute('opacity','0.7');
+    svg.appendChild(line);
+
+    var dot = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    dot.setAttribute('r','6'); dot.setAttribute('fill', color);
+    dot.setAttribute('cx', from.x); dot.setAttribute('cy', from.y);
+    svg.appendChild(dot);
+
+    var t0b = performance.now();
+    (function step(t){
+      var p  = Math.min((t-t0b)/dur, 1);
+      var e  = 1 - Math.pow(1-p, 3);
+      var nx = from.x + (to.x - from.x) * e;
+      var ny = from.y + (to.y - from.y) * e;
+      dot.setAttribute('cx', nx); dot.setAttribute('cy', ny);
+      line.setAttribute('x2', nx); line.setAttribute('y2', ny);
+      line.setAttribute('opacity', (0.7*(1-p*0.75)).toString());
+      if(p < 1){ requestAnimationFrame(step); }
+      else {
+        if(svg.contains(dot)) svg.removeChild(dot);
+        if(svg.contains(line)) svg.removeChild(line);
+        if(cb) cb();
+      }
+    })(t0b);
+  }
+
+  function flashNodeEl(el){
+    if(!el) return;
+    el.style.boxShadow = '0 0 0 6px #e0698f';
+    setTimeout(function(){ el.style.boxShadow = ''; }, 600);
+  }
+})();
+/* ─── end card animation ─── */
+
+
+(function(){
+  var iframeA=document.getElementById('vimeoPlayer');
+  var iframeB=iframeA.cloneNode(true);
+  iframeB.removeAttribute('id');
+  iframeB.src=iframeA.src.replace('player_id=0','player_id=1').replace('autoplay=1','autoplay=0');
+  iframeA.style.zIndex='2';iframeA.style.opacity='1';
+  iframeB.style.zIndex='1';iframeB.style.opacity='0';
+  iframeA.parentNode.appendChild(iframeB);
+  var pA=new Vimeo.Player(iframeA);
+  var pB=new Vimeo.Player(iframeB);
+  var duration=null,activeIsA=true,PRELOAD_MARGIN=3.5,SWITCH_MARGIN=1.5,preloaded=false,switching=false;
+  pA.getDuration().then(function(d){duration=d;});
+  function getActive(){return activeIsA?{p:pA,el:iframeA}:{p:pB,el:iframeB};}
+  function getStandby(){return activeIsA?{p:pB,el:iframeB}:{p:pA,el:iframeA};}
+  function preloadStandby(){if(preloaded||switching)return;preloaded=true;var s=getStandby();s.p.setCurrentTime(0).then(function(){s.p.pause();}).catch(function(){});}
+  function doSwitch(){if(switching)return;switching=true;var a=getActive(),s=getStandby();s.el.style.zIndex='2';a.el.style.zIndex='1';s.el.style.opacity='1';a.el.style.opacity='0';s.p.play();a.p.pause();activeIsA=!activeIsA;preloaded=false;setTimeout(function(){switching=false;},250);}
+  function onTime(which){return function(data){var isActiveCall=(which==='A'&&activeIsA)||(which==='B'&&!activeIsA);if(!isActiveCall||duration===null)return;var remaining=duration-data.seconds;if(remaining<=PRELOAD_MARGIN&&remaining>SWITCH_MARGIN)preloadStandby();if(remaining<=SWITCH_MARGIN)doSwitch();};}
+  pA.on('timeupdate',onTime('A'));
+  pB.on('timeupdate',onTime('B'));
+})();
+
+(function(){
+  var banner=document.getElementById('capitalBanner');
+  var lastY=window.scrollY,ticking=false;
+  function update(){var y=window.scrollY;if(y<10){banner.classList.remove('banner-hidden');}else if(y>lastY){banner.classList.add('banner-hidden');}else{banner.classList.remove('banner-hidden');}lastY=y;ticking=false;}
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});
+})();
+
+(function(){
+  var vis=document.getElementById('heroVis'),svg=document.getElementById('beam-svg');
+  var nodeIds=['n-gateway','n-settle','n-ai','n-treasury','n-comply'];
+  var nodeColors={'n-gateway':'#4a9eea','n-settle':'#3ecf8e','n-ai':'#e0a840','n-treasury':'#e0698f','n-comply':'#b785ff'};
+  var nodeLabels={'n-gateway':'Payment Gateway','n-settle':'Settlement Layer','n-ai':'AI Processing','n-treasury':'Treasury Sync','n-comply':'Compliance'};
+  var tooltip=document.createElement('div');
+  tooltip.style.cssText='position:absolute;background:rgba(10,8,20,0.95);color:white;font-size:11px;font-weight:700;letter-spacing:0.06em;padding:6px 12px;border-radius:999px;pointer-events:none;opacity:0;transition:opacity 0.18s ease;white-space:nowrap;z-index:100;border:1px solid rgba(255,255,255,0.15);';
+  vis.style.position='relative';
+  vis.appendChild(tooltip);
+  nodeIds.forEach(function(id){
+    var el=document.getElementById(id);
+    if(!el)return;
+    el.style.cursor='pointer';
+    el.style.transition='transform 0.25s ease, box-shadow 0.25s ease';
+    el.addEventListener('mouseenter',function(){
+      el.style.transform='translate(-50%,-50%) scale(1.22)';
+      el.style.boxShadow='0 0 0 6px currentColor';
+      var vr=vis.getBoundingClientRect(),er=el.getBoundingClientRect();
+      var cx=er.left-vr.left+er.width/2;
+      var cy=er.top-vr.top-16;
+      tooltip.textContent=nodeLabels[id];
+      tooltip.style.left=cx+'px';tooltip.style.top=cy+'px';
+      tooltip.style.transform='translateX(-50%) translateY(-100%)';tooltip.style.opacity='1';
+      nodeIds.forEach(function(id2){if(id2===id)return;var el2=document.getElementById(id2);if(!el2)return;setTimeout(function(){fireBeam(getCenter(el),getCenter(el2),nodeColors[id],400,function(){flashNode(id2);});},Math.random()*120);});
+      for(var i=0;i<3;i++){(function(delay){setTimeout(function(){fireBeam({x:260,y:260},getCenter(el),nodeColors[id],300,null);},delay);})(i*100);}
+    });
+    el.addEventListener('mouseleave',function(){el.style.transform='translate(-50%,-50%) scale(1)';el.style.boxShadow='';tooltip.style.opacity='0';});
+    el.addEventListener('click',function(){for(var i=0;i<5;i++){(function(delay){setTimeout(function(){var id2=nodeIds[Math.floor(Math.random()*nodeIds.length)];if(id2!==id){fireBeam(getCenter(el),getCenter(document.getElementById(id2)),nodeColors[id],350,function(){flashNode(id2);});}},delay);})(i*80);}});
+  });
+  var core=document.querySelector('.core');
+  if(core){core.style.cursor='pointer';core.addEventListener('mouseenter',function(){core.style.transform='scale(1.15)';nodeIds.forEach(function(id){setTimeout(function(){var el=document.getElementById(id);if(el){fireBeam({x:260,y:260},getCenter(el),nodeColors[id],500,function(){flashNode(id);});}},Math.random()*200);});});core.addEventListener('mouseleave',function(){core.style.transform='';});}
+  function getCenter(el){var vr=vis.getBoundingClientRect(),er=el.getBoundingClientRect();return{x:(er.left+er.width/2-vr.left)*(520/vr.width),y:(er.top+er.height/2-vr.top)*(520/vr.height)};}
+  function fireBeam(from,to,color,dur,cb){var line=document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1',from.x);line.setAttribute('y1',from.y);line.setAttribute('x2',from.x);line.setAttribute('y2',from.y);line.setAttribute('stroke',color);line.setAttribute('stroke-width','1.5');line.setAttribute('stroke-linecap','round');line.setAttribute('opacity','0.55');svg.appendChild(line);var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('r','5');dot.setAttribute('fill',color);dot.setAttribute('cx',from.x);dot.setAttribute('cy',from.y);svg.appendChild(dot);var t0=performance.now();(function step(t){var p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);var nx=from.x+(to.x-from.x)*e,ny=from.y+(to.y-from.y)*e;dot.setAttribute('cx',nx);dot.setAttribute('cy',ny);line.setAttribute('x2',nx);line.setAttribute('y2',ny);line.setAttribute('opacity',(0.55*(1-p*0.8)).toString());if(p<1)requestAnimationFrame(step);else{if(svg.contains(dot))svg.removeChild(dot);if(svg.contains(line))svg.removeChild(line);if(cb)cb();}})(t0);}
+  function flashNode(id){var el=document.getElementById(id);if(!el)return;el.style.boxShadow='0 0 0 5px currentColor';setTimeout(function(){el.style.boxShadow='';},500);}
+  function runTx(){var id=nodeIds[Math.floor(Math.random()*nodeIds.length)],el=document.getElementById(id);if(!el)return;var to=getCenter(el),color=nodeColors[id];fireBeam({x:260,y:260},to,color,720,function(){flashNode(id);if(Math.random()>0.45){var id2=nodeIds[Math.floor(Math.random()*nodeIds.length)];if(id2!==id){var el2=document.getElementById(id2);if(el2){var to2=getCenter(el2);setTimeout(function(){fireBeam(to,to2,nodeColors[id2],600,function(){flashNode(id2);});},60);}}}});}
+  function schedule(){setTimeout(function(){runTx();schedule();},850+Math.random()*750);}
+  setTimeout(function(){runTx();schedule();},800);
+})();
+
+function openCalendly(){
+  if(document.getElementById('calendlyOverlay'))return;
+  var overlay=document.createElement('div');
+  overlay.id='calendlyOverlay';
+  overlay.className='calendly-overlay';
+  overlay.innerHTML='<div class="calendly-modal"><div class="calendly-modal-header"><span>&#128197; Book a Meeting</span><button class="calendly-modal-close" onclick="closeCalendly()" aria-label="Close">&times;</button></div><iframe src="https://calendly.com/wintellex" title="Book a meeting with Wintellex"></iframe></div>';
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeCalendly();});
+  document.body.style.overflow='hidden';
+}
+function closeCalendly(){var overlay=document.getElementById('calendlyOverlay');if(overlay)overlay.remove();document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeCalendly();closeDNSMI();}});
+
+function openDNSMI(){
+  var overlay=document.getElementById('dnsmiOverlay');
+  overlay.style.display='flex';
+  document.body.style.overflow='hidden';
+  restoreDNSMIForm();
+}
+function restoreDNSMIForm(){
+  var body=document.getElementById('dnsmiBody');
+  body.innerHTML=
+    '<p>Under applicable privacy laws including the CCPA, you have the right to opt out of the sale or sharing of your personal information. Please select your preference below. For more details, see our <a href="https://www.wintellex.com/privacy" target="_blank">Privacy Policy</a>.</p>'
+    +'<div class="dnsmi-options" role="radiogroup" aria-label="Privacy preference options">'
+    +'<label class="dnsmi-option" id="opt-all"><input type="radio" name="dnsmi" value="all" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Opt out of all sharing</strong><span>Stop the sale and sharing of your personal information for advertising, analytics, and third-party purposes.</span></div></label>'
+    +'<label class="dnsmi-option" id="opt-ads"><input type="radio" name="dnsmi" value="ads" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Opt out of targeted advertising only</strong><span>Limit sharing to targeted advertising while allowing essential operational and analytics data sharing.</span></div></label>'
+    +'<label class="dnsmi-option" id="opt-retain"><input type="radio" name="dnsmi" value="retain" onchange="selectDNSMI(this)"><div class="dnsmi-option-text"><strong>Keep my current settings</strong><span>No changes will be made to how your current sharing settings.</span></div></label>'
+    +'</div>'
+    +'<div class="dnsmi-footer"><button class="dnsmi-cancel" onclick="closeDNSMI()">Cancel</button><button class="dnsmi-confirm" id="dnsmiConfirm" onclick="confirmDNSMI()" disabled>Save Preference</button></div>';
+}
+function closeDNSMI(){
+  var overlay=document.getElementById('dnsmiOverlay');
+  overlay.style.display='none';
+  document.body.style.overflow='';
+}
+function selectDNSMI(radio){
+  document.querySelectorAll('.dnsmi-option').forEach(function(o){o.classList.remove('selected');});
+  radio.closest('.dnsmi-option').classList.add('selected');
+  document.getElementById('dnsmiConfirm').disabled=false;
+}
+function confirmDNSMI(){
+  var selected=document.querySelector('input[name="dnsmi"]:checked');
+  if(!selected)return;
+  var val=selected.value;
+  var messages={
+    'all':'Your preference has been saved. We will no longer sell or share your personal information with third parties.',
+    'ads':'Your preference has been saved. You have been opted out of targeted advertising data sharing.',
+    'retain':'No changes have been made. Your current sharing settings remain in place.'
+  };
+  try{localStorage.setItem('wintellex_dnsmi',val);}catch(e){}
+  document.getElementById('dnsmiBody').innerHTML=
+    '<div class="dnsmi-success">'
+    +'<span class="dnsmi-check">&#10003;</span>'
+    +'<h3>Preference Saved</h3>'
+    +'<p>'+messages[val]+'</p>'
+    +'</div>'
+    +'<div class="dnsmi-footer" style="justify-content:center;margin-top:24px;"><button class="dnsmi-confirm" onclick="closeDNSMI()">Done</button></div>';
+}
+document.getElementById('dnsmiOverlay').addEventListener('click',function(e){if(e.target===this)closeDNSMI();});
+
+function showPrivacyBar(){if(!localStorage.getItem('privacyAccepted'))document.getElementById('privacyBar').classList.add('show');}
+function acceptPrivacy(){localStorage.setItem('privacyAccepted','true');document.getElementById('privacyBar').classList.remove('show');}
+
+var FAQ_RULES=[
+  {keywords:['book','appointment','schedule','call','meeting','demo','consult'],reply:"I'd love to help you set that up — tap the button below to pick a time directly on our team's calendar.",showBookButton:true},
+  {keywords:['price','pricing','cost','how much','fee'],reply:"Wintellex pricing is tailored to each organization's transaction volume and modules used. For an accurate quote, our sales team can walk you through it directly.",showBookButton:true},
+  {keywords:['contact','sales','talk to','speak to','human','representative','agent'],reply:"I can point you to our team right away — book a time directly below.",showBookButton:true},
+  {keywords:['what is wintellex','what does wintellex do','about wintellex','what do you do','what is this'],reply:"Wintellex is a unified financial infrastructure platform for enterprises — bringing payment orchestration, treasury coordination, contract intelligence, and workflow automation into one connected system."},
+  {keywords:['settlement','settle','routing','route'],reply:"Our Global Settlement layer handles enterprise-grade transaction routing and financial coordination across distributed systems, with sub-second cross-border settlement."},
+  {keywords:['treasury'],reply:"Treasury Coordination gives you real-time visibility across liquidity, receivables, and obligations, with programmable treasury operations built for scale."},
+  {keywords:['contract'],reply:"Contract Intelligence connects agreements, workflows, and documentation across departments and partners — reducing manual handoffs and keeping execution on track."},
+  {keywords:['automation','workflow'],reply:"Enterprise Automation lets you build repeatable workflows that cut down on manual coordination and improve infrastructure-level control."},
+  {keywords:['api','developer','integrate','integration'],reply:"We offer developer-ready Enterprise APIs for secure integrations. You can find documentation and access details at wintellex.com/developers."},
+  {keywords:['secure','security','safe','compliance','compliant'],reply:"Security and compliance are core to our infrastructure — built around controlled access, operational visibility, and practices designed for sensitive financial workflows. Banking services are provided by FDIC member institutions."},
+  {keywords:['uptime','reliable','reliability'],reply:"We target 99.99% infrastructure uptime, with a global, cross-border system architecture built for enterprise scale."},
+  {keywords:['volume','how big','how much processed','scale'],reply:"Wintellex processes $20B+ annually across 120+ enterprise workflow modules, with infrastructure designed to operate at global scale."},
+  {keywords:['ai','fraud','machine learning'],reply:"Our AI Infrastructure layer powers machine-assisted workflows, including AI-driven fraud detection and automated transaction processing."},
+  {keywords:['hello','hi','hey'],reply:"Hello! How can I help — would you like to know more about our platform, or book a call with our team?"},
+  {keywords:['thank','thanks'],reply:"You're very welcome! Let me know if there's anything else you'd like to know about Wintellex."}
+];
+var FALLBACK_REPLY="I don't have a specific answer for that here, but our team can help directly. You can book a call below, or ask me about payments, treasury, settlement, security, or pricing.";
+function matchFAQ(message){var lower=message.toLowerCase();for(var i=0;i<FAQ_RULES.length;i++){var rule=FAQ_RULES[i];for(var j=0;j<rule.keywords.length;j++){if(lower.indexOf(rule.keywords[j])!==-1){return rule;}}}return null;}
+var isBusy=false;
+function toggleChat(){document.getElementById('chatWindow').classList.toggle('open');}
+function addMessage(text,role){var body=document.getElementById('chatBody'),div=document.createElement('div');div.className='chat-message '+role;div.textContent=text;body.appendChild(div);body.scrollTop=body.scrollHeight;return div;}
+function addTyping(){var body=document.getElementById('chatBody'),div=document.createElement('div');div.className='chat-message bot';div.innerHTML='<span>&#8226;&#8226;&#8226;</span>';body.appendChild(div);body.scrollTop=body.scrollHeight;return div;}
+function addBookButton(){var body=document.getElementById('chatBody');var btn=document.createElement('button');btn.className='book-btn';btn.innerHTML='&#128197; Book an Appointment';btn.onclick=function(){openCalendly();};body.appendChild(btn);body.scrollTop=body.scrollHeight;}
+function sendMessage(){if(isBusy)return;var input=document.getElementById('chatInput'),msg=input.value.trim();if(!msg)return;var chipRow=document.getElementById('chipRow');if(chipRow)chipRow.style.display='none';input.value='';isBusy=true;document.getElementById('sendBtn').disabled=true;addMessage(msg,'user');var typingEl=addTyping();setTimeout(function(){typingEl.remove();var rule=matchFAQ(msg);var replyText=rule?rule.reply:FALLBACK_REPLY;addMessage(replyText,'bot');if((rule&&rule.showBookButton)||!rule){addBookButton();}isBusy=false;document.getElementById('sendBtn').disabled=false;document.getElementById('chatInput').focus();},500+Math.random()*400);}
+function quickAsk(question){document.getElementById('chatInput').value=question;sendMessage();}
+window.onload=showPrivacyBar;
+
+(function(){
+  var overlay=document.getElementById('bottomBlur');
+  function updateBlur(){var scrolled=window.scrollY+window.innerHeight;var total=document.documentElement.scrollHeight;var distFromBottom=total-scrolled;if(distFromBottom<80){overlay.style.opacity=Math.max(0,distFromBottom/80);}else{overlay.style.opacity='1';}}
+  window.addEventListener('scroll',updateBlur,{passive:true});
+  updateBlur();
+})();
+</script>
+</body>
+</html>
