@@ -17,6 +17,52 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{background:var(--soft);color:var(--text);font-family:'Scale Variable','Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden;}
 
+/* TOP ACCENT STRIP */
+.accent{
+  position:fixed; top:0; left:0; width:100%; height:5px;
+  background:linear-gradient(90deg,#2d0950,#3d0f73,#5e1ab8,#2d0950);
+  background-size:200%;
+  animation:shimmer 8s linear infinite;
+  z-index:7000;
+}
+@keyframes shimmer{from{background-position:0%;}to{background-position:200%;}}
+
+/* SITE HEADER (logo bar + nav) */
+.site-header{width:100%;display:flex;flex-direction:column;}
+.logo-bar{
+  position:fixed; top:5px; left:0; width:100%; z-index:6500;
+  background:linear-gradient(135deg,var(--deep),var(--purple));
+  display:flex; align-items:center; justify-content:center;
+  padding:8px 24px;
+  box-shadow:0 10px 28px rgba(45,9,80,0.3);
+}
+.logo-bar a{ display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
+.logo-bar img{ height:62px; width:auto; display:block; }
+@media(max-width:480px){ .logo-bar{ padding:6px 20px; } .logo-bar img{ height:37px; } }
+
+.main-nav{width:100%;margin-top:83px;background:#1c1233;border-top:1px solid rgba(139,92,255,0.15);border-bottom:1px solid rgba(139,92,255,0.15);box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+@media(max-width:480px){.main-nav{margin-top:58px;}}
+.main-nav-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:12px;min-height:64px;}
+.nav-link{color:#b8aed4;text-decoration:none;font-size:16px;font-weight:700;letter-spacing:0.01em;padding:22px 22px;position:relative;transition:color 0.2s ease;white-space:nowrap;}
+.nav-link:hover{color:#ffffff;}
+.nav-link::after{content:'';position:absolute;left:22px;right:22px;bottom:0;height:3px;background:linear-gradient(90deg,#8b5cff,#b785ff);transform:scaleX(0);transform-origin:center;transition:transform 0.2s ease;}
+.nav-link:hover::after{transform:scaleX(1);}
+.nav-link.nav-login{margin-left:8px;color:#e8dcff;border:1.5px solid rgba(139,92,255,0.4);border-radius:999px;padding:11px 26px;}
+.nav-link.nav-login:hover{background:rgba(139,92,255,0.12);border-color:rgba(139,92,255,0.7);color:#ffffff;}
+.nav-link.active{color:#ffffff;}
+.nav-link.active::after{transform:scaleX(1);}
+.nav-toggle{display:none;background:none;border:none;color:#f0ecfb;font-size:24px;cursor:pointer;padding:10px;margin:6px 0;}
+@media(max-width:780px){
+  .main-nav-inner{justify-content:space-between;padding:0 20px;flex-wrap:wrap;}
+  .nav-toggle{display:flex;align-items:center;justify-content:center;order:1;}
+  .nav-links{display:none;width:100%;flex-direction:column;align-items:stretch;text-align:center;order:2;padding-bottom:10px;}
+  .nav-links.nav-open{display:flex;}
+  .nav-link{padding:12px 18px;border-bottom:1px solid rgba(139,92,255,0.1);}
+  .nav-link::after{display:none;}
+  .nav-link.nav-login{margin:8px 18px 0;}
+}
+/* END SITE HEADER */
+
 /* PAGE HEADER */
 .page-header{padding:80px 40px 80px;background:linear-gradient(160deg,#0d0920 0%,#1a0840 50%,#0a0514 100%);color:white;text-align:center;position:relative;overflow:hidden;}
 .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(139,92,255,0.25) 0%,transparent 60%);pointer-events:none;}
@@ -79,6 +125,28 @@ footer{background:#0d0a19;padding:70px 24px 0;color:#aaa;}
 </style>
 </head>
 <body>
+
+<div class="accent"></div>
+
+<div class="site-header">
+  <div class="logo-bar">
+    <a href="https://www.wintellex.com"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a>
+  </div>
+  <nav class="main-nav" aria-label="Primary">
+    <div class="main-nav-inner">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link" href="https://www.wintellex.com/home">Home</a>
+        <a class="nav-link" href="https://www.wintellex.com/pricing">Pricing</a>
+        <a class="nav-link" href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+        <a class="nav-link" href="https://www.wintellex.com/about">About</a>
+        <a class="nav-link" href="https://www.wintellex.com/developers">Developers</a>
+        <a class="nav-link active" href="https://www.wintellex.com/partners">Partners</a>
+        <a class="nav-link nav-login" href="https://www.wintellex.com/login">Login</a>
+      </div>
+    </div>
+  </nav>
+</div>
 
 <!-- PAGE HEADER -->
 <section class="page-header">
@@ -335,6 +403,16 @@ function filter(cat, btn) {
     }
   });
 }
+
+(function(){
+  var toggle=document.getElementById('navToggle');
+  var links=document.getElementById('navLinks');
+  if(!toggle||!links)return;
+  toggle.addEventListener('click',function(){
+    var open=links.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+  });
+})();
 </script>
 </body>
 </html>
