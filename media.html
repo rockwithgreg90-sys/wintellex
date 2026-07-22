@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wintellex — Media</title>
+<link rel="stylesheet" href="https://use.typekit.net/eqv7jlu.css">
+<style>
+:root{
+  --purple:#5e1ab8;
+  --deep-purple:#2d0950;
+  --soft:#f8f7f4;
+  --cream:#f0ede6;
+  --text:#1f1f1f;
+  --muted:#666;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{
+  background:var(--soft);
+  color:var(--text);
+  font-family:'Scale Variable','Inter',system-ui,sans-serif;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+.accent{
+  position:fixed; top:0; left:0; width:100%; height:5px; z-index:9000;
+  background:linear-gradient(90deg,#2d0950,#5e1ab8,#8d62ff,#2d0950);
+  background-size:220%; animation:flow 8s linear infinite;
+}
+@keyframes flow{ 0%{background-position:0%;} 100%{background-position:220%;} }
+
+.logo-bar{
+  position:relative; top:0; left:0; width:100%; z-index:8000;
+  background:linear-gradient(135deg,var(--deep-purple),var(--purple));
+  display:flex; align-items:center; justify-content:center;
+  padding:8px 24px;
+  box-shadow:0 10px 28px rgba(45,9,80,0.3);
+}
+.logo-bar a{ display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
+.logo-bar img{ height:62px; width:auto; display:block; }
+@media(max-width:480px){
+  .logo-bar{ padding:6px 20px; }
+  .logo-bar img{ height:37px; }
+}
+
+.container{ max-width:1180px; margin:0 auto; }
+
+/* Header */
+.media-header{
+  padding:90px 24px 70px;
+  background:radial-gradient(circle at top,#341060 0%,#140a24 42%,#060609 100%);
+  color:white;
+}
+.eyebrow{
+  color:#bb95ff; font-size:13px; text-transform:uppercase;
+  letter-spacing:0.16em; font-weight:800; margin-bottom:18px;
+}
+.media-header h1{
+  font-size:clamp(40px,6vw,64px); line-height:1.02;
+  font-weight:780; letter-spacing:-0.05em; margin-bottom:18px;
+  max-width:760px;
+}
+.media-header p{
+  font-size:clamp(16px,1.6vw,19px); color:#d7d1e7; max-width:620px;
+}
+
+/* Featured */
+.featured-section{ padding:70px 24px 30px; background:var(--soft); }
+.featured-label{
+  font-size:12px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--purple); margin-bottom:18px;
+}
+.featured-grid{
+  display:grid; grid-template-columns:1.3fr 0.9fr; gap:48px; align-items:start;
+}
+.video-frame{
+  position:relative; width:100%; aspect-ratio:16/9; border-radius:24px;
+  overflow:hidden; background:#0d0a19; box-shadow:0 30px 70px rgba(45,9,80,0.18);
+}
+.video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+.featured-copy h2{
+  font-size:clamp(26px,3vw,34px); line-height:1.15; letter-spacing:-0.03em;
+  color:var(--deep-purple); margin-bottom:14px;
+}
+.featured-copy p{ color:var(--muted); font-size:16px; margin-bottom:22px; }
+.founder-tag{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:13px; font-weight:700; color:var(--deep-purple);
+  background:#efe6ff; border:1px solid #ddc9ff; padding:8px 16px; border-radius:999px;
+}
+.founder-dot{ width:7px; height:7px; border-radius:50%; background:var(--purple); }
+
+/* Archive list */
+.archive-section{ padding:60px 24px 80px; background:var(--soft); }
+.archive-list{ border-top:1px solid #e3d8f7; }
+.archive-row{
+  display:grid; grid-template-columns:64px 1.6fr 1fr; gap:28px;
+  align-items:center; padding:28px 0;
+  border-bottom:1px solid #e3d8f7;
+  text-decoration:none; color:inherit;
+  transition:background 0.2s ease;
+  background:none; border-left:none; border-right:none; border-top:none;
+  width:100%; text-align:left; cursor:pointer;
+  font-family:inherit;
+}
+.archive-row:hover{ background:rgba(94,26,184,0.04); }
+.archive-index{
+  font-size:13px; font-weight:800; color:var(--purple); letter-spacing:0.04em;
+}
+.archive-titlewrap h3{
+  font-size:19px; font-weight:700; color:var(--deep-purple); margin-bottom:4px;
+  letter-spacing:-0.01em;
+}
+.archive-titlewrap span{ font-size:14px; color:var(--muted); }
+.archive-meta{
+  display:flex; align-items:center; justify-content:flex-end; gap:10px;
+  font-size:13px; font-weight:700; color:var(--purple);
+}
+.play-glyph{
+  width:30px; height:30px; border-radius:50%; background:var(--deep-purple);
+  color:white; display:flex; align-items:center; justify-content:center;
+  font-size:11px; flex-shrink:0;
+}
+
+/* Book CTA section */
+.book-cta-section{
+  padding:80px 24px 100px;
+  background:radial-gradient(circle at 60% 50%, #34105e 0%, #0b0912 65%);
+}
+.book-cta-inner{
+  max-width:1180px; margin:0 auto;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:36px;
+  padding:64px 60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:48px;
+  backdrop-filter:blur(16px);
+}
+.book-cta-text .eyebrow{ color:#bb95ff; margin-bottom:14px; }
+.book-cta-text h2{
+  font-size:clamp(28px,4vw,48px);
+  font-weight:780;
+  letter-spacing:-0.05em;
+  line-height:1.06;
+  color:white;
+  margin-bottom:14px;
+}
+.book-cta-text p{
+  font-size:17px;
+  color:#d7d1e7;
+  max-width:520px;
+}
+.book-cta-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:18px 34px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#5e1ab8,#8b5cff);
+  color:white;
+  font-size:16px;
+  font-weight:800;
+  border:none;
+  cursor:pointer;
+  font-family:inherit;
+  white-space:nowrap;
+  box-shadow:0 20px 50px rgba(94,26,184,0.4);
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+.book-cta-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 28px 60px rgba(94,26,184,0.55);
+}
+.book-cta-btn .cal-icon{
+  width:22px; height:22px; flex-shrink:0;
+  background:rgba(255,255,255,0.18);
+  border-radius:6px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px;
+}
+
+/* Floating book button */
+.float-book{
+  position:fixed;
+  bottom:30px; right:30px;
+  width:62px; height:62px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#2d0950,#5e1ab8);
+  color:white;
+  border:none;
+  cursor:pointer;
+  font-size:24px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 10px 30px rgba(94,26,184,0.45);
+  z-index:10000;
+  transition:transform 0.25s ease;
+}
+.float-book:hover{ transform:scale(1.1); }
+@media(max-width:768px){
+  .float-book{ bottom:16px; right:16px; width:54px; height:54px; font-size:20px; }
+}
+
+/* Calendly modal */
+.calendly-overlay{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,0.65);
+  z-index:20000;
+  display:flex; align-items:center; justify-content:center;
+  animation:fadeInOv 0.2s ease;
+}
+@keyframes fadeInOv{ from{opacity:0;} to{opacity:1;} }
+.calendly-modal{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  width:90%; max-width:720px;
+  height:82vh;
+  display:flex; flex-direction:column;
+  animation:slideUpMd 0.25s ease;
+}
+@keyframes slideUpMd{ from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+.calendly-modal-header{
+  background:linear-gradient(135deg,#2d0950,#5e1ab8);
+  padding:16px 22px;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-shrink:0;
+}
+.calendly-modal-header span{ color:white; font-weight:700; font-size:15px; }
+.calendly-modal-close{
+  color:white; cursor:pointer; font-size:26px; line-height:1;
+  padding:6px 10px; margin:-6px -10px;
+  opacity:0.85; transition:opacity 0.15s;
+  background:none; border:none; font-family:inherit;
+}
+.calendly-modal-close:hover{ opacity:1; }
+.calendly-modal iframe{ flex:1; border:none; width:100%; }
+
+/* Video modal */
+.video-overlay{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,0.78);
+  z-index:20000;
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;
+  animation:fadeInOv 0.2s ease;
+}
+.video-modal{
+  background:#0d0a19;
+  border-radius:20px;
+  overflow:hidden;
+  width:100%; max-width:920px;
+  display:flex; flex-direction:column;
+  animation:slideUpMd 0.25s ease;
+  box-shadow:0 40px 90px rgba(0,0,0,0.5);
+}
+.video-modal-header{
+  background:linear-gradient(135deg,#2d0950,#5e1ab8);
+  padding:16px 22px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:16px;
+  flex-shrink:0;
+}
+.video-modal-header span{
+  color:white; font-weight:700; font-size:15px;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.video-modal-close{
+  color:white; cursor:pointer; font-size:26px; line-height:1;
+  padding:6px 10px; margin:-6px -10px;
+  opacity:0.85; transition:opacity 0.15s;
+  background:none; border:none; font-family:inherit;
+  flex-shrink:0;
+}
+.video-modal-close:hover{ opacity:1; }
+.video-modal-body{
+  position:relative; width:100%; aspect-ratio:16/9; background:#000;
+}
+.video-modal-body iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+@media(max-width:600px){
+  .calendly-modal{ width:100%; height:100%; border-radius:0; }
+  .video-overlay{ padding:0; }
+  .video-modal{ max-width:100%; border-radius:0; height:100%; justify-content:center; }
+  .book-cta-inner{ flex-direction:column; text-align:center; padding:40px 28px; }
+  .book-cta-text p{ max-width:100%; }
+}
+@media(max-width:860px){
+  .featured-grid{ grid-template-columns:1fr; gap:28px; }
+  .archive-row{ grid-template-columns:40px 1fr; row-gap:10px; }
+  .archive-meta{ grid-column:2; justify-content:flex-start; }
+  .book-cta-inner{ flex-direction:column; text-align:center; padding:44px 32px; gap:32px; }
+}
+
+/* Footer */
+footer{ background:#0d0a19; padding:70px 24px 0; color:#aaa; }
+.footer-grid{
+  max-width:1180px; margin:0 auto 50px;
+  display:grid; grid-template-columns:2fr repeat(4,1fr); gap:36px;
+}
+.footer-brand-logo{ height:48px; width:auto; display:block; margin-bottom:16px; }
+.footer-brand p{ max-width:360px; color:#aaa; }
+.footer-col h4{ margin-bottom:16px; color:#d4b8ff; font-size:13px; text-transform:uppercase; letter-spacing:0.06em; }
+.footer-col a{ display:block; margin-bottom:10px; color:#aaa; text-decoration:none; font-size:13px; transition:color 0.2s; }
+.footer-col a:hover{ color:#d4b8ff; }
+.footer-bottom{
+  max-width:1180px; margin:0 auto; border-top:1px solid rgba(255,255,255,0.1);
+  padding-top:28px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+}
+.footer-bottom p{ color:#aaa; }
+.socials{ display:flex; align-items:center; gap:16px; }
+.socials a{ text-decoration:none; font-size:22px; color:#ccc; transition:color 0.2s; }
+.socials a:hover{ color:#d4b8ff; }
+.footer-legal{
+  max-width:1180px; margin:0 auto; padding:28px 0 40px;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+.footer-legal p{ font-size:12px; color:#666; line-height:1.9; }
+.footer-legal a{ color:#666; text-decoration:underline; }
+.footer-legal a:hover{ color:#b785ff; }
+@media(max-width:860px){
+  .footer-grid{ grid-template-columns:1fr; }
+  .footer-bottom{ flex-direction:column; text-align:center; }
+  .socials{ justify-content:center; }
+}
+</style>
+</head>
+<body>
+
+<div class="accent"></div>
+
+<div class="logo-bar">
+  <a href="https://www.wintellex.com"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a>
+</div>
+
+<header class="media-header">
+  <div class="container">
+    <div class="eyebrow">Media</div>
+    <h1>Conversations on infrastructure, from our team.</h1>
+    <p>A running archive of videos covering how Wintellex is built — compliance, scale, product, and what we're building toward next.</p>
+  </div>
+</header>
+
+<section class="featured-section">
+  <div class="container">
+    <div class="featured-label">Latest</div>
+    <div class="featured-grid">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/BJIbciISj5o" title="Wintellex video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="featured-copy">
+        <span class="founder-tag"><span class="founder-dot"></span>From the Team</span>
+        <h2 style="margin-top:18px;">Inside Wintellex's Compliance Infrastructure</h2>
+        <p>How Wintellex approaches compliance across payments, treasury, and enterprise workflows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="archive-section">
+  <div class="container">
+    <div class="archive-list">
+
+      <button type="button" class="archive-row" onclick="openVideo('88uBZi_1IjQ', this)">
+        <div class="archive-index">01</div>
+        <div class="archive-titlewrap">
+          <h3>Inside Wintellex's Growth: $20B in Volume, $1.6B in Revenue P.2</h3>
+          <span>The numbers behind our growth, continued.</span>
+        </div>
+        <div class="archive-meta"><span class="play-glyph">▶</span> Watch</div>
+      </button>
+
+      <button type="button" class="archive-row" onclick="openVideo('mOmnflZxZDc', this)">
+        <div class="archive-index">02</div>
+        <div class="archive-titlewrap">
+          <h3>Built for Institutions: Wintellex's Enterprise Infrastructure</h3>
+          <span>Why enterprises and institutions choose Wintellex.</span>
+        </div>
+        <div class="archive-meta"><span class="play-glyph">▶</span> Watch</div>
+      </button>
+
+      <button type="button" class="archive-row" onclick="openVideo('N3TZWxorwkw', this)">
+        <div class="archive-index">03</div>
+        <div class="archive-titlewrap">
+          <h3>What It Actually Costs to Run on Wintellex</h3>
+          <span>A clear look at Wintellex pricing.</span>
+        </div>
+        <div class="archive-meta"><span class="play-glyph">▶</span> Watch</div>
+      </button>
+
+      <button type="button" class="archive-row" onclick="openVideo('qVvzcDF7xtc', this)">
+        <div class="archive-index">04</div>
+        <div class="archive-titlewrap">
+          <h3>Inside Wintellex's Growth: $20B in Volume, $1.6B in Revenue P.1</h3>
+          <span>The numbers behind our growth.</span>
+        </div>
+        <div class="archive-meta"><span class="play-glyph">▶</span> Watch</div>
+      </button>
+
+      <button type="button" class="archive-row" onclick="openVideo('2D_fX06zVh0', this)">
+        <div class="archive-index">05</div>
+        <div class="archive-titlewrap">
+          <h3>Inside Wintellex's Compliance Infrastructure</h3>
+          <span>How Wintellex approaches compliance across payments, treasury, and enterprise workflows.</span>
+        </div>
+        <div class="archive-meta"><span class="play-glyph">▶</span> Watch</div>
+      </button>
+
+      <button type="button" class="archive-row" onclick="openVideo('GIAENeaOP3I', this)">
+        <div class="archive-index">06</div>
+        <div class="archive-titlewrap">
+          <h3>Scaling Financial Infrastructure: The Wintellex Approach</h3>
+          <span>How we built Wintellex to operate at global scale.</span>
+        </div>
+        <div class="archive-meta"><span class="play-glyph">▶</span> Watch</div>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- Book a Meeting CTA -->
+<section class="book-cta-section">
+  <div class="book-cta-inner">
+    <div class="book-cta-text">
+      <div class="eyebrow">Talk to Us</div>
+      <h2>Ready to see it in action?</h2>
+      <p>Book a call with the Wintellex team — we'll walk you through the platform and answer any questions about infrastructure, pricing, or integrations.</p>
+    </div>
+    <button class="book-cta-btn" onclick="openCalendly()">
+      <span class="cal-icon">&#128197;</span>
+      Book a Meeting
+    </button>
+  </div>
+</section>
+
+<!-- Floating book button -->
+<button class="float-book" onclick="openCalendly()" aria-label="Book a meeting">&#128197;</button>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" class="footer-brand-logo">
+      <p>Intelligent payment infrastructure for modern organizations and scalable financial systems.</p>
+      <p style="margin-top:18px;font-size:14px;line-height:1.7;color:#666;">1910 Pacific Ave Suite 2000<br>Dallas, TX 75201<br>United States</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="https://www.wintellex.com/about">About</a>
+      <a href="https://www.wintellex.com/careers">Careers</a>
+      <a href="https://www.wintellex.com/press">Press</a>
+      <a href="https://www.wintellex.com/media">Media</a>
+      <a href="https://www.wintellex.com/contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <a href="https://www.wintellex.com/commercial">Commercial</a>
+      <a href="https://www.wintellex.com/government">Government</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="https://www.wintellex.com/pricing">Pricing</a>
+      <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+      <a href="https://www.wintellex.com/security">Security</a>
+      <a href="https://www.wintellex.com/developers">Developers</a>
+      <a href="https://www.wintellex.com/partners">Partners</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="https://www.wintellex.com/privacy">Privacy Policy</a>
+      <a href="https://www.wintellex.com/terms">Terms of Use</a>
+      <a href="https://www.wintellex.com/compliance">Compliance</a>
+      <a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Wintellex • Intelligent Payment Infrastructure</p>
+    <div class="socials">
+      <a href="https://x.com/wintellex" target="_blank">𝕏</a>
+      <a href="https://www.instagram.com/wintellex/" target="_blank">📷</a>
+      <a href="https://www.linkedin.com/company/wintellex" target="_blank">in</a>
+      <a href="https://www.youtube.com/@Wintellex" target="_blank">▶</a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p>© 2026 Wintellex. Wintellex is a financial infrastructure technology company. Banking services are provided by Choice Financial Group and Column N.A., Members FDIC. Unauthorized reproduction or redistribution of copyrighted materials on this website and Wintellex's digital media pages is strictly prohibited. By clicking on some of the links above, you will leave Wintellex's website and be directed to a third-party website. The privacy practices of those third parties may differ from those of Wintellex. We recommend you review the privacy statements of those third-party websites, as Wintellex is not responsible for those third parties' privacy or security practices. Additional disclosures can be found in the resources section of our website. <a href="https://www.wintellex.com/privacy">Privacy Policy</a> &middot; <a href="https://www.wintellex.com/privacy#cookies">Cookie Policy</a></p>
+  </div>
+</footer>
+
+<script>
+function openCalendly(){
+  if(document.getElementById('calendlyOverlay'))return;
+  var overlay=document.createElement('div');
+  overlay.id='calendlyOverlay';
+  overlay.className='calendly-overlay';
+  overlay.innerHTML=
+    '<div class="calendly-modal">'
+    +'<div class="calendly-modal-header">'
+    +'<span>&#128197; Book a Meeting</span>'
+    +'<button class="calendly-modal-close" onclick="closeCalendly()" aria-label="Close">&times;</button>'
+    +'</div>'
+    +'<iframe src="https://calendly.com/wintellex" title="Book a meeting with Wintellex"></iframe>'
+    +'</div>';
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeCalendly();});
+  document.body.style.overflow='hidden';
+}
+function closeCalendly(){
+  var o=document.getElementById('calendlyOverlay');
+  if(o)o.remove();
+  document.body.style.overflow='';
+}
+
+function openVideo(videoId, triggerEl){
+  if(document.getElementById('videoOverlay'))return;
+  var titleText='Now Playing';
+  if(triggerEl){
+    var h3=triggerEl.querySelector('.archive-titlewrap h3');
+    if(h3) titleText=h3.textContent;
+  }
+  var overlay=document.createElement('div');
+  overlay.id='videoOverlay';
+  overlay.className='video-overlay';
+  overlay.innerHTML=
+    '<div class="video-modal">'
+    +'<div class="video-modal-header">'
+    +'<span>'+titleText+'</span>'
+    +'<button class="video-modal-close" onclick="closeVideo()" aria-label="Close">&times;</button>'
+    +'</div>'
+    +'<div class="video-modal-body">'
+    +'<iframe src="https://www.youtube.com/embed/'+videoId+'?autoplay=1&rel=0" title="'+titleText+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    +'</div>'
+    +'</div>';
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeVideo();});
+  document.body.style.overflow='hidden';
+}
+function closeVideo(){
+  var o=document.getElementById('videoOverlay');
+  if(o)o.remove();
+  document.body.style.overflow='';
+}
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    closeCalendly();
+    closeVideo();
+  }
+});
+</script>
+</body>
+</html>
