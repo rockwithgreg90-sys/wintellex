@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wintellex — Modern Slavery Statement</title>
+<link rel="stylesheet" href="https://use.typekit.net/eqv7jlu.css">
+<style>
+:root{
+  --purple:#5e1ab8;
+  --deep-purple:#2d0950;
+  --soft-bg:#f8f7f4;
+  --cream:#f0ede6;
+  --text:#1f1f1f;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{
+  background:var(--soft-bg);
+  color:var(--text);
+  font-family:'Scale Variable','Inter',system-ui,sans-serif;
+  font-size:13px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+.accent{
+  position:fixed; top:0; left:0; width:100%; height:5px;
+  background:linear-gradient(90deg,#2d0950,#3d0f73,#5e1ab8,#2d0950);
+  background-size:200%;
+  animation:shimmer 8s linear infinite;
+  z-index:7000;
+}
+@keyframes shimmer{ 0%{background-position:0%;} 100%{background-position:200%;} }
+
+.logo-bar{
+  position:fixed; top:5px; left:0; width:100%; z-index:6000;
+  background:linear-gradient(135deg,var(--deep-purple),var(--purple));
+  display:flex; align-items:center; justify-content:center;
+  padding:8px 24px;
+  box-shadow:0 10px 28px rgba(45,9,80,0.3);
+}
+.logo-bar a{
+  display:inline-flex; align-items:center; justify-content:center;
+  text-decoration:none;
+}
+.logo-bar img{
+  height:62px; width:auto; display:block;
+}
+
+/* Site navigation menu bar */
+.site-nav{
+  position:fixed; top:83px; left:0; width:100%; z-index:5500;
+  background:#ffffff;
+  border-bottom:1px solid rgba(94,26,184,0.10);
+  box-shadow:0 6px 18px rgba(45,9,80,0.06);
+}
+.site-nav-inner{
+  max-width:1180px; margin:0 auto;
+  display:flex; align-items:center; justify-content:center;
+  gap:28px; padding:12px 24px; flex-wrap:wrap;
+}
+.site-nav-inner a{
+  font-size:13px; font-weight:700; color:#4a3a63;
+  text-decoration:none; letter-spacing:0.01em;
+  transition:color 0.2s ease;
+  white-space:nowrap;
+}
+.site-nav-inner a:hover{ color:var(--purple); }
+.site-nav-inner a.site-nav-cta{
+  background:linear-gradient(135deg,var(--deep-purple),var(--purple));
+  color:#fff; padding:8px 18px; border-radius:999px; font-weight:800;
+  box-shadow:0 6px 16px rgba(94,26,184,0.25);
+}
+.site-nav-inner a.site-nav-cta:hover{ color:#fff; opacity:0.92; }
+
+.hero{
+  padding:206px 24px 80px;
+  background:
+    radial-gradient(circle at top left,rgba(94,26,184,0.12),transparent 34%),
+    linear-gradient(to bottom,#f8f7f4,#f0ede6);
+}
+.container{ max-width:980px; margin:0 auto; }
+.eyebrow{
+  color:var(--purple); font-size:13px; font-weight:800;
+  letter-spacing:0.14em; text-transform:uppercase; margin-bottom:18px;
+}
+.headline{
+  font-size:clamp(42px,7vw,76px); font-weight:780; line-height:1.02;
+  letter-spacing:-0.06em; margin-bottom:22px;
+  background:linear-gradient(135deg,#1f1f1f,#3d0f73);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.subheadline{ font-size:clamp(18px,3vw,20px); color:#555; max-width:760px; }
+
+.statement-wrap{ padding:0 24px 100px; }
+.statement-card{
+  max-width:980px; margin:0 auto;
+  background:white; border:1px solid #e0d4f5; border-radius:34px;
+  padding:52px; box-shadow:0 20px 60px rgba(94,26,184,0.08);
+}
+.updated{
+  display:inline-flex; align-items:center;
+  background:#f5efff; border:1px solid #e6dcf7; color:#5e1ab8;
+  padding:10px 16px; border-radius:999px;
+  font-size:13px; font-weight:700; margin-bottom:38px;
+}
+.statement-section{ margin-bottom:48px; }
+.statement-section:last-child{ margin-bottom:0; }
+.statement-section h2{ font-size:26px; color:#2d0950; margin-bottom:18px; line-height:1.15; }
+.statement-section p{ color:#555; margin-bottom:18px; font-size:13px; }
+.statement-section ul{ padding-left:22px; color:#555; font-size:13px; }
+.statement-section li{ margin-bottom:12px; }
+.highlight-box{
+  background:#f8f7f4; border:1px solid #e6dcf7;
+  border-radius:24px; padding:28px; margin-top:28px;
+}
+.highlight-box strong{ display:block; color:#2d0950; margin-bottom:10px; font-size:15px; }
+.highlight-box p{ font-size:13px; }
+
+/* Dark footer — matches Developers page */
+footer{ background:#0d0a19; padding:70px 24px 0; color:#aaa; font-size:13px; }
+.footer-grid{
+  max-width:1180px; margin:0 auto 50px;
+  display:grid; grid-template-columns:2fr repeat(4,1fr); gap:36px;
+}
+.footer-brand-logo{ height:48px; width:auto; display:block; margin-bottom:16px; }
+.footer-brand p{ color:#aaa; font-size:13px; }
+.footer-col h4{ color:#d4b8ff; margin-bottom:16px; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; }
+.footer-col a{ display:block; color:#aaa; text-decoration:none; margin-bottom:10px; font-size:13px; transition:0.3s ease; }
+.footer-col a:hover{ color:#d4b8ff; }
+.footer-bottom{
+  max-width:1180px; margin:0 auto; padding:28px 0;
+  border-top:1px solid rgba(255,255,255,0.1);
+  display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+}
+.footer-bottom p{ color:#aaa; font-size:13px; }
+.social-links{ display:flex; align-items:center; gap:16px; }
+.social-links a{ font-size:22px; color:#ccc; text-decoration:none; transition:0.3s ease; }
+.social-links a:hover{ color:#d4b8ff; transform:translateY(-2px); }
+.footer-legal{ max-width:1180px; margin:0 auto; padding:28px 0 40px; border-top:1px solid rgba(255,255,255,0.08); }
+.footer-legal p{ font-size:12px; color:#666; line-height:1.9; }
+.footer-legal a{ color:#666; text-decoration:underline; }
+.footer-legal a:hover{ color:#b785ff; }
+
+@media(max-width:780px){
+  .capital-banner-inner{ font-size:12px; padding:10px 16px; }
+  .logo-bar{ top:48px; padding:6px 20px; }
+  .logo-bar img{ height:37px; }
+  .site-nav{ top:97px; }
+  .site-nav-inner{ gap:16px; padding:10px 18px; justify-content:flex-start; overflow-x:auto; }
+  .hero{ padding:230px 20px 70px; }
+  .headline{ font-size:clamp(38px,13vw,58px); letter-spacing:-0.05em; }
+  .subheadline{ font-size:17px; line-height:1.6; }
+  .statement-wrap{ padding:0 20px 70px; }
+  .statement-card{ padding:34px 24px; border-radius:26px; }
+  .statement-section h2{ font-size:22px; }
+  .footer-grid{ grid-template-columns:1fr; }
+  .footer-bottom{ flex-direction:column; text-align:center; }
+  .social-links{ justify-content:center; }
+}
+</style>
+</head>
+<body>
+
+<div class="accent"></div>
+
+<div class="logo-bar">
+  <a href="https://www.wintellex.com"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a>
+</div>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="site-nav-inner">
+    <a href="https://www.wintellex.com/commercial">Commercial</a>
+    <a href="https://www.wintellex.com/government">Government</a>
+    <a href="https://www.wintellex.com/pricing">Pricing</a>
+    <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+    <a href="https://www.wintellex.com/developers">Developers</a>
+    <a href="https://www.wintellex.com/partners">Partners</a>
+    <a href="https://www.wintellex.com/about">About</a>
+    <a href="https://www.wintellex.com/order" class="site-nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Governance</div>
+    <h1 class="headline">Modern Slavery Statement</h1>
+    <p class="subheadline">Wintellex is committed to ethical operations, responsible business conduct, and preventing modern slavery, forced labor, and human trafficking within our business and supply chain.</p>
+  </div>
+</header>
+
+<section class="statement-wrap">
+  <div class="statement-card">
+
+    <div class="updated">Last Updated • May 2026</div>
+
+    <div class="statement-section">
+      <h2>1. Our Commitment</h2>
+      <p>Wintellex opposes all forms of modern slavery, forced labor, child labor, debt bondage, involuntary servitude, and human trafficking.</p>
+      <p>We are committed to operating with integrity and expect our employees, contractors, suppliers, service providers, technology partners, and business relationships to uphold the same standards.</p>
+    </div>
+
+    <div class="statement-section">
+      <h2>2. Business Overview</h2>
+      <p>Wintellex provides intelligent payment infrastructure, operational finance systems, workflow tools, treasury visibility concepts, developer systems, and enterprise-oriented infrastructure services.</p>
+      <p>Our operations are primarily technology, software, infrastructure, and professional-service focused. We recognize that risks may still exist across third-party vendors, outsourced services, contractors, data providers, hosting providers, facilities, and business relationships.</p>
+    </div>
+
+    <div class="statement-section">
+      <h2>3. Supply Chain Expectations</h2>
+      <p>Wintellex expects suppliers and service providers to:</p>
+      <ul>
+        <li>Comply with applicable labor, employment, and human rights laws</li>
+        <li>Prohibit forced labor, bonded labor, child labor, and human trafficking</li>
+        <li>Provide safe and respectful working conditions</li>
+        <li>Maintain lawful employment practices</li>
+        <li>Respect worker dignity, compensation, and freedom from coercion</li>
+        <li>Cooperate with reasonable diligence, review, or information requests</li>
+      </ul>
+    </div>
+
+    <div class="statement-section">
+      <h2>4. Risk Management</h2>
+      <p>Wintellex seeks to identify and reduce modern slavery risks through reasonable business review processes, vendor assessment, contractual expectations, internal governance, and responsible procurement practices.</p>
+      <div class="highlight-box">
+        <strong>Risk Areas Reviewed</strong>
+        <p>Wintellex may review vendors, contractors, outsourced service providers, infrastructure partners, staffing relationships, facility services, professional service firms, and technology suppliers for potential operational or ethical risk.</p>
+      </div>
+    </div>
+
+    <div class="statement-section">
+      <h2>5. Policies & Controls</h2>
+      <p>Wintellex maintains a governance-oriented approach to ethical business conduct. Internal expectations may include:</p>
+      <ul>
+        <li>Responsible vendor selection and review</li>
+        <li>Contractual expectations for lawful labor practices</li>
+        <li>Escalation of concerns involving worker exploitation</li>
+        <li>Review of high-risk supplier relationships</li>
+        <li>Compliance-oriented internal decision making</li>
+        <li>Ongoing improvement of governance processes</li>
+      </ul>
+    </div>
+
+    <div class="statement-section">
+      <h2>6. Reporting Concerns</h2>
+      <p>Wintellex encourages reporting of concerns related to forced labor, human trafficking, exploitation, unsafe working conditions, unethical conduct, or potential modern slavery risks.</p>
+      <p>Reports may be submitted through official Wintellex contact channels. Concerns will be reviewed based on available information and handled with appropriate confidentiality where possible.</p>
+    </div>
+
+    <div class="statement-section">
+      <h2>7. Training & Awareness</h2>
+      <p>Wintellex aims to promote awareness of ethical sourcing, responsible vendor management, labor rights, and modern slavery risks among relevant team members involved in procurement, vendor relationships, compliance, operations, and leadership.</p>
+    </div>
+
+    <div class="statement-section">
+      <h2>8. Continuous Improvement</h2>
+      <p>Wintellex recognizes that responsible business conduct requires ongoing attention. We may update our policies, vendor standards, review processes, and governance practices as our operations, partnerships, and infrastructure expand.</p>
+      <p>This statement may be updated periodically to reflect operational changes, legal developments, or improvements in our compliance and governance practices.</p>
+    </div>
+
+    <div class="statement-section">
+      <h2>9. Contact</h2>
+      <p>Questions regarding this Modern Slavery Statement may be directed through official Wintellex communication channels.</p>
+      <div class="highlight-box">
+        <strong>Wintellex</strong>
+        <p>
+          Intelligent Payment Infrastructure<br>
+          Enterprise Workflow Systems<br>
+          1910 Pacific Ave Suite 2000<br>
+          Dallas, TX 75201<br>
+          United States<br>
+          https://www.wintellex.com
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" class="footer-brand-logo">
+      <p>Intelligent payment infrastructure for modern organizations and scalable financial systems.</p>
+      <p style="margin-top:18px;font-size:13px;line-height:1.7;color:#777;">1910 Pacific Ave Suite 2000<br>Dallas, TX 75201<br>United States</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="https://www.wintellex.com/about">About</a>
+      <a href="https://www.wintellex.com/careers">Careers</a>
+      <a href="https://www.wintellex.com/press">Press</a>
+      <a href="https://www.wintellex.com/contact">Contact</a>
+      <a href="https://www.wintellex.com/order">Get Started</a>
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <a href="https://www.wintellex.com/commercial">Commercial</a>
+      <a href="https://www.wintellex.com/government">Government</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="https://www.wintellex.com/pricing">Pricing</a>
+      <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+      <a href="https://www.wintellex.com/security">Security</a>
+      <a href="https://www.wintellex.com/developers">Developers</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="https://www.wintellex.com/privacy">Privacy Policy</a>
+      <a href="https://www.wintellex.com/terms">Terms of Use</a>
+      <a href="https://www.wintellex.com/compliance">Compliance</a>
+      <a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Wintellex • Intelligent Payment Infrastructure</p>
+    <div class="social-links">
+      <a href="https://x.com/wintellex" target="_blank">𝕏</a>
+      <a href="https://www.instagram.com/wintellex/" target="_blank">📷</a>
+      <a href="https://www.linkedin.com/company/wintellex" target="_blank">in</a>
+      <a href="https://www.youtube.com/@Wintellex" target="_blank">▶</a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p>© 2026 Wintellex. Wintellex is a financial infrastructure technology company. Banking services are provided by Choice Financial Group and Column N.A., Members FDIC. Unauthorized reproduction or redistribution of copyrighted materials on this website and Wintellex's digital media pages is strictly prohibited. By clicking on some of the links above, you will leave Wintellex's website and be directed to a third-party website. The privacy practices of those third parties may differ from those of Wintellex. We recommend you review the privacy statements of those third-party websites, as Wintellex is not responsible for those third parties' privacy or security practices. Additional disclosures can be found in the resources section of our website. <a href="https://www.wintellex.com/privacy">Privacy Policy</a> &middot; <a href="https://www.wintellex.com/privacy#cookies">Cookie Policy</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
