@@ -32,39 +32,47 @@ html,body{background:var(--soft);color:var(--text);font-family:'Scale Variable',
 }
 @keyframes shimmer{from{background-position:0%;}to{background-position:200%;}}
 
-/* SITE HEADER (logo bar + nav) */
+/* SITE HEADER (single-row nav with dropdowns) */
 .site-header{width:100%;display:flex;flex-direction:column;}
-.logo-bar{
-  position:fixed; top:5px; left:0; width:100%; z-index:6500;
-  background:linear-gradient(135deg,var(--deep),var(--purple));
-  display:flex; align-items:center; justify-content:center;
-  padding:8px 24px;
-  box-shadow:0 10px 28px rgba(45,9,80,0.3);
-}
-.logo-bar a{ display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
-.logo-bar img{ height:62px; width:auto; display:block; }
-@media(max-width:480px){ .logo-bar{ padding:6px 20px; } .logo-bar img{ height:37px; } }
-
-.main-nav{width:100%;margin-top:83px;background:#1c1233;border-top:1px solid rgba(139,92,255,0.15);border-bottom:1px solid rgba(139,92,255,0.15);box-shadow:0 6px 20px rgba(0,0,0,0.2);}
-@media(max-width:480px){.main-nav{margin-top:58px;}}
-.main-nav-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:12px;min-height:64px;}
-.nav-link{color:#b8aed4;text-decoration:none;font-size:16px;font-weight:700;letter-spacing:0.01em;padding:22px 22px;position:relative;transition:color 0.2s ease;white-space:nowrap;}
+.main-nav{width:100%;background:#0d0a19;border-bottom:1px solid rgba(139,92,255,0.15);box-shadow:0 6px 20px rgba(0,0,0,0.2);position:relative;z-index:6500;}
+.main-nav-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;}
+.nav-logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;display:block;}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-link{color:#b8aed4;text-decoration:none;font-size:15px;font-weight:700;letter-spacing:0.01em;padding:22px 16px;position:relative;transition:color 0.2s ease;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;}
 .nav-link:hover{color:#ffffff;}
-.nav-link::after{content:'';position:absolute;left:22px;right:22px;bottom:0;height:3px;background:linear-gradient(90deg,#8b5cff,#b785ff);transform:scaleX(0);transform-origin:center;transition:transform 0.2s ease;}
+.nav-link::after{content:'';position:absolute;left:16px;right:16px;bottom:0;height:3px;background:linear-gradient(90deg,#8b5cff,#b785ff);transform:scaleX(0);transform-origin:center;transition:transform 0.2s ease;}
 .nav-link:hover::after{transform:scaleX(1);}
-.nav-link.nav-login{margin-left:8px;color:#e8dcff;border:1.5px solid rgba(139,92,255,0.4);border-radius:999px;padding:11px 26px;}
-.nav-link.nav-login:hover{background:rgba(139,92,255,0.12);border-color:rgba(139,92,255,0.7);color:#ffffff;}
 .nav-link.active{color:#ffffff;}
 .nav-link.active::after{transform:scaleX(1);}
+.nav-link.nav-login{margin-left:8px;color:#e8dcff;border:1.5px solid rgba(139,92,255,0.4);border-radius:999px;padding:11px 26px;}
+.nav-link.nav-login:hover{background:rgba(139,92,255,0.12);border-color:rgba(139,92,255,0.7);color:#ffffff;}
 .nav-toggle{display:none;background:none;border:none;color:#f0ecfb;font-size:24px;cursor:pointer;padding:10px;margin:6px 0;}
+
+.nav-item{position:relative;}
+.nav-caret{display:inline-block;width:7px;height:7px;flex-shrink:0;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform 0.2s ease;cursor:pointer;}
+.nav-item.dropdown-open .nav-caret{transform:rotate(225deg);}
+.nav-dropdown{position:absolute;top:100%;left:0;min-width:230px;background:#1c1233;border:1px solid rgba(139,92,255,0.18);border-radius:14px;padding:10px;margin-top:8px;box-shadow:0 20px 50px rgba(0,0,0,0.45);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;z-index:500;}
+.nav-dropdown a{display:block;padding:10px 14px;border-radius:10px;color:#b8aed4;text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap;transition:background 0.15s ease,color 0.15s ease;}
+.nav-dropdown a:hover{background:rgba(139,92,255,0.12);color:#ffffff;}
+.nav-dropdown a.active{background:rgba(139,92,255,0.14);color:#ffffff;}
+.nav-item.has-dropdown:hover .nav-dropdown,
+.nav-item.has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+
 @media(max-width:780px){
-  .main-nav-inner{justify-content:space-between;padding:0 20px;flex-wrap:wrap;}
-  .nav-toggle{display:flex;align-items:center;justify-content:center;order:1;}
-  .nav-links{display:none;width:100%;flex-direction:column;align-items:stretch;text-align:center;order:2;padding-bottom:10px;}
+  .main-nav-inner{justify-content:space-between;padding:0 20px;flex-wrap:wrap;min-height:64px;}
+  .nav-toggle{display:flex;align-items:center;justify-content:center;order:2;}
+  .nav-logo{order:1;}
+  .nav-links{display:none;width:100%;flex-direction:column;align-items:stretch;text-align:center;order:3;padding-bottom:10px;}
   .nav-links.nav-open{display:flex;}
   .nav-link{padding:12px 18px;border-bottom:1px solid rgba(139,92,255,0.1);}
   .nav-link::after{display:none;}
   .nav-link.nav-login{margin:8px 18px 0;}
+  .nav-item{width:100%;}
+  .nav-item .nav-link{width:100%;justify-content:space-between;}
+  .nav-dropdown{position:static;opacity:1;visibility:visible;transform:none;display:none;box-shadow:none;border:none;border-radius:0;background:rgba(139,92,255,0.06);margin:0;padding:0;}
+  .nav-item.dropdown-open .nav-dropdown{display:block;}
+  .nav-dropdown a{padding:10px 30px;font-size:13px;border-bottom:1px solid rgba(139,92,255,0.08);}
 }
 /* END SITE HEADER */
 
@@ -134,19 +142,54 @@ footer{background:#0d0a19;padding:70px 24px 0;color:#aaa;}
 <div class="accent"></div>
 
 <div class="site-header">
-  <div class="logo-bar">
-    <a href="https://www.wintellex.com"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a>
-  </div>
   <nav class="main-nav" aria-label="Primary">
     <div class="main-nav-inner">
+      <a class="nav-logo" href="https://www.wintellex.com" aria-label="Wintellex Home"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
       <div class="nav-links" id="navLinks">
         <a class="nav-link" href="https://www.wintellex.com/">Home</a>
-        <a class="nav-link" href="https://www.wintellex.com/pricing">Pricing</a>
-        <a class="nav-link" href="https://www.wintellex.com/infrastructure">Infrastructure</a>
-        <a class="nav-link" href="https://www.wintellex.com/about">About</a>
-        <a class="nav-link" href="https://www.wintellex.com/developers">Developers</a>
-        <a class="nav-link active" href="https://www.wintellex.com/partners">Partners</a>
+
+        <div class="nav-item has-dropdown active">
+          <a class="nav-link active" href="https://www.wintellex.com/pricing">Pricing<span class="nav-caret" aria-hidden="true"></span></a>
+          <div class="nav-dropdown">
+            <a href="https://www.wintellex.com/pricing">Pricing</a>
+            <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+            <a href="https://www.wintellex.com/security">Security</a>
+            <a href="https://www.wintellex.com/developers">Developers</a>
+            <a href="https://www.wintellex.com/partners" class="active">Partners</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a class="nav-link" href="https://www.wintellex.com/infrastructure">Infrastructure<span class="nav-caret" aria-hidden="true"></span></a>
+          <div class="nav-dropdown">
+            <a href="https://www.wintellex.com/commercial">Commercial</a>
+            <a href="https://www.wintellex.com/government">Government</a>
+            <a href="https://www.wintellex.com/institutional">Institutional</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a class="nav-link" href="https://www.wintellex.com/about">About<span class="nav-caret" aria-hidden="true"></span></a>
+          <div class="nav-dropdown">
+            <a href="https://www.wintellex.com/about">About Us</a>
+            <a href="https://www.wintellex.com/careers">Careers</a>
+            <a href="https://www.wintellex.com/press">Press</a>
+            <a href="https://www.wintellex.com/media">Media</a>
+            <a href="https://www.wintellex.com/contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a class="nav-link" href="https://www.wintellex.com/legal">Legal<span class="nav-caret" aria-hidden="true"></span></a>
+          <div class="nav-dropdown">
+            <a href="https://www.wintellex.com/privacy">Privacy Policy</a>
+            <a href="https://www.wintellex.com/terms">Terms of Use</a>
+            <a href="https://www.wintellex.com/compliance">Compliance</a>
+            <a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a>
+          </div>
+        </div>
+
         <a class="nav-link nav-login" href="https://www.wintellex.com/login">Login</a>
       </div>
     </div>
@@ -416,6 +459,31 @@ function filter(cat, btn) {
   toggle.addEventListener('click',function(){
     var open=links.classList.toggle('nav-open');
     toggle.setAttribute('aria-expanded',open?'true':'false');
+    if(!open){
+      document.querySelectorAll('.nav-item.dropdown-open').forEach(function(i){i.classList.remove('dropdown-open');});
+    }
+  });
+})();
+
+(function(){
+  var carets=document.querySelectorAll('.nav-caret');
+  carets.forEach(function(caret){
+    caret.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var item=caret.closest('.nav-item');
+      if(!item)return;
+      var isOpen=item.classList.contains('dropdown-open');
+      document.querySelectorAll('.nav-item.dropdown-open').forEach(function(i){
+        if(i!==item)i.classList.remove('dropdown-open');
+      });
+      item.classList.toggle('dropdown-open',!isOpen);
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.nav-item')){
+      document.querySelectorAll('.nav-item.dropdown-open').forEach(function(i){i.classList.remove('dropdown-open');});
+    }
   });
 })();
 </script>
