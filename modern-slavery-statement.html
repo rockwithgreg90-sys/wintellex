@@ -34,26 +34,11 @@ html,body{
   z-index:7000;
 }
 @keyframes shimmer{ 0%{background-position:0%;} 100%{background-position:200%;} }
+
+/* SITE HEADER (single-row nav with dropdowns) — matches Security page */
 .site-header{width:100%;display:flex;flex-direction:column;}
-.logo-bar{
-  position:fixed; top:5px; left:0; width:100%; z-index:6500;
-  background:linear-gradient(135deg,var(--deep-purple),var(--purple));
-  display:flex; align-items:center; justify-content:center;
-  padding:8px 24px;
-  box-shadow:0 10px 28px rgba(45,9,80,0.3);
-}
-.logo-bar a{
-  display:inline-flex; align-items:center; justify-content:center;
-  text-decoration:none;
-}
-.logo-bar img{
-  height:62px; width:auto; display:block;
-}
-@media(max-width:480px){ .logo-bar{ padding:6px 20px; } .logo-bar img{ height:37px; } }
-/* ─── Nav Menu Bar ─── */
-.main-nav{width:100%;margin-top:83px;background:#1c1233;border-top:1px solid rgba(139,92,255,0.15);border-bottom:1px solid rgba(139,92,255,0.15);box-shadow:0 6px 20px rgba(0,0,0,0.2);}
-@media(max-width:480px){.main-nav{margin-top:58px;}}
-.main-nav-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;}
+.main-nav{width:100%;background:#0d0a19;border-bottom:1px solid rgba(139,92,255,0.15);box-shadow:0 6px 20px rgba(0,0,0,0.2);position:relative;z-index:6500;}
+.main-nav-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;}
 .nav-logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none;}
 .nav-logo img{height:34px;width:auto;display:block;}
 .nav-links{display:flex;align-items:center;gap:4px;}
@@ -90,7 +75,8 @@ html,body{
   .nav-item.dropdown-open .nav-dropdown{display:block;}
   .nav-dropdown a{padding:10px 30px;font-size:13px;border-bottom:1px solid rgba(139,92,255,0.08);}
 }
-/* ─── End Nav Menu Bar ─── */
+/* END SITE HEADER */
+
 .hero{
   padding:48px 24px 80px;
   background:
@@ -173,21 +159,18 @@ footer{ background:#0d0a19; padding:70px 24px 0; color:#aaa; font-size:13px; }
 <body>
 <div class="accent"></div>
 <div class="site-header">
-  <div class="logo-bar">
-    <a href="https://www.wintellex.com"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a>
-  </div>
   <nav class="main-nav" aria-label="Primary">
     <div class="main-nav-inner">
       <a class="nav-logo" href="https://www.wintellex.com" aria-label="Wintellex Home"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
       <div class="nav-links" id="navLinks">
         <a class="nav-link" href="https://www.wintellex.com/">Home</a>
-        <div class="nav-item has-dropdown active">
-          <a class="nav-link active" href="https://www.wintellex.com/pricing">Pricing<span class="nav-caret" aria-hidden="true"></span></a>
+        <div class="nav-item has-dropdown">
+          <a class="nav-link" href="https://www.wintellex.com/pricing">Pricing<span class="nav-caret" aria-hidden="true"></span></a>
           <div class="nav-dropdown">
             <a href="https://www.wintellex.com/pricing">Pricing</a>
             <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
-            <a href="https://www.wintellex.com/security" class="active">Security</a>
+            <a href="https://www.wintellex.com/security">Security</a>
             <a href="https://www.wintellex.com/developers">Developers</a>
             <a href="https://www.wintellex.com/partners">Partners</a>
           </div>
@@ -197,6 +180,7 @@ footer{ background:#0d0a19; padding:70px 24px 0; color:#aaa; font-size:13px; }
           <div class="nav-dropdown">
             <a href="https://www.wintellex.com/commercial">Commercial</a>
             <a href="https://www.wintellex.com/government">Government</a>
+            <a href="https://www.wintellex.com/institutional">Institutional</a>
           </div>
         </div>
         <div class="nav-item has-dropdown">
@@ -209,8 +193,8 @@ footer{ background:#0d0a19; padding:70px 24px 0; color:#aaa; font-size:13px; }
             <a href="https://www.wintellex.com/contact">Contact</a>
           </div>
         </div>
-        <div class="nav-item has-dropdown">
-          <a class="nav-link" href="https://www.wintellex.com/legal">Legal<span class="nav-caret" aria-hidden="true"></span></a>
+        <div class="nav-item has-dropdown active">
+          <a class="nav-link active" href="https://www.wintellex.com/legal">Legal<span class="nav-caret" aria-hidden="true"></span></a>
           <div class="nav-dropdown">
             <a href="https://www.wintellex.com/privacy">Privacy Policy</a>
             <a href="https://www.wintellex.com/terms">Terms of Use</a>
