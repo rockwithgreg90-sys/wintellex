@@ -1,1 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wintellex — Security</title>
+<link rel="stylesheet" href="https://use.typekit.net/eqv7jlu.css">
+<style>
+:root{
+  --purple:#5e1ab8;
+  --deep-purple:#2d0950;
+  --soft-bg:#f8f7f4;
+  --cream:#f0ede6;
+  --text:#1f1f1f;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{
+  background:var(--soft-bg); color:var(--text);
+  font-family:'Scale Variable','Inter',system-ui,sans-serif;
+  line-height:1.6; overflow-x:hidden;
+  font-size:13px;
+}
+.accent{
+  position:fixed; top:0; left:0; width:100%; height:5px;
+  background:linear-gradient(90deg,#2d0950,#3d0f73,#5e1ab8,#2d0950);
+  background-size:200%; animation:shimmer 8s linear infinite; z-index:7000;
+}
+@keyframes shimmer{ 0%{background-position:0%;} 100%{background-position:200%;} }
 
+/* SITE HEADER (single-row nav with dropdowns) */
+.site-header{width:100%;display:flex;flex-direction:column;}
+.main-nav{width:100%;background:#0d0a19;border-bottom:1px solid rgba(139,92,255,0.15);box-shadow:0 6px 20px rgba(0,0,0,0.2);position:relative;z-index:6500;}
+.main-nav-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;}
+.nav-logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;display:block;}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-link{color:#b8aed4;text-decoration:none;font-size:15px;font-weight:700;letter-spacing:0.01em;padding:22px 16px;position:relative;transition:color 0.2s ease;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;}
+.nav-link:hover{color:#ffffff;}
+.nav-link::after{content:'';position:absolute;left:16px;right:16px;bottom:0;height:3px;background:linear-gradient(90deg,#8b5cff,#b785ff);transform:scaleX(0);transform-origin:center;transition:transform 0.2s ease;}
+.nav-link:hover::after{transform:scaleX(1);}
+.nav-link.active{color:#ffffff;}
+.nav-link.active::after{transform:scaleX(1);}
+.nav-link.nav-login{margin-left:8px;color:#e8dcff;border:1.5px solid rgba(139,92,255,0.4);border-radius:999px;padding:11px 26px;}
+.nav-link.nav-login:hover{background:rgba(139,92,255,0.12);border-color:rgba(139,92,255,0.7);color:#ffffff;}
+.nav-toggle{display:none;background:none;border:none;color:#f0ecfb;font-size:24px;cursor:pointer;padding:10px;margin:6px 0;}
+
+.nav-item{position:relative;}
+.nav-caret{display:inline-block;width:7px;height:7px;flex-shrink:0;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform 0.2s ease;cursor:pointer;}
+.nav-item.dropdown-open .nav-caret{transform:rotate(225deg);}
+.nav-dropdown{position:absolute;top:100%;left:0;min-width:230px;background:#1c1233;border:1px solid rgba(139,92,255,0.18);border-radius:14px;padding:10px;margin-top:8px;box-shadow:0 20px 50px rgba(0,0,0,0.45);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity 0.2s ease,transform 0.2s ease,visibility 0.2s;z-index:500;}
+.nav-dropdown a{display:block;padding:10px 14px;border-radius:10px;color:#b8aed4;text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap;transition:background 0.15s ease,color 0.15s ease;}
+.nav-dropdown a:hover{background:rgba(139,92,255,0.12);color:#ffffff;}
+.nav-dropdown a.active{background:rgba(139,92,255,0.14);color:#ffffff;}
+.nav-item.has-dropdown:hover .nav-dropdown,
+.nav-item.has-dropdown:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+
+@media(max-width:780px){
+  .main-nav-inner{justify-content:space-between;padding:0 20px;flex-wrap:wrap;min-height:64px;}
+  .nav-toggle{display:flex;align-items:center;justify-content:center;order:2;}
+  .nav-logo{order:1;}
+  .nav-links{display:none;width:100%;flex-direction:column;align-items:stretch;text-align:center;order:3;padding-bottom:10px;}
+  .nav-links.nav-open{display:flex;}
+  .nav-link{padding:12px 18px;border-bottom:1px solid rgba(139,92,255,0.1);}
+  .nav-link::after{display:none;}
+  .nav-link.nav-login{margin:8px 18px 0;}
+  .nav-item{width:100%;}
+  .nav-item .nav-link{width:100%;justify-content:space-between;}
+  .nav-dropdown{position:static;opacity:1;visibility:visible;transform:none;display:none;box-shadow:none;border:none;border-radius:0;background:rgba(139,92,255,0.06);margin:0;padding:0;}
+  .nav-item.dropdown-open .nav-dropdown{display:block;}
+  .nav-dropdown a{padding:10px 30px;font-size:13px;border-bottom:1px solid rgba(139,92,255,0.08);}
+}
+/* END SITE HEADER */
+
+section, header.hero { position:relative; }
+.diagonal-divider{ position:absolute; bottom:-1px; left:0; width:100%; overflow:hidden; line-height:0; z-index:10; }
+.diagonal-divider svg{ display:block; width:100%; }
+
+.hero{
+  padding:100px 24px 160px;
+  background:
+    radial-gradient(circle at 68% 38%,rgba(139,92,255,0.32),transparent 28%),
+    radial-gradient(circle at top,#2d0950 0%,#0a0a14 45%,#050509 100%);
+  color:white;
+}
+.container{ max-width:1180px; margin:0 auto; }
+.hero-grid{ display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.eyebrow{ color:#b785ff; font-size:13px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:18px; }
+.eyebrow.light{ color:var(--purple); }
+.headline{ font-size:clamp(48px,7vw,82px); font-weight:780; line-height:1.02; letter-spacing:-0.06em; margin-bottom:24px; }
+.subheadline{ font-size:13px; color:#d7d3e8; margin-bottom:38px; max-width:700px; }
+.hero-buttons{ display:flex; gap:16px; flex-wrap:wrap; }
+.primary-btn,.secondary-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:15px 28px; border-radius:999px; text-decoration:none; font-weight:800; transition:0.3s ease;
+}
+.primary-btn{ background:linear-gradient(135deg,#5e1ab8,#8b5cff); color:white; box-shadow:0 20px 50px rgba(94,26,184,0.35); }
+.primary-btn:hover{ transform:translateY(-2px); }
+.secondary-btn{ background:rgba(255,255,255,0.08); color:white; border:1px solid rgba(255,255,255,0.16); }
+.secondary-btn:hover{ background:rgba(255,255,255,0.14); }
+.primary-btn.dark{ background:linear-gradient(135deg,var(--deep-purple),var(--purple)); box-shadow:0 16px 42px rgba(94,26,184,0.32); }
+.secondary-btn.dark{ background:white; color:var(--deep-purple); border:1px solid #d7c6f1; }
+
+.shield-wrap{
+  position:relative; width:100%; max-width:480px; margin:0 auto;
+  display:flex; align-items:center; justify-content:center; aspect-ratio:1/1;
+}
+.shield-ring{
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(139,92,255,0.15);
+  top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none;
+}
+.shield-ring-1{ width:88%; height:88%; animation:ring-pulse 4s ease-in-out infinite; }
+.shield-ring-2{ width:69%; height:69%; border-color:rgba(139,92,255,0.22); animation:ring-pulse 4s ease-in-out infinite 0.9s; }
+.shield-ring-3{ width:50%; height:50%; border-color:rgba(139,92,255,0.3); animation:ring-pulse 4s ease-in-out infinite 1.8s; }
+@keyframes ring-pulse{
+  0%,100%{ opacity:0.6; transform:translate(-50%,-50%) scale(1); }
+  50%{ opacity:1; transform:translate(-50%,-50%) scale(1.015); }
+}
+.shield-core{
+  position:relative; z-index:10;
+  width:130px; height:130px; border-radius:50%;
+  background:radial-gradient(circle at 38% 38%,#7e3fff,#2d0950);
+  border:1.5px solid rgba(183,133,255,0.5);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 0 50px rgba(94,26,184,0.7),0 0 100px rgba(94,26,184,0.25);
+  animation:core-breathe 3s ease-in-out infinite;
+  font-size:52px;
+}
+@keyframes core-breathe{
+  0%,100%{ box-shadow:0 0 50px rgba(94,26,184,0.7),0 0 100px rgba(94,26,184,0.25); }
+  50%{ box-shadow:0 0 70px rgba(94,26,184,0.9),0 0 140px rgba(94,26,184,0.4); }
+}
+.security-chips{
+  position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:20;
+}
+.schip{
+  position:absolute; background:rgba(10,8,20,0.92); border:0.5px solid;
+  border-radius:20px; padding:5px 11px; font-size:9px; font-weight:800;
+  letter-spacing:0.07em; white-space:nowrap; opacity:0; animation:chip-float 6s ease-in-out infinite;
+}
+.sc-1{ border-color:#3ecf8e; color:#3ecf8e; top:10%; left:2%; animation-delay:0s; animation-duration:7s; }
+.sc-2{ border-color:#4da3f5; color:#4da3f5; top:20%; right:2%; animation-delay:1.8s; animation-duration:8s; }
+.sc-3{ border-color:#b785ff; color:#b785ff; top:72%; left:2%; animation-delay:3.4s; animation-duration:6.5s; }
+.sc-4{ border-color:#f0a030; color:#f0a030; top:78%; right:2%; animation-delay:5s; animation-duration:7.5s; }
+.sc-5{ border-color:#e06090; color:#e06090; top:46%; left:0%; animation-delay:2s; animation-duration:9s; }
+@keyframes chip-float{
+  0%{ opacity:0; transform:translateY(6px); }
+  15%{ opacity:1; transform:translateY(0); }
+  75%{ opacity:1; transform:translateY(-4px); }
+  100%{ opacity:0; transform:translateY(-10px); }
+}
+
+.status-strip{ padding:80px 24px 100px; background:#f4f1ea; }
+.status-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.status-card{ background:white; padding:28px; border-radius:24px; border:1px solid rgba(94,26,184,0.08); box-shadow:0 10px 30px rgba(0,0,0,0.04); }
+.status-dot{ width:9px; height:9px; border-radius:50%; background:#3ecf8e; display:inline-block; margin-right:8px; }
+.status-label{ font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:#3ecf8e; margin-bottom:12px; display:flex; align-items:center; }
+.status-card h3{ color:#2d0950; font-size:18px; margin-bottom:8px; }
+.status-card p{ font-size:13px; color:#666; line-height:1.6; }
+
+.feature-section{ padding:100px 24px 130px; }
+.feature-section.light{ background:#ffffff; }
+.feature-section.warm{ background:linear-gradient(to bottom,#ffffff,#f7f4ee); }
+.feature-section.dark{ background:#0a0913; color:white; }
+.feature-section.cream{ background:#f4f1ea; }
+.feature-grid{ display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.feature-grid.flip{ direction:rtl; }
+.feature-grid.flip > *{ direction:ltr; }
+
+.section-title{ font-size:clamp(36px,4.5vw,60px); line-height:1.05; color:#1f1f1f; margin-bottom:20px; letter-spacing:-0.05em; }
+.section-title.light{ color:white; }
+.section-text{ font-size:13px; color:#555; margin-bottom:28px; line-height:1.75; }
+.section-text.light{ color:#d7d3e8; }
+
+.feature-img{ width:100%; border-radius:28px; box-shadow:0 30px 80px rgba(45,9,80,0.16); display:block; }
+.feature-img.dark-shadow{ box-shadow:0 30px 80px rgba(0,0,0,0.4); }
+
+.feature-list{ display:grid; gap:16px; margin-bottom:32px; }
+.feature-row{ background:#f7f4ee; border:1px solid rgba(94,26,184,0.08); border-radius:20px; padding:22px 24px; }
+.feature-row.dark{ background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.08); }
+.feature-row h4{ color:#2d0950; margin-bottom:6px; font-size:13px; }
+.feature-row.dark h4{ color:#d4b8ff; }
+.feature-row p{ font-size:13px; color:#666; line-height:1.6; }
+.feature-row.dark p{ color:#9e9ab5; }
+
+.sec-panel{ background:#0d0a19; border-radius:32px; padding:34px; color:white; box-shadow:0 40px 100px rgba(45,9,80,0.28); }
+.sec-line{ display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px 0; border-bottom:1px solid rgba(255,255,255,0.08); }
+.sec-line:last-child{ border-bottom:none; }
+.sec-line span:first-child{ color:#d4d0e8; font-size:13px; }
+.sec-line .badge{ font-weight:800; font-size:12px; letter-spacing:0.08em; padding:4px 12px; border-radius:999px; }
+.badge-green{ color:#3ecf8e; background:rgba(62,207,142,0.12); }
+.badge-purple{ color:#b785ff; background:rgba(183,133,255,0.12); }
+.badge-blue{ color:#4da3f5; background:rgba(77,163,245,0.12); }
+
+.trust-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:46px; }
+.trust-card{ background:white; border-radius:30px; padding:34px; border:1px solid rgba(94,26,184,0.08); min-height:220px; box-shadow:0 12px 40px rgba(45,9,80,0.06); transition:0.3s ease; }
+.trust-card:hover{ transform:translateY(-6px); box-shadow:0 24px 60px rgba(45,9,80,0.12); }
+.trust-card .icon{ font-size:32px; margin-bottom:16px; }
+.trust-card h3{ color:#2d0950; margin-bottom:12px; font-size:20px; }
+.trust-card p{ color:#555; font-size:13px; line-height:1.7; }
+
+.metrics-section{ padding:100px 24px 130px; background:#0a0913; color:white; }
+.metrics-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+.metric-card{ padding:40px 24px; border-radius:30px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-align:center; }
+.metric-card h2{ font-size:52px; color:#b785ff; margin-bottom:12px; letter-spacing:-0.04em; }
+.metric-card p{ color:#9e9ab5; font-size:13px; }
+
+.enterprise-cta{ padding:100px 24px 130px; background:radial-gradient(circle at top,#34105e 0%,#0b0912 60%); }
+.cta-box{ background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:40px; padding:60px; color:white; display:flex; justify-content:space-between; align-items:center; gap:40px; backdrop-filter:blur(20px); }
+.cta-box h2{ font-size:clamp(36px,5vw,60px); line-height:1.05; margin-bottom:16px; letter-spacing:-0.05em; }
+.cta-box p{ color:#d7d3e8; max-width:560px; font-size:13px; }
+
+/* Book a Meeting CTA — mirrored from pricing/about pages */
+.book-cta-section{
+  padding:80px 24px 0;
+  background:#0d0a19;
+}
+.book-cta-inner{
+  max-width:1180px;margin:0 auto;
+  background:radial-gradient(circle at 60% 50%,#34105e 0%,#0b0912 65%);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:36px;
+  padding:64px 60px;
+  display:flex;align-items:center;justify-content:space-between;gap:48px;
+  backdrop-filter:blur(16px);
+}
+.book-cta-text .eyebrow{color:#bb95ff;margin-bottom:14px;}
+.book-cta-text h2{
+  font-size:clamp(28px,4vw,48px);font-weight:780;letter-spacing:-0.05em;
+  line-height:1.06;color:white;margin-bottom:14px;
+}
+.book-cta-text p{font-size:17px;color:#d7d1e7;max-width:520px;}
+.book-cta-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:18px 34px;border-radius:999px;
+  background:linear-gradient(135deg,#5e1ab8,#8b5cff);
+  color:white;font-size:16px;font-weight:800;
+  border:none;cursor:pointer;font-family:inherit;white-space:nowrap;
+  box-shadow:0 20px 50px rgba(94,26,184,0.4);
+  transition:transform 0.25s ease,box-shadow 0.25s ease;
+}
+.book-cta-btn:hover{transform:translateY(-2px);box-shadow:0 28px 60px rgba(94,26,184,0.55);}
+.book-cta-btn .cal-icon{
+  width:22px;height:22px;flex-shrink:0;
+  background:rgba(255,255,255,0.18);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;font-size:13px;
+}
+
+/* Floating book button */
+.float-book{
+  position:fixed;bottom:30px;right:30px;
+  width:62px;height:62px;border-radius:50%;
+  background:linear-gradient(135deg,#2d0950,#5e1ab8);
+  color:white;border:none;cursor:pointer;font-size:24px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(94,26,184,0.45);
+  z-index:10000;transition:transform 0.25s ease;
+}
+.float-book:hover{transform:scale(1.1);}
+
+/* Calendly modal */
+.calendly-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.65);
+  z-index:20000;display:flex;align-items:center;justify-content:center;
+  animation:fadeInOv 0.2s ease;
+}
+@keyframes fadeInOv{from{opacity:0;}to{opacity:1;}}
+.calendly-modal{
+  background:white;border-radius:20px;overflow:hidden;
+  width:90%;max-width:720px;height:82vh;
+  display:flex;flex-direction:column;
+  animation:slideUpMd 0.25s ease;
+}
+@keyframes slideUpMd{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.calendly-modal-header{
+  background:linear-gradient(135deg,#2d0950,#5e1ab8);
+  padding:16px 22px;
+  display:flex;justify-content:space-between;align-items:center;flex-shrink:0;
+}
+.calendly-modal-header span{color:white;font-weight:700;font-size:15px;}
+.calendly-modal-close{
+  color:white;cursor:pointer;font-size:26px;line-height:1;
+  padding:6px 10px;margin:-6px -10px;
+  opacity:0.85;transition:opacity 0.15s;background:none;border:none;font-family:inherit;
+}
+.calendly-modal-close:hover{opacity:1;}
+.calendly-modal iframe{flex:1;border:none;width:100%;}
+
+/* FOOTER */
+footer{ background:#0d0a19; padding:70px 24px 0; color:#aaa; }
+.footer-grid{
+  max-width:1180px; margin:0 auto 50px;
+  display:grid; grid-template-columns:2fr repeat(4,1fr); gap:36px;
+}
+.footer-brand-logo{ height:48px; width:auto; display:block; margin-bottom:16px; }
+.footer-brand p{ color:#aaa; font-size:12px; line-height:1.7; }
+.footer-col h4{ color:#d4b8ff; margin-bottom:16px; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; }
+.footer-col a{ display:block; color:#aaa; text-decoration:none; margin-bottom:10px; font-size:12px; transition:0.2s; }
+.footer-col a:hover{ color:#d4b8ff; }
+.footer-bottom{ max-width:1180px; margin:0 auto; padding:28px 0; border-top:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+.footer-bottom p{ color:#aaa; font-size:12px; }
+.social-links{ display:flex; gap:16px; }
+.social-links a{ font-size:22px; color:#ccc; text-decoration:none; transition:0.2s; }
+.social-links a:hover{ color:#d4b8ff; }
+.footer-legal{ max-width:1180px; margin:0 auto; padding:28px 0 40px; border-top:1px solid rgba(255,255,255,0.08); }
+.footer-legal p{ font-size:11px; color:#555; line-height:1.9; }
+.footer-legal a{ color:#555; text-decoration:underline; }
+.footer-legal a:hover{ color:#b785ff; }
+
+.privacy-bar{
+  position:fixed; bottom:0; left:0; width:100%; background:#1f1f1f;
+  color:#ddd; padding:16px 24px; display:none; align-items:center;
+  justify-content:center; gap:20px; z-index:9999; font-size:14px;
+  box-shadow:0 -4px 20px rgba(0,0,0,0.2); flex-wrap:wrap;
+}
+.privacy-bar.show{ display:flex; }
+.privacy-bar a{ color:#b785ff; }
+.privacy-bar button{ background:white; color:#1f1f1f; border:none; padding:10px 24px; border-radius:999px; font-weight:700; cursor:pointer; white-space:nowrap; }
+
+@media(max-width:900px){
+  .book-cta-inner{flex-direction:column;text-align:center;padding:40px 28px;}
+  .book-cta-text p{max-width:100%;}
+}
+@media(max-width:780px){
+  .hero{ padding:90px 20px 120px; }
+  .hero-grid,.feature-grid,.status-grid,.metrics-grid,.trust-grid,.footer-grid{ grid-template-columns:1fr; }
+  .hero-grid{ text-align:center; gap:50px; }
+  .hero-buttons{ justify-content:center; }
+  .feature-grid.flip{ direction:ltr; }
+  .cta-box{ flex-direction:column; text-align:center; padding:42px 28px; }
+  .footer-bottom{ flex-direction:column; text-align:center; }
+  .social-links{ justify-content:center; }
+  .shield-wrap{ max-width:320px; }
+  .float-book{ bottom:16px; right:16px; width:54px; height:54px; font-size:20px; }
+  .calendly-modal{ width:100%; height:100%; border-radius:0; }
+}
+@media(max-width:600px){
+  .book-cta-inner{flex-direction:column;text-align:center;padding:40px 24px;gap:28px;}
+}
+</style>
+</head>
+<body>
+
+<div class="accent"></div>
+
+<div class="site-header">
+  <nav class="main-nav" aria-label="Primary">
+    <div class="main-nav-inner">
+      <a class="nav-logo" href="https://www.wintellex.com" aria-label="Wintellex Home"><img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex"></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link" href="https://www.wintellex.com/">Home</a>
+
+        <div class="nav-item has-dropdown active">
+          <a class="nav-link active" href="https://www.wintellex.com/pricing">Pricing<span class="nav-caret" aria-hidden="true"></span></a>
+          <div class="nav-dropdown">
+            <a href="https://www.wintellex.com/pricing">Pricing</a>
+            <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+            <a href="https://www.wintellex.com/security" class="active">Security</a>
+            <a href="https://www.wintellex.com/developers">Developers</a>
+            <a href="https://www.wintellex.com/partners">Partners</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a class="nav-link" href="https://www.wintellex.com/infrastructure">Infrastructure<span class="nav-caret" aria-hidden="true"></span></a>
+          <div class="nav-dropdown">
+            <a href="https://www.wintellex.com/commercial">Commercial</a>
+            <a href="https://www.wintellex.com/government">Government</a>
+            <a href="https://www.wintellex.com/institutional">Institutional</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a class="nav-link" href="https://www.wintellex.com/about">About<span class="nav-caret" aria-hidden="true"></span></a>
+          <div class="nav-dropdown">
+            <a href="https://www.wintellex.com/about">About Us</a>
+            <a href="https://www.wintellex.com/careers">Careers</a>
+            <a href="https://www.wintellex.com/press">Press</a>
+            <a href="https://www.wintellex.com/media">Media</a>
+            <a href="https://www.wintellex.com/contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-dropdown">
+          <a class="nav-link" href="https://www.wintellex.com/legal">Legal<span class="nav-caret" aria-hidden="true"></span></a>
+          <div class="nav-dropdown">
+            <a href="https://www.wintellex.com/privacy">Privacy Policy</a>
+            <a href="https://www.wintellex.com/terms">Terms of Use</a>
+            <a href="https://www.wintellex.com/compliance">Compliance</a>
+            <a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a>
+          </div>
+        </div>
+
+        <a class="nav-link nav-login" href="https://www.wintellex.com/login">Login</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Wintellex Security</div>
+        <h1 class="headline">Security-first infrastructure for modern financial workflows.</h1>
+        <p class="subheadline">Wintellex is designed around secure access, operational governance, transaction visibility, and compliance-oriented controls for payment, treasury, and settlement systems.</p>
+        <div class="hero-buttons">
+          <a href="https://www.wintellex.com/contact" class="primary-btn">Contact Security Team</a>
+          <a href="https://www.wintellex.com/compliance" class="secondary-btn">View Compliance</a>
+        </div>
+      </div>
+      <div class="shield-wrap">
+        <div class="shield-ring shield-ring-1"></div>
+        <div class="shield-ring shield-ring-2"></div>
+        <div class="shield-ring shield-ring-3"></div>
+        <div class="shield-core">🛡</div>
+        <div class="security-chips">
+          <div class="schip sc-1">ZERO TRUST ✓</div>
+          <div class="schip sc-2">E2E ENCRYPTED</div>
+          <div class="schip sc-3">SOC 2 TYPE II</div>
+          <div class="schip sc-4">PCI-DSS READY</div>
+          <div class="schip sc-5">99.99% UPTIME</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="diagonal-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 Q720,90 1440,0 L1440,80 L0,80 Z" fill="#f4f1ea"/>
+    </svg>
+  </div>
+</header>
+
+<section class="status-strip">
+  <div class="container">
+    <div class="status-grid">
+      <div class="status-card">
+        <div class="status-label"><span class="status-dot"></span>Active</div>
+        <h3>Zero Trust Architecture</h3>
+        <p>Every access request is continuously verified regardless of origin — no implicit trust at any layer.</p>
+      </div>
+      <div class="status-card">
+        <div class="status-label"><span class="status-dot"></span>Live</div>
+        <h3>24/7 Threat Detection</h3>
+        <p>AI-powered security operations monitoring infrastructure, access patterns, and transaction anomalies around the clock.</p>
+      </div>
+      <div class="status-card">
+        <div class="status-label"><span class="status-dot"></span>Enabled</div>
+        <h3>End-to-End Encryption</h3>
+        <p>All data encrypted in transit and at rest using industry-standard protocols across every layer of the platform.</p>
+      </div>
+      <div class="status-card">
+        <div class="status-label"><span class="status-dot"></span>Verified</div>
+        <h3>Immutable Audit Logs</h3>
+        <p>Tamper-proof records of all workflow activity, access events, and transaction history for full operational visibility.</p>
+      </div>
+    </div>
+  </div>
+  <div class="diagonal-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 Q720,30 1440,80 L1440,80 L0,80 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+<section class="feature-section light">
+  <div class="container feature-grid">
+    <div>
+      <div class="eyebrow light">Real-Time Protection</div>
+      <h2 class="section-title">Threat detection that never sleeps.</h2>
+      <p class="section-text">Wintellex operates a security operations layer designed to detect, analyze, and respond to threats in real time — protecting payment flows, treasury data, and enterprise workflows from the moment they're initiated.</p>
+      <div class="feature-list">
+        <div class="feature-row">
+          <h4>AI-Powered Anomaly Detection</h4>
+          <p>Machine learning models continuously analyze transaction behavior, access patterns, and API usage to surface threats before they escalate.</p>
+        </div>
+        <div class="feature-row">
+          <h4>Automated Incident Response</h4>
+          <p>Pre-defined playbooks and automated containment protocols ensure rapid isolation of threats without manual intervention delays.</p>
+        </div>
+        <div class="feature-row">
+          <h4>Live Transaction Monitoring</h4>
+          <p>Every payment, settlement, and treasury movement is monitored in real time with configurable alert thresholds and escalation paths.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781131245519x579676084529044400/pexels-ron-lach-8102696.jpg" alt="Security operations team" class="feature-img">
+    </div>
+  </div>
+  <div class="diagonal-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 Q720,90 1440,0 L1440,80 L0,80 Z" fill="#f7f4ee"/>
+    </svg>
+  </div>
+</section>
+
+<section class="feature-section warm">
+  <div class="container feature-grid flip">
+    <div>
+      <div class="sec-panel">
+        <div class="sec-line"><span>Zero Trust Architecture</span><span class="badge badge-green">ACTIVE</span></div>
+        <div class="sec-line"><span>End-to-End Encryption</span><span class="badge badge-green">ENABLED</span></div>
+        <div class="sec-line"><span>RBAC & Access Controls</span><span class="badge badge-purple">ENFORCED</span></div>
+        <div class="sec-line"><span>Audit Log Integrity</span><span class="badge badge-green">VERIFIED</span></div>
+        <div class="sec-line"><span>SOC 2 Type II</span><span class="badge badge-blue">COMPLIANT</span></div>
+        <div class="sec-line"><span>PCI-DSS Controls</span><span class="badge badge-blue">READY</span></div>
+        <div class="sec-line"><span>Threat Detection Layer</span><span class="badge badge-green">ONLINE</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow light">Secure by Design</div>
+      <h2 class="section-title">Security built into the infrastructure — not bolted on.</h2>
+      <p class="section-text">Every Wintellex system component is designed with security as a first-order requirement. Access controls, encryption, audit visibility, and compliance tooling are native to the platform — not afterthoughts layered on top.</p>
+      <div class="feature-list">
+        <div class="feature-row">
+          <h4>Role-Based Access Control</h4>
+          <p>Granular permissions, just-in-time privilege escalation, SSO, and SCIM provisioning for enterprise identity management.</p>
+        </div>
+        <div class="feature-row">
+          <h4>Secure Development Lifecycle</h4>
+          <p>Automated code scanning, dependency auditing, and penetration testing integrated throughout the engineering process.</p>
+        </div>
+      </div>
+      <a href="https://www.wintellex.com/contact" class="primary-btn dark">Talk to Security Team</a>
+    </div>
+  </div>
+  <div class="diagonal-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 Q720,30 1440,80 L1440,80 L0,80 Z" fill="#0a0913"/>
+    </svg>
+  </div>
+</section>
+
+<section class="feature-section dark">
+  <div class="container feature-grid">
+    <div>
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781131255792x832363293093987200/pexels-ekaterinamitkina-10378534.jpg" alt="Developer working on secure infrastructure" class="feature-img dark-shadow">
+    </div>
+    <div>
+      <div class="eyebrow">Compliance Standards</div>
+      <h2 class="section-title light">Built for regulated financial environments.</h2>
+      <p class="section-text light">Wintellex infrastructure is structured around the security and compliance frameworks required by organizations operating in regulated financial services — giving enterprise teams the controls they need without building them from scratch.</p>
+      <div class="feature-list">
+        <div class="feature-row dark">
+          <h4>SOC 2 Type II Alignment</h4>
+          <p>Platform controls designed around Trust Service Criteria covering security, availability, processing integrity, confidentiality, and privacy.</p>
+        </div>
+        <div class="feature-row dark">
+          <h4>PCI-DSS Ready Infrastructure</h4>
+          <p>Payment card data flows and processing environments structured to support PCI-DSS compliance requirements for enterprise customers.</p>
+        </div>
+        <div class="feature-row dark">
+          <h4>ISO 27001 Oriented Controls</h4>
+          <p>Information security management practices aligned with ISO 27001 standards for systematic risk management and operational security.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="diagonal-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 Q720,90 1440,0 L1440,80 L0,80 Z" fill="#f4f1ea"/>
+    </svg>
+  </div>
+</section>
+
+<section class="feature-section cream">
+  <div class="container">
+    <div class="eyebrow light">Enterprise Foundation</div>
+    <h2 class="section-title">Designed for trust, scale, and operational control.</h2>
+    <div class="trust-grid">
+      <div class="trust-card"><div class="icon">🔐</div><h3>Access Governance</h3><p>Role-based permissions, authentication systems, access review processes, and operational user management designed for enterprise-scale organizations.</p></div>
+      <div class="trust-card"><div class="icon">🧾</div><h3>Audit Visibility</h3><p>Structured workflow records, invoice activity, approvals, transaction history, and operational event tracking in immutable, tamper-proof logs.</p></div>
+      <div class="trust-card"><div class="icon">⚙️</div><h3>Operational Controls</h3><p>Approval systems, workflow states, settlement coordination, internal review procedures, and governance workflows built directly into the platform.</p></div>
+      <div class="trust-card"><div class="icon">🌐</div><h3>Network Security</h3><p>Multi-layer network protection including DDoS mitigation, rate limiting, IP allowlisting, and traffic anomaly detection across all infrastructure endpoints.</p></div>
+      <div class="trust-card"><div class="icon">🔑</div><h3>Key Management</h3><p>Hardware security module (HSM) backed key management with automated rotation, envelope encryption, and strict separation of duties for cryptographic operations.</p></div>
+      <div class="trust-card"><div class="icon">📋</div><h3>Data Governance</h3><p>Structured handling of operational records, client data, invoices, contracts, treasury activity, and workflow information with clear retention and access policies.</p></div>
+    </div>
+  </div>
+  <div class="diagonal-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 Q720,30 1440,80 L1440,80 L0,80 Z" fill="#0a0913"/>
+    </svg>
+  </div>
+</section>
+
+<section class="metrics-section">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric-card"><h2>99.99%</h2><p>Infrastructure uptime target</p></div>
+      <div class="metric-card"><h2>E2E</h2><p>Encryption in transit and at rest</p></div>
+      <div class="metric-card"><h2>24/7</h2><p>Security operations monitoring</p></div>
+      <div class="metric-card"><h2>Zero</h2><p>Implicit trust — every request verified</p></div>
+    </div>
+  </div>
+  <div class="diagonal-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 Q720,90 1440,0 L1440,80 L0,80 Z" fill="#0d0a19"/>
+    </svg>
+  </div>
+</section>
+
+<section class="enterprise-cta" style="background:linear-gradient(to bottom,#0d0a19,#0d0a19);padding:80px 24px 0;">
+  <div style="background:radial-gradient(circle at top,#34105e 0%,#0b0912 60%);border-radius:40px;padding:80px 60px;margin:0 auto;max-width:1180px;">
+    <div class="cta-box" style="background:transparent;border:none;border-radius:0;padding:0;backdrop-filter:none;">
+      <div>
+        <div class="eyebrow">Enterprise Security</div>
+        <h2 style="color:white;font-size:clamp(36px,5vw,60px);line-height:1.05;margin-bottom:16px;letter-spacing:-0.05em;">Security infrastructure built for modern financial systems.</h2>
+        <p style="color:#d7d3e8;max-width:560px;font-size:13px;">Connect with the Wintellex security team to discuss access controls, compliance frameworks, and how our infrastructure supports your organization's security requirements.</p>
+      </div>
+      <a href="https://www.wintellex.com/contact" class="primary-btn" style="white-space:nowrap;flex-shrink:0;">Contact Security Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- Book a Meeting CTA -->
+<section class="book-cta-section">
+  <div class="book-cta-inner">
+    <div class="book-cta-text">
+      <div class="eyebrow">Talk to Us</div>
+      <h2>Have security or compliance questions?</h2>
+      <p>Book a call with the Wintellex team — we'll walk through our architecture, controls, and compliance posture in detail.</p>
+    </div>
+    <button class="book-cta-btn" onclick="openCalendly()">
+      <span class="cal-icon">&#128197;</span>
+      Book a Meeting
+    </button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://f4106b695ee260aafd87fdcf0205d09d.cdn.bubble.io/f1781901646071x697679303859545000/Wintellex%20Trans%20PNG%20%281%29.png" alt="Wintellex" class="footer-brand-logo">
+      <p>Intelligent payment infrastructure for modern organizations and scalable financial systems.</p>
+      <p style="margin-top:14px;line-height:1.7;color:#666;">1910 Pacific Ave Suite 2000<br>Dallas, TX 75201<br>United States</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="https://www.wintellex.com/about">About</a>
+      <a href="https://www.wintellex.com/careers">Careers</a>
+      <a href="https://www.wintellex.com/press">Press</a>
+      <a href="https://www.wintellex.com/media">Media</a>
+      <a href="https://www.wintellex.com/contact">Contact</a>
+      
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <a href="https://www.wintellex.com/commercial">Commercial</a>
+      <a href="https://www.wintellex.com/government">Government</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="https://www.wintellex.com/pricing">Pricing</a>
+      <a href="https://www.wintellex.com/infrastructure">Infrastructure</a>
+      <a href="https://www.wintellex.com/security">Security</a>
+      <a href="https://www.wintellex.com/developers">Developers</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="https://www.wintellex.com/privacy">Privacy Policy</a>
+      <a href="https://www.wintellex.com/terms">Terms of Use</a>
+      <a href="https://www.wintellex.com/compliance">Compliance</a>
+      <a href="https://www.wintellex.com/modern-slavery-statement">Modern Slavery Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Wintellex • Intelligent Payment Infrastructure</p>
+    <div class="social-links">
+      <a href="https://x.com/wintellex" target="_blank">𝕏</a>
+      <a href="https://www.instagram.com/wintellex/" target="_blank">📷</a>
+      <a href="https://www.linkedin.com/company/wintellex" target="_blank">in</a>
+      <a href="https://www.youtube.com/@Wintellex" target="_blank">▶</a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p>© 2026 Wintellex. Wintellex is a financial infrastructure technology company. Banking services are provided by Choice Financial Group and Column N.A., Members FDIC. Unauthorized reproduction or redistribution of copyrighted materials on this website and Wintellex's digital media pages is strictly prohibited. By clicking on some of the links above, you will leave Wintellex's website and be directed to a third-party website. The privacy practices of those third parties may differ from those of Wintellex. We recommend you review the privacy statements of those third-party websites, as Wintellex is not responsible for those third parties' privacy or security practices. Additional disclosures can be found in the resources section of our website. <a href="https://www.wintellex.com/privacy">Privacy Policy</a> &middot; <a href="https://www.wintellex.com/privacy#cookies">Cookie Policy</a></p>
+  </div>
+</footer>
+
+<div class="privacy-bar" id="privacyBar">
+  <p>We use cookies to enhance your experience and analyze site traffic. <a href="https://www.wintellex.com/privacy">Learn more</a></p>
+  <button onclick="acceptPrivacy()">Accept &amp; Continue</button>
+</div>
+
+<!-- Floating book button -->
+<button class="float-book" onclick="openCalendly()" aria-label="Book a meeting">&#128197;</button>
+
+<script>
+(function(){
+  var toggle=document.getElementById('navToggle');
+  var links=document.getElementById('navLinks');
+  if(!toggle||!links)return;
+  toggle.addEventListener('click',function(){
+    var open=links.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    if(!open){
+      document.querySelectorAll('.nav-item.dropdown-open').forEach(function(i){i.classList.remove('dropdown-open');});
+    }
+  });
+})();
+
+(function(){
+  var carets=document.querySelectorAll('.nav-caret');
+  carets.forEach(function(caret){
+    caret.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var item=caret.closest('.nav-item');
+      if(!item)return;
+      var isOpen=item.classList.contains('dropdown-open');
+      document.querySelectorAll('.nav-item.dropdown-open').forEach(function(i){
+        if(i!==item)i.classList.remove('dropdown-open');
+      });
+      item.classList.toggle('dropdown-open',!isOpen);
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.nav-item')){
+      document.querySelectorAll('.nav-item.dropdown-open').forEach(function(i){i.classList.remove('dropdown-open');});
+    }
+  });
+})();
+
+function showPrivacyBar(){ if(!localStorage.getItem('privacyAccepted')) document.getElementById('privacyBar').classList.add('show'); }
+function acceptPrivacy(){ localStorage.setItem('privacyAccepted','true'); document.getElementById('privacyBar').classList.remove('show'); }
+window.onload = showPrivacyBar;
+
+function openCalendly(){
+  if(document.getElementById('calendlyOverlay'))return;
+  var overlay=document.createElement('div');
+  overlay.id='calendlyOverlay';
+  overlay.className='calendly-overlay';
+  overlay.innerHTML=
+    '<div class="calendly-modal">'
+    +'<div class="calendly-modal-header">'
+    +'<span>&#128197; Book a Meeting</span>'
+    +'<button class="calendly-modal-close" onclick="closeCalendly()" aria-label="Close">&times;</button>'
+    +'</div>'
+    +'<iframe src="https://calendly.com/wintellex" title="Book a meeting with Wintellex"></iframe>'
+    +'</div>';
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeCalendly();});
+  document.body.style.overflow='hidden';
+}
+function closeCalendly(){
+  var o=document.getElementById('calendlyOverlay');
+  if(o)o.remove();
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCalendly();});
+</script>
+
+</body>
+</html>
