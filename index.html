@@ -1380,7 +1380,7 @@ function confirmDNSMI(){
     'ads':'Your preference has been saved. You have been opted out of targeted advertising data sharing.',
     'retain':'No changes have been made. Your current sharing settings remain in place.'
   };
-  try{localStorage.setItem('wintellex_dnsmi',val);}catch(e){}
+  safeStorage.set('wintellex_dnsmi',val);
   document.getElementById('dnsmiBody').innerHTML=
     '<div class="dnsmi-success">'
     +'<span class="dnsmi-check">&#10003;</span>'
@@ -1390,6 +1390,21 @@ function confirmDNSMI(){
     +'<div class="dnsmi-footer" style="justify-content:center;margin-top:24px;"><button class="dnsmi-confirm" onclick="closeDNSMI()">Done</button></div>';
 }
 document.getElementById('dnsmiOverlay').addEventListener('click',function(e){if(e.target===this)closeDNSMI();});
+
+/* ─── Safe storage wrapper: falls back to an in-memory object if
+   localStorage is unavailable or throws (e.g. sandboxed previews),
+   so a storage failure can never silently break page scripts. ─── */
+var _memStore={};
+var safeStorage={
+  get:function(key){
+    try{ return localStorage.getItem(key); }
+    catch(e){ return Object.prototype.hasOwnProperty.call(_memStore,key)?_memStore[key]:null; }
+  },
+  set:function(key,val){
+    try{ localStorage.setItem(key,val); }
+    catch(e){ _memStore[key]=val; }
+  }
+};
 
 /* ─── New centered privacy consent modal logic ─── */
 function openPrivacyModal(){
@@ -1403,24 +1418,23 @@ function closePrivacyModal(){
   document.body.style.overflow='';
 }
 function acceptPrivacyModal(){
-  try{localStorage.setItem('wintellex_privacy_modal_choice','accepted');}catch(e){}
+  safeStorage.set('wintellex_privacy_modal_choice','accepted');
   closePrivacyModal();
 }
 function declinePrivacyModal(){
-  try{localStorage.setItem('wintellex_privacy_modal_choice','declined');}catch(e){}
+  safeStorage.set('wintellex_privacy_modal_choice','declined');
   closePrivacyModal();
 }
 document.getElementById('privacyModalOverlay').addEventListener('click',function(e){if(e.target===this)closePrivacyModal();});
 
 function showPrivacyModal(){
-  var choice=null;
-  try{choice=localStorage.getItem('wintellex_privacy_modal_choice');}catch(e){}
+  var choice=safeStorage.get('wintellex_privacy_modal_choice');
   if(!choice) openPrivacyModal();
 }
 /* ─── End centered privacy consent modal logic ─── */
 
-function showPrivacyBar(){if(!localStorage.getItem('privacyAccepted'))document.getElementById('privacyBar').classList.add('show');}
-function acceptPrivacy(){localStorage.setItem('privacyAccepted','true');document.getElementById('privacyBar').classList.remove('show');}
+function showPrivacyBar(){if(!safeStorage.get('privacyAccepted'))document.getElementById('privacyBar').classList.add('show');}
+function acceptPrivacy(){safeStorage.set('privacyAccepted','true');document.getElementById('privacyBar').classList.remove('show');}
 
 var FAQ_RULES=[
   {keywords:['book','appointment','schedule','call','meeting','demo','consult'],reply:"I'd love to help you set that up — tap the button below to pick a time directly on our team's calendar.",showBookButton:true},
