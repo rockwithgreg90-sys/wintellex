@@ -481,56 +481,6 @@ footer{background:#0d0a19;padding:70px 24px 0;color:#aaa;}
   .nav-dropdown a{padding:10px 30px;font-size:13px;border-bottom:1px solid rgba(139,92,255,0.08);}
 }
 /* ─── End Nav Menu Bar ─── */
-
-/* ─── Capital Raise Banner ─── */
-.capital-banner{
-  width:100%;
-  background:linear-gradient(90deg,#2d0950,#5e1ab8,#2d0950);
-  background-size:200%;
-  animation:shimmer 10s linear infinite;
-  overflow:hidden;
-  max-height:60px;
-  opacity:1;
-  transition:max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
-}
-.capital-banner-inner{
-  max-width:1180px;
-  margin:0 auto;
-  padding:12px 24px;
-  text-align:center;
-}
-.capital-banner-inner span{
-  font-size:13.5px;
-  font-weight:600;
-  color:#f0ecfb;
-  letter-spacing:0.01em;
-  line-height:1.5;
-}
-.capital-banner-inner strong{
-  color:#ffffff;
-  font-weight:800;
-}
-.capital-banner-inner a{
-  color:#ffffff;
-  font-weight:800;
-  text-decoration:underline;
-  text-underline-offset:2px;
-  margin-left:6px;
-  white-space:nowrap;
-}
-.capital-banner-inner a:hover{
-  color:#e8dcff;
-}
-.capital-banner.banner-hidden{
-  max-height:0;
-  opacity:0;
-  padding:0;
-}
-@media(max-width:780px){
-  .capital-banner-inner{padding:10px 16px;}
-  .capital-banner-inner span{font-size:12px;}
-}
-/* ─── End Capital Raise Banner ─── */
 </style>
 </head>
 <body>
@@ -588,11 +538,6 @@ footer{background:#0d0a19;padding:70px 24px 0;color:#aaa;}
       </div>
     </div>
   </nav>
-  <div class="capital-banner" id="capitalBanner">
-    <div class="capital-banner-inner">
-      <span>Wintellex has raised <strong>$1.2B</strong> in its <strong>Series F</strong> round, at a <strong>$20B valuation</strong>.<a href="https://www.wintellex.com/press">Read Now &rarr;</a></span>
-    </div>
-  </div>
 </div>
 
 <header class="hero">
@@ -1274,13 +1219,6 @@ footer{background:#0d0a19;padding:70px 24px 0;color:#aaa;}
   function onTime(which){return function(data){var isActiveCall=(which==='A'&&activeIsA)||(which==='B'&&!activeIsA);if(!isActiveCall||duration===null)return;var remaining=duration-data.seconds;if(remaining<=PRELOAD_MARGIN&&remaining>SWITCH_MARGIN)preloadStandby();if(remaining<=SWITCH_MARGIN)doSwitch();};}
   pA.on('timeupdate',onTime('A'));
   pB.on('timeupdate',onTime('B'));
-})();
-
-(function(){
-  var banner=document.getElementById('capitalBanner');
-  var lastY=window.scrollY,ticking=false;
-  function update(){var y=window.scrollY;if(y<10){banner.classList.remove('banner-hidden');}else if(y>lastY){banner.classList.add('banner-hidden');}else{banner.classList.remove('banner-hidden');}lastY=y;ticking=false;}
-  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});
 })();
 
 (function(){
